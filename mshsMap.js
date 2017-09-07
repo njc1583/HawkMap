@@ -5,8 +5,8 @@ var mapContainer = document.getElementById("map");
 var map = new Raphael(mapContainer, MAP_WIDTH, MAP_HEIGHT);
 
 var style = {
-  fill: "#ddd",
-  stroke: "#aaa",
+  fill: "#ff66ff",
+  stroke: "#660066",
   "stoke-width": 1,
   "stroke-linejoin": "miter",
   cursor: "pointer"
