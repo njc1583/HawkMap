@@ -14,7 +14,7 @@ var style = {
 
 //Put all region names with locations and stuff in here
 var regions = {};
-
+regions["auditorium"] = map.rect("m 100, 600, 20, 20 z");
 
 for(var regionName in regions){
   regions[regionName].attr(style);
