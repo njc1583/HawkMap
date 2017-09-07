@@ -1,2 +1,2 @@
-# Maine-South-Interactive-Ma
+# Maine-South-Interactive-Map
 An interactive map to navigate Maine South
