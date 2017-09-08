@@ -4,7 +4,7 @@ var MAP_HEIGHT = 645;
 var mapContainer = document.getElementById("map");
 var map = new Raphael(mapContainer, MAP_WIDTH, MAP_HEIGHT);
 
-var style = {
+var miscRoomStyle = {
   fill: "#ff66ff",
   stroke: "#660066",
   "stoke-width": 1,
@@ -13,9 +13,17 @@ var style = {
 };
 
 //Put all region names with locations and stuff in here
-var regions = {};
-regions["auditorium"] = map.rect("m 100, 600, 20, 20 z");
+var mathRooms = {};
+var engRooms = {};
+var sciRooms = {};
+var histRooms = {};
+var miscRooms = {};
 
-for(var regionName in regions){
-  regions[regionName].attr(style);
+var regions = {mathRooms, engRooms, sciRooms, histRooms, miscRooms};
+
+miscRooms["auditorium"] = map.rect("m 100, 600, 20, 20 z");
+
+//Set each rooms to different styles
+for(var roomName in miscRooms){
+  regions[roomName].attr(miscRoomStyle);
 }
