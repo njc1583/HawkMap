@@ -4,6 +4,8 @@ var MAP_HEIGHT = 645;
 var mapContainer = document.getElementById("map");
 var map = new Raphael(mapContainer, MAP_WIDTH, MAP_HEIGHT);
 
+//Creation of all styles for rooms
+//Math: Blue
 var mathRoomStyle = {
   fill: "#d81515",
   stroke: "#660f0f",
@@ -11,7 +13,7 @@ var mathRoomStyle = {
   "stroke-linejoin": "miter",
   cursor: "pointer"
 };
-
+//English: Red
 var engRoomStyle = {
   fill: "c40b0b",
   stroke: "#6d0d0d",
@@ -19,7 +21,7 @@ var engRoomStyle = {
   "stroke-linejoin": "miter",
   cursor: "pointer"
 };
-
+//Science: Green
 var sciRoomStyle = {
   fill: "#1b9b17",
   stroke: "#093d07",
@@ -27,7 +29,7 @@ var sciRoomStyle = {
   "stroke-linejoin": "miter",
   cursor: "pointer"
 };
-
+//History: Orange
 var histRoomStyle = {
   fill: "#dd800d",
   stroke: "#96570a",
@@ -35,7 +37,7 @@ var histRoomStyle = {
   "stroke-linejoin": "miter",
   cursor: "pointer"
 };
-
+//Foreign Language: Yellow
 var langRoomStyle = {
   fill: "#f7ec20",
   stroke: "#a59f2b",
@@ -43,7 +45,7 @@ var langRoomStyle = {
   "stroke-linejoin": "miter",
   cursor: "pointer"
 };
-
+//Miscellanious rooms (such as art electives): Purple
 var miscRoomStyle = {
   fill: "#ff66ff",
   stroke: "#660066",
