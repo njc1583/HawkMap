@@ -1553,7 +1553,5 @@ tnT8t3VuqgQ9hjtoaon+FNRuG4wAx6FjVOL1l1njwVBLeoj7/wPXGdLHR1uOVQAAACV0RVh0ZGF0
 ZTpjcmVhdGUAMjAxNy0wOS0wNlQwOToyNjowMi0wNzowMJyEnFUAAAAldEVYdGRhdGU6bW9kaWZ5
 ADIwMTctMDktMDZUMDk6MjY6MDItMDc6MDDt2STpAAAAAElFTkSuQmCC"/>
   <head>
-    <title Maine South Map />
-    <meta charset="utf-8" />
-    <title>Maine South Map</title>
+    HI
   </head>
