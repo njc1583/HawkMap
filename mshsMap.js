@@ -1,4 +1,5 @@
 import "raphael.js";
+import "raphael.min.js";
 
 var MAP_WIDTH = 760;
 var MAP_HEIGHT = 645;
