@@ -66,7 +66,7 @@ var langRooms = {};
 var miscRooms = {};
 
 //Not sure this is necessary
-//var regions = {mathRooms, engRooms, sciRooms, histRooms, langRooms, miscRooms};
+var regions = {mathRooms, engRooms, sciRooms, histRooms, langRooms, miscRooms};
 
 //These are test rooms to ensure styling, room creation, and display all work
 mathRooms["A126"] = map.rect("m 500, 600, 20, 30 z");
