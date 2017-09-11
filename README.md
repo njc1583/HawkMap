@@ -1553,6 +1553,20 @@ tnT8t3VuqgQ9hjtoaon+FNRuG4wAx6FjVOL1l1njwVBLeoj7/wPXGdLHR1uOVQAAACV0RVh0ZGF0
 ZTpjcmVhdGUAMjAxNy0wOS0wNlQwOToyNjowMi0wNzowMJyEnFUAAAAldEVYdGRhdGU6bW9kaWZ5
 ADIwMTctMDktMDZUMDk6MjY6MDItMDc6MDDt2STpAAAAAElFTkSuQmCC"/>
 
+<html>
+  <head>
+    <title Maine South Map />
+    <meta charset="utf-8" />
+    <title>Maine South Map</title>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script src="js/raphael-min.js"></script> <!--Allows for the use of raphael to divide the map into vectors-->
+    <script src="js/map.js"></script>
+  </body>
+</html>
+
+
 var MAP_WIDTH = 760;
 var MAP_HEIGHT = 645;
 
