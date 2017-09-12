@@ -69,12 +69,12 @@ var miscRooms = {};
 var regions = {mathRooms, engRooms, sciRooms, histRooms, langRooms, miscRooms};
 
 //These are test rooms to ensure styling, room creation, and display all work
-mathRooms["A126"] = map.rect("m 500, 600, 20, 30 z");
-engRooms["C141"] = map.rect("m 400, 550, 20, 40 z");
-sciRooms["A310"] = map.rect("m 360, 200, 10, 30 z");
-histRooms["A222"] = map.rect("m 750, 300, 10, 10 z");
-langRooms["A208"] = map.rect("m 400, 150, 20, 20 z");
-miscRooms["auditorium"] = map.rect("m 100, 600, 20, 20 z");
+mathRooms["A126"] = map.rect("m 100, 100, 10, 10 z");
+engRooms["C141"] = map.rect("m 100, 100, 20, 20 z");
+sciRooms["A310"] = map.rect("m 100, 100, 30, 30 z");
+histRooms["A222"] = map.rect("m 100, 100, 40, 40 z");
+langRooms["A208"] = map.rect("m 100, 100, 50, 50 z");
+miscRooms["auditorium"] = map.rect("m 100, 100, 60, 60 z");
 
 
 //Set each rooms to different styles
