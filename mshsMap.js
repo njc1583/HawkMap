@@ -4,7 +4,7 @@ import "raphael.min.js";
 var MAP_WIDTH = 760;
 var MAP_HEIGHT = 645;
 
-var mapContainer = document.getElementById("map");
+var mapContainer = document.getElementById("school_map");
 var map = new Raphael(mapContainer, MAP_WIDTH, MAP_HEIGHT);
 
 //Creation of all styles for rooms
@@ -69,12 +69,12 @@ var miscRooms = {};
 var regions = {mathRooms, engRooms, sciRooms, histRooms, langRooms, miscRooms};
 
 //These are test rooms to ensure styling, room creation, and display all work
-mathRooms["A126"] = map.rect(100, 100, 10, 10);
-engRooms["C141"] = map.rect(100, 100, 20, 20);
-sciRooms["A310"] = map.rect(100, 100, 30, 30);
-histRooms["A222"] = map.rect(100, 100, 40, 40);
-langRooms["A208"] = map.rect(100, 100, 50, 50);
-miscRooms["auditorium"] = map.rect(100, 100, 60, 60);
+mathRooms["A126"] = map.rect(0, 0, 100, 100);
+engRooms["C141"] = map.rect(0, 100, 100, 100);
+sciRooms["A310"] = map.rect(100, 0, 100, 100);
+histRooms["A222"] = map.rect(100, 100, 100, 100);
+langRooms["A208"] = map.rect(200, 0, 100, 100);
+miscRooms["auditorium"] = map.rect(200, 100, 100, 100);
 
 
 //Set each rooms to different styles
