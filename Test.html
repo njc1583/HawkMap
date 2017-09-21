@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8" />
     <title>MSHS Interactive Map</title>
-      Text above map.
   </head>
   <body>
       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAvgAAAKFCAAAAACc9cIgAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
@@ -1561,42 +1560,103 @@ ADIwMTctMDktMDZUMDk6MjY6MDItMDc6MDDt2STpAAAAAElFTkSuQmCC"/>
     <script type='text/javascript' src='raphael.js'></script>
 
   <script type='text/javascript'>
-  //<![CDATA[ 
   window.onload=function(){
-    // Creates canvas 320 × 200 at 10, 50
     var MAP_WIDTH  = 760;
     var MAP_HEIGHT = 645;
 
-    //var mapContainer = document.getElementById("map");
-    var paper = Raphael(50, 50, MAP_WIDTH, MAP_HEIGHT);
+    var paper = Raphael(0, 0, MAP_WIDTH, MAP_HEIGHT);
 
-    /*var style = {
-        fill: "#02c200",
-        stroke: "#000000",
-        "stroke-width": 1,
+    //Creation of all styles for rooms
+    //Math: Blue
+    var mathRoomStyle = {
+        fill: "#0be8dd",
+        stroke: "#0e726d",
+        "stroke-wdith": 5,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
+    //English: Red
+    var engRoomStyle = {
+        fill: "#c40b0b",          
+        stroke: "#6d0d0d",
+        "stroke-width": 5,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
+    //Science: Green
+    var sciRoomStyle = {
+        fill: "#1b9b17",
+        stroke: "#093d07",
+        "stroke-wdith": 5,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
+    //History: Orange
+    var histRoomStyle = {
+        fill: "#dd800d",
+        stroke: "#96570a",
+        "stroke-wdith": 5,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
+    //Foreign Language: Yellow
+    var langRoomStyle = {
+        fill: "#f7ec20",
+        stroke: "#a59f2b",
+        "stroke-wdith": 5,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
+    //Miscellanious rooms (such as art electives): Purple
+    var miscRoomStyle = {
+        fill: "#ff66ff",
+        stroke: "#660066",
+        "stoke-width": 5,
         "stroke-linejoin": "miter",
         cursor: "pointer"
     };
 
-      var shapes = {};
-      regions["rectangle1"] = paper.rect(100, 100, 20, 20);
-      regions["border"] = paper.rect(50, 50, MAP_WIDTH, MAP_HEIGHT);
+    //Put all region names with locations and stuff in here
+    var mathRooms = {}, engRooms = {}, sciRooms = {}, histRooms = {}, langRooms = {}, miscRooms = {};
 
-      for(var shapeName in shapes){
-        shapes[shapeName].attr(style);
-      }*/
-    
-    var rectangle1 = paper.rect(50, 50, 20, 20);
-    rectangle1.attr("fill", "#02c200");
-    rectangle1.attr("stroke", "#000000");
+    //Not sure this is necessary
+    //var regions = {mathRooms, engRooms, sciRooms, histRooms, langRooms, miscRooms};
+      
+    mathRooms["A126"] = paper.rect(0, 0, 25, 25);
+    engRooms["C141"] = paper.rect(0, 50, 25, 25);
+    sciRooms["A310"] = paper.rect(50, 50, 25, 25);
+    histRooms["A222"] = paper.rect(100, 0, 25, 25);
+    langRooms["A208"] = paper.rect(50, 0, 25, 25);
+    miscRooms["auditorium"] = paper.rect(100, 50, 25, 25);
+
+
+    //Set each rooms to different styles
+    for(var roomName in mathRooms){
+        mathRooms[roomName].attr(mathRoomStyle);  
+    }
+
+    for(var roomName in engRooms){
+        engRooms[roomName].attr(engRoomStyle);
+    }
+
+    for(var roomName in sciRooms){
+        sciRooms[roomName].attr(sciRoomStyle);
+    }
+
+    for(var roomName in histRooms){
+        histRooms[roomName].attr(histRoomStyle);
+    }
+
+    for(var roomName in langRooms){
+        langRooms[roomName].attr(langRoomStyle);
+    }   
+
+    for(var roomName in miscRooms){
+        miscRooms[roomName].attr(miscRoomStyle);
+    }
+
   }
   
-  //]]> 
   </script>  
- 
-    <!-- <div id="map"></div>
-    <script type="text/javsascript" src="js/raphael-min.js"></script>
-    <script type="text/javascript" src="http://github.com/DmitryBaranovskiy/raphael/raw/master/raphael-min.js"></script>
-      Text below map. -->
   </body>
 </html>
