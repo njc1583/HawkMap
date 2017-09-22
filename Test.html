@@ -1567,11 +1567,27 @@ ADIwMTctMDktMDZUMDk6MjY6MDItMDc6MDDt2STpAAAAAElFTkSuQmCC"/>
     var paper = Raphael(0, 0, MAP_WIDTH, MAP_HEIGHT);
 
     //Creation of all styles for rooms
+    //Administrative/Other non-academic rooms: Brown
+    var miscNARoomstyle = {
+        fill: "#915b15",
+        stroke: "#442a08",
+        "stroke-width": 2,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    }
+    //Unknown Rooms (will later become just stairs): Black and Grey
+    var unknownRoomStyle = {
+        fill: "#3a3a3a",
+        stroke: "#000000",
+        "stroke-width": 2,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
     //Math: Blue
     var mathRoomStyle = {
         fill: "#0be8dd",
         stroke: "#0e726d",
-        "stroke-wdith": 5,
+        "stroke-width": 2,
         "stroke-linejoin": "miter",
         cursor: "pointer"
     };
@@ -1579,7 +1595,7 @@ ADIwMTctMDktMDZUMDk6MjY6MDItMDc6MDDt2STpAAAAAElFTkSuQmCC"/>
     var engRoomStyle = {
         fill: "#c40b0b",          
         stroke: "#6d0d0d",
-        "stroke-width": 5,
+        "stroke-width": 2,
         "stroke-linejoin": "miter",
         cursor: "pointer"
     };
@@ -1587,7 +1603,7 @@ ADIwMTctMDktMDZUMDk6MjY6MDItMDc6MDDt2STpAAAAAElFTkSuQmCC"/>
     var sciRoomStyle = {
         fill: "#1b9b17",
         stroke: "#093d07",
-        "stroke-wdith": 5,
+        "stroke-width": 2,
         "stroke-linejoin": "miter",
         cursor: "pointer"
     };
@@ -1595,7 +1611,7 @@ ADIwMTctMDktMDZUMDk6MjY6MDItMDc6MDDt2STpAAAAAElFTkSuQmCC"/>
     var histRoomStyle = {
         fill: "#dd800d",
         stroke: "#96570a",
-        "stroke-wdith": 5,
+        "stroke-width": 2,
         "stroke-linejoin": "miter",
         cursor: "pointer"
     };
@@ -1603,7 +1619,7 @@ ADIwMTctMDktMDZUMDk6MjY6MDItMDc6MDDt2STpAAAAAElFTkSuQmCC"/>
     var langRoomStyle = {
         fill: "#f7ec20",
         stroke: "#a59f2b",
-        "stroke-wdith": 5,
+        "stroke-width": 2,
         "stroke-linejoin": "miter",
         cursor: "pointer"
     };
@@ -1611,25 +1627,72 @@ ADIwMTctMDktMDZUMDk6MjY6MDItMDc6MDDt2STpAAAAAElFTkSuQmCC"/>
     var miscRoomStyle = {
         fill: "#ff66ff",
         stroke: "#660066",
-        "stoke-width": 5,
+        "stoke-width": 2,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
+      
+    var hundredBarriersStyle = {
+        fill: "#ffffff",
+        stroke: "#000000",
+        "stroke-width": 1,
         "stroke-linejoin": "miter",
         cursor: "pointer"
     };
 
     //Put all region names with locations and stuff in here
-    var mathRooms = {}, engRooms = {}, sciRooms = {}, histRooms = {}, langRooms = {}, miscRooms = {};
+    var mathRooms = {}, engRooms = {}, sciRooms = {}, histRooms = {}, langRooms = {}, miscRooms = {}, unknownRooms = {}, miscNARooms = {};
 
     //Not sure this is necessary
     //var regions = {mathRooms, engRooms, sciRooms, histRooms, langRooms, miscRooms};
       
-    mathRooms["A126"] = paper.rect(0, 0, 25, 25);
-    engRooms["C141"] = paper.rect(0, 50, 25, 25);
-    sciRooms["A310"] = paper.rect(50, 50, 25, 25);
-    histRooms["A222"] = paper.rect(100, 0, 25, 25);
-    langRooms["A208"] = paper.rect(50, 0, 25, 25);
-    miscRooms["auditorium"] = paper.rect(100, 50, 25, 25);
-
-
+    //Temporary rectangles to be used as a coordinate system for other room placement
+    var hundredBarriers = {};
+    hundredBarriers["0-100, 0-100"] = paper.rect(0, 0, 100, 100);
+    hundredBarriers["100-200"] = paper.rect(100, 0, 100, 20);
+    hundredBarriers["200-300"] = paper.rect(200, 0, 100, 20);
+    hundredBarriers["300-400"] = paper.rect(300, 0, 100, 20);
+    hundredBarriers["400-500"] = paper.rect(400, 0, 100, 20);
+    hundredBarriers["500-600"] = paper.rect(500, 0, 100, 20);
+    hundredBarriers["600-700"] = paper.rect(600, 0, 100, 20);
+    hundredBarriers["700-760"] = paper.rect(700, 0, 100, 20);
+      
+    hundredBarriers["100-200"] = paper.rect(0, 100, 20, 100);
+    hundredBarriers["200-300"] = paper.rect(0, 200, 20, 100);
+    hundredBarriers["300-400"] = paper.rect(0, 300, 20, 100);
+    hundredBarriers["400-500"] = paper.rect(0, 400, 20, 100);
+    hundredBarriers["500-600"] = paper.rect(0, 500, 20, 100);
+    hundredBarriers["600-645"] = paper.rect(0, 600, 20, 100);
+      
+    //East side even-numbered A-Wing rooms
+    unknownRooms["East A-Wing Stairs"] = paper.rect(708, 333, 39, 11);
+    mathRooms["A128"] = paper.rect(708, 346, 39, 14);
+    mathRooms["A126"] = paper.rect(708, 361, 39, 17);
+    mathRooms["A124"] = paper.rect(708, 379, 39, 17);
+    mathRooms["A122"] = paper.rect(708, 397, 39, 17);
+    mathRooms["A120"] = paper.rect(708, 415, 39, 14);
+    miscRooms["A118 (Driver's Ed)"] = paper.rect(708, 431, 39, 13);
+    miscNARooms["A116"] = paper.rect(708, 446, 39, 15);
+    mathRooms["A114"] = paper.rect(708, 463, 39, 18); 
+    unknownRooms["Main A-Wing Stairs"] = paper.rect(708, 483, 39, 21);
+      
+    //West side even-numbered A-Wing rooms
+    mathRooms["A112"] = paper.rect(708, 524, 39, 10);
+    mathRooms["A110"] = paper.rect(708, 535, 39, 10);
+    mathRooms["A108 (Math Department Chair)"] = paper.rect(708, 546, 39, 6);
+    unknownRooms["A106-A"] = paper.rect(708, 554, 39, 7);
+    unknownRooms["A106-B"] = paper.rect(708, 562, 39, 6);
+    engRooms["A104 and A104-A"] = paper.rect(708, 570, 39, 9);  
+    unknownRooms["West A-Wing Stairs"] = paper.rect(708, 581, 39, 10);
+    engRooms["A102"] = paper.rect(708, 593, 39, 8);
+      
+    //East side odd-numbered A-Wing rooms
+    mathRooms["A127"] = paper.rect(668, 342, 24, 17);  
+    mathRooms["A125"] = paper.rect(668, 360, 24, 17);
+    mathRooms["A123"] = paper.rect(668, 378, 24, 17);  
+    mathRooms["A121"] = paper.rect(668, 396, 24, 17);
+    unknownRooms["North A-Wing Stairs"] = paper.rect(668, 415, 24, 9);  
+      
     //Set each rooms to different styles
     for(var roomName in mathRooms){
         mathRooms[roomName].attr(mathRoomStyle);  
@@ -1653,6 +1716,18 @@ ADIwMTctMDktMDZUMDk6MjY6MDItMDc6MDDt2STpAAAAAElFTkSuQmCC"/>
 
     for(var roomName in miscRooms){
         miscRooms[roomName].attr(miscRoomStyle);
+    }
+      
+    for(var roomName in hundredBarriers){
+        hundredBarriers[roomName].attr(hundredBarriersStyle);
+    }
+      
+    for(var roomName in miscNARooms){
+        miscNARooms[roomName].attr(miscNARoomstyle);
+    }
+      
+    for(var roomName in unknownRooms){
+        unknownRooms[roomName].attr(unknownRoomStyle);
     }
 
   }
