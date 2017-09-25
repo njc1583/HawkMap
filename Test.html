@@ -1567,6 +1567,14 @@ ADIwMTctMDktMDZUMDk6MjY6MDItMDc6MDDt2STpAAAAAElFTkSuQmCC"/>
     var paper = Raphael(0, 0, MAP_WIDTH, MAP_HEIGHT);
 
     //Creation of all styles for rooms
+    //Bathrooms: Grey
+    var bathStyle = {
+        fill: "#a9a9a9",
+        stroke: "#696969",
+        "stroke-width": 2,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };  
     //Administrative/Other non-academic rooms: Brown
     var miscNARoomstyle = {
         fill: "#915b15",
@@ -1574,7 +1582,7 @@ ADIwMTctMDktMDZUMDk6MjY6MDItMDc6MDDt2STpAAAAAElFTkSuQmCC"/>
         "stroke-width": 2,
         "stroke-linejoin": "miter",
         cursor: "pointer"
-    }
+    };
     //Unknown Rooms (will later become just stairs): Black and Grey
     var unknownRoomStyle = {
         fill: "#3a3a3a",
@@ -1607,8 +1615,8 @@ ADIwMTctMDktMDZUMDk6MjY6MDItMDc6MDDt2STpAAAAAElFTkSuQmCC"/>
         "stroke-linejoin": "miter",
         cursor: "pointer"
     };
-    //History: Orange
-    var histRoomStyle = {
+    //Social Science: Orange
+    var socSciRoomStyle = {
         fill: "#dd800d",
         stroke: "#96570a",
         "stroke-width": 2,
@@ -1641,7 +1649,7 @@ ADIwMTctMDktMDZUMDk6MjY6MDItMDc6MDDt2STpAAAAAElFTkSuQmCC"/>
     };
 
     //Put all region names with locations and stuff in here
-    var mathRooms = {}, engRooms = {}, sciRooms = {}, histRooms = {}, langRooms = {}, miscRooms = {}, unknownRooms = {}, miscNARooms = {};
+    var mathRooms = {}, engRooms = {}, sciRooms = {}, socSciRooms = {}, langRooms = {}, miscRooms = {}, unknownRooms = {}, miscNARooms = {}, bathrooms = {};
 
     //Not sure this is necessary
     //var regions = {mathRooms, engRooms, sciRooms, histRooms, langRooms, miscRooms};
@@ -1687,11 +1695,22 @@ ADIwMTctMDktMDZUMDk6MjY6MDItMDc6MDDt2STpAAAAAElFTkSuQmCC"/>
     engRooms["A102"] = paper.rect(708, 593, 39, 8);
       
     //East side odd-numbered A-Wing rooms
-    mathRooms["A127"] = paper.rect(668, 342, 24, 17);  
-    mathRooms["A125"] = paper.rect(668, 360, 24, 17);
-    mathRooms["A123"] = paper.rect(668, 378, 24, 17);  
-    mathRooms["A121"] = paper.rect(668, 396, 24, 17);
-    unknownRooms["North A-Wing Stairs"] = paper.rect(668, 415, 24, 9);  
+    mathRooms["A127"] = paper.rect(668, 342, 25, 17);  
+    mathRooms["A125"] = paper.rect(668, 360, 25, 17);
+    mathRooms["A123"] = paper.rect(668, 378, 25, 17);  
+    mathRooms["A121"] = paper.rect(668, 396, 25, 17);
+    unknownRooms["North A-Wing Stairs"] = paper.rect(668, 415, 25, 9);  
+    mathRooms["A119"] = paper.rect(668, 426, 25, 18);
+    mathRooms["A117"] = paper.rect(668, 445, 25, 15);
+    mathRooms["A115"] = paper.rect(668, 461, 25, 18);
+    bathrooms["1st Floor A-Wing Bathrooms"] = paper.rect(668, 481, 25, 23);
+    
+    //West side odd-numbered A-Wing rooms
+    mathRooms["A113"] = paper.rect(668, 524, 25, 10);
+    mathRooms["A111"] = paper.rect(668, 535, 25, 8);
+    mathRooms["A109"] = paper.rect(668, 544, 25, 8);  
+    mathRooms["A107"] = paper.rect(668, 553, 25, 14);
+      
       
     //Set each rooms to different styles
     for(var roomName in mathRooms){
@@ -1706,8 +1725,8 @@ ADIwMTctMDktMDZUMDk6MjY6MDItMDc6MDDt2STpAAAAAElFTkSuQmCC"/>
         sciRooms[roomName].attr(sciRoomStyle);
     }
 
-    for(var roomName in histRooms){
-        histRooms[roomName].attr(histRoomStyle);
+    for(var roomName in socSciRooms){
+        socSciRooms[roomName].attr(sciRoomStyle);
     }
 
     for(var roomName in langRooms){
@@ -1728,6 +1747,10 @@ ADIwMTctMDktMDZUMDk6MjY6MDItMDc6MDDt2STpAAAAAElFTkSuQmCC"/>
       
     for(var roomName in unknownRooms){
         unknownRooms[roomName].attr(unknownRoomStyle);
+    }
+      
+    for(var roomName in bathrooms){
+        bathrooms[roomName].attr(bathStyle);
     }
 
   }
