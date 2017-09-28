@@ -155,8 +155,24 @@ window.onload = function(){
       
     //Even-numbered 2nd Floor A-wing rooms 
     unknownRooms["East A-Wing Stairs (2nd Floor)"] = paper.rect(711, 25, 42, 16);  
-    sciRooms["A230"] = paper.rect();  
-      
+    sciRooms["A230"] = paper.rect(711, 43, 42, 23);
+    miscNARooms["Chemistry Prep Room (Staff Only)"] = paper.rect(711, 68, 42, 9);
+    sciRooms["A228"] = paper.rect(711, 79, 42, 27);
+    socSciRooms["A224"] = paper.rect(711, 108, 42, 20);
+    socSciRooms["A222"] = paper.rect(711, 129, 42, 8);
+    socSciRooms["A220"] = paper.rect(711, 138, 42, 19);
+    langRooms["A218"] = paper.rect(711, 159, 42, 12);
+    unknownRooms["Main A-Wing Stairs (2nd Floor)"] = paper.rect(711, 173, 42, 14);
+    socSciRooms["A216"] = paper.rect(711, 189, 42, 8);
+    langRooms["A214"] = paper.rect(711, 199, 42, 9);
+    langRooms["A212"] = paper.rect(711, 209, 42, 9);
+    langRooms["A210"] = paper.rect(711, 219, 42, 9);
+    langRooms["A208"] = paper.rect(711, 229, 42, 12);
+    langRooms["A206"] = paper.rect(711, 242, 42, 12);
+    langRooms["A204"] = paper.rect(711, 255, 42, 12);
+    unknownRooms["West A-Wing Stairs (2nd Floor)"] = paper.rect(711, 269, 42, 9);
+    socSciRooms["S202"] = paper.rect(711, 280, 42, 17);
+    
     //Set each rooms to different styles
     for(var roomName in mathRooms){
         mathRooms[roomName].attr(mathRoomStyle);  
@@ -171,7 +187,7 @@ window.onload = function(){
     }
 
     for(var roomName in socSciRooms){
-        socSciRooms[roomName].attr(sciRoomStyle);
+        socSciRooms[roomName].attr(socSciRoomStyle);
     }
 
     for(var roomName in langRooms){
