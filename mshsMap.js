@@ -173,6 +173,28 @@ window.onload = function(){
     unknownRooms["West A-Wing Stairs (2nd Floor)"] = paper.rect(711, 269, 42, 9);
     socSciRooms["S202"] = paper.rect(711, 280, 42, 17);
     
+    //Odd-numbered 2nd Floor A-wing rooms
+    socSciRooms["A233"] = paper.rect(661, 39, 36, 12);
+    //A231 and A229 are sometimes conjoined to serve both English and Social Science classes. For this program, A231 will be considered a social science room only, and A229 will be considered an English-only room.
+    socSciRooms["A231"] = paper.rect(661, 52, 36, 20);
+    engRooms["A229"] = paper.rect(661, 74, 36, 18);
+    socSciRooms["A227"] = paper.rect(661, 94, 36, 14);
+    unknownRooms["North A-Wing Stairs (2nd Floor)"] = paper.rect(661, 110, 36, 10);
+    engRooms["A225"] = paper.rect(661, 122, 36, 10);
+    socSciRooms["A223"] = paper.rect(661, 134, 36, 14);
+    socSciRooms["A221"] = paper.rect(661, 149, 36, 12);
+    langRooms["A219"] = paper.rect(661, 163, 36, 12);
+    bathrooms["2nd Floor A-Wing Bathrooms (Staff Only)"] = paper.rect(661, 177, 36, 10);
+    miscNARooms["A217 (Social Science and Foreign Language Department Chairs)"] = paper.rect(661, 189, 36, 10);
+    miscNARooms["A215 (Social Science Department Office)"] = paper.rect(661, 200, 36, 10);
+    miscNARooms["A213 (Foreign Language Department Office)"] = paper.rect(661, 211, 36, 10);
+    engRooms["A211"] = paper.rect(661, 223, 36, 10);
+    socSciRooms["A209"] = paper.rect(661, 235, 36, 10);
+    socSciRooms["A207"] = paper.rect(661, 246, 36, 10);
+    socSciRooms["A205"] = paper.rect(661, 257, 36, 10);
+    langRooms["A203"] = paper.rect(661, 269, 36, 12);
+    socSciRooms["A201 and A201-A (Social Worker)"] = paper.rect(661, 283, 36, 14);
+    
     //Set each rooms to different styles
     for(var roomName in mathRooms){
         mathRooms[roomName].attr(mathRoomStyle);  
