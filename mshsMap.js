@@ -195,6 +195,10 @@ window.onload = function(){
     langRooms["A203"] = paper.rect(661, 269, 36, 12);
     socSciRooms["A201 and A201-A (Social Worker)"] = paper.rect(661, 283, 36, 14);
     
+    //Even-numbered 3rd Floor A-wing rooms
+    unknownRooms["East A-Wing Stairs (3rd Floor)"] = paper.rect(580, 24, 40, 15);
+    sciRooms["A318"]
+    
     //Set each rooms to different styles
     for(var roomName in mathRooms){
         mathRooms[roomName].attr(mathRoomStyle);  
