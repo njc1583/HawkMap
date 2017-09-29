@@ -212,6 +212,13 @@ window.onload = function(){
     //This will be spaced differently than other same-color adjacent rooms, because this will be discovere dwhat type later
     unknownRooms["A300"] = paper.rect(580, 288, 40, 9);
     
+    //Odd-numbered A-Wing Rooms
+    miscNARooms["A321 (Social Worker)"] = paper.rect(529, 24, 37, 15);
+    sciRooms["A319"] = paper.rect(529, 41, 37, 32);
+    sciRooms["A317"] = paper.rect(529, 74, 37, 28);
+    miscNARooms["A317-A (Teachers' Office)"] = paper.rect(529, 104, 37, 8);
+    unknownRooms["North A-Wing Stairs (3rd Floor)"] = paper.rect(529, 114, 37, 9);
+    
     //Set each rooms to different styles
     for(var roomName in mathRooms){
         mathRooms[roomName].attr(mathRoomStyle);  
