@@ -197,7 +197,20 @@ window.onload = function(){
     
     //Even-numbered 3rd Floor A-wing rooms
     unknownRooms["East A-Wing Stairs (3rd Floor)"] = paper.rect(580, 24, 40, 15);
-    sciRooms["A318"]
+    sciRooms["A320"] = paper.rect(580, 41, 40, 34);
+    sciRooms["A318"] = paper.rect(580, 76, 40, 28);
+    miscNARooms["A318-A (Science Office)"] = paper.rect(580, 106, 40, 10);
+    sciRooms["A316"] = paper.rect(580, 118, 40, 32);
+    sciRooms["A314"] = paper.rect(580, 151, 40, 30);
+    unknownRooms["Main A-Wing Stairs (3rd Floor)"] = paper.rect(580, 183, 40, 18);
+    miscNARooms["A312 Chemistry Storage (Staff Only)"] = paper.rect(580, 203, 40, 12);
+    sciRooms["A310"] = paper.rect(580, 217, 40, 14);
+    sciRooms["A308"] = paper.rect(580, 232, 40, 14);
+    sciRooms["A306"] = paper.rect(580, 247, 40, 14);
+    sciRooms["A304"] = paper.rect(580, 262, 40, 12);
+    unknownRooms["West A-Wing Stairs (3rd Floor)"] = paper.rect(580, 276, 40, 10);
+    //This will be spaced differently than other same-color adjacent rooms, because this will be discovere dwhat type later
+    unknownRooms["A300"] = paper.rect(580, 288, 40, 9);
     
     //Set each rooms to different styles
     for(var roomName in mathRooms){
