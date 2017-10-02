@@ -218,6 +218,17 @@ window.onload = function(){
     sciRooms["A317"] = paper.rect(529, 74, 37, 28);
     miscNARooms["A317-A (Teachers' Office)"] = paper.rect(529, 104, 37, 8);
     unknownRooms["North A-Wing Stairs (3rd Floor)"] = paper.rect(529, 114, 37, 9);
+    sciRooms["A315"] = paper.rect(529, 125, 37, 17);
+    miscNARooms["A313-A (Teachers' Office)"] = paper.rect(529, 144, 37, 8);
+    sciRooms["A313"] = paper.rect(529, 154, 37, 22);
+    bathrooms["3rd Floor A-wiing Bathrooms"] = paper.rect(529, 178, 37, 14);
+    miscNARooms["A311 (Science Department Chair)"] = paper.rect(529, 194, 37, 8);
+    sciRooms["A309"] = paper.rect(529, 204, 37, 14);
+    miscNARooms["A307 (Teachers' Office)"] = paper.rect(529, 220, 37, 6);
+    sciRooms["A305"] = paper.rect(529, 228, 37, 19);
+    sciRooms["A303"] = paper.rect(529, 248, 37, 21);
+    miscNARooms["A301-A (Teacher's Office)"] = paper.rect(529, 271, 37, 12);
+    sciRooms["A301"] = paper.rect(529, 285, 37, 12);
     
     //Set each rooms to different styles
     for(var roomName in mathRooms){
