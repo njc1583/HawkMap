@@ -90,7 +90,7 @@ window.onload = function(){
     var mathRooms = {}, engRooms = {}, sciRooms = {}, socSciRooms = {}, langRooms = {}, miscRooms = {}, unknownRooms = {}, miscNARooms = {}, bathrooms = {};
 
     //Not sure this is necessary
-    //var regions = {mathRooms, engRooms, sciRooms, histRooms, langRooms, miscRooms};
+    var allRooms = {mathRooms, engRooms, sciRooms, socSciRooms, langRooms, miscRooms, unknownRooms, miscNARooms, bathrooms};
       
     //Temporary rectangles to be used as a coordinate system for other room placement
     var hundredBarriers = {};
@@ -116,7 +116,7 @@ window.onload = function(){
     mathRooms["A126"] = paper.rect(708, 361, 39, 17);
     mathRooms["A124"] = paper.rect(708, 379, 39, 17);
     mathRooms["A122"] = paper.rect(708, 397, 39, 17);
-    mathRooms["A120"] = paper.rect(708, 415, 39, 14);
+    mathRooms["A120 (One-on-one help)"] = paper.rect(708, 415, 39, 14);
     miscRooms["A118 (Driver's Ed)"] = paper.rect(708, 431, 39, 13);
     miscNARooms["A116"] = paper.rect(708, 446, 39, 15);
     mathRooms["A114"] = paper.rect(708, 463, 39, 18); 
@@ -126,8 +126,8 @@ window.onload = function(){
     mathRooms["A112"] = paper.rect(708, 524, 39, 10);
     mathRooms["A110"] = paper.rect(708, 535, 39, 10);
     mathRooms["A108 (Math Department Chair)"] = paper.rect(708, 546, 39, 6);
-    unknownRooms["A106-A"] = paper.rect(708, 554, 39, 7);
-    unknownRooms["A106-B"] = paper.rect(708, 562, 39, 6);
+    engRooms["A106-A (Seminar)"] = paper.rect(708, 554, 39, 7);
+    engRooms["A106-B"] = paper.rect(708, 562, 39, 6);
     engRooms["A104 and A104-A"] = paper.rect(708, 570, 39, 9);  
     unknownRooms["West A-Wing Stairs (1st Floor)"] = paper.rect(708, 581, 39, 10);
     engRooms["A102"] = paper.rect(708, 593, 39, 8);
@@ -230,9 +230,35 @@ window.onload = function(){
     miscNARooms["A301-A (Teacher's Office)"] = paper.rect(529, 271, 37, 12);
     sciRooms["A301"] = paper.rect(529, 285, 37, 12);
     
-    //Set each rooms to different styles
+    //Main Office and SPS polygon declaration
+    
+    
+    //Declaration of animation speed and hoverstyle
+    var animationSpeed = 500;
+    var hoverStyle = {
+        fill: "#A8BED5"
+    }
+    
+    //Set each rooms to different styles (and add animations)
     for(var roomName in mathRooms){
-        mathRooms[roomName].attr(mathRoomStyle);  
+        //mathRooms[roomName].attr(mathRoomStyle);  
+        
+        (function (room) {
+        room.attr(mathRoomStyle);
+
+        room[0].addEventListener("mouseover", function() {
+            
+            room.animate(hoverStyle, animationSpeed);
+            
+        }, true);
+
+        room[0].addEventListener("mouseout", function() {
+            
+            room.animate(mathRoomStyle, animationSpeed);
+            
+        }, true);
+
+        })(mathRooms[roomName]);
     }
 
     for(var roomName in engRooms){
@@ -270,5 +296,5 @@ window.onload = function(){
     for(var roomName in bathrooms){
         bathrooms[roomName].attr(bathStyle);
     }
-
+    
   }
