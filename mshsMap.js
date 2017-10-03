@@ -231,7 +231,9 @@ window.onload = function(){
     sciRooms["A301"] = paper.rect(529, 285, 37, 12);
     
     //Main Office and SPS polygon declaration
-    
+    //miscNARooms("Main Office and SPS") = paper.path("M 555,390 L 570,390 L 570,400 Z");
+    var d = "M 10,30 L 60,30 L 10,80 L 60,80";
+    sciRooms["Z"] = paper.path(d);
     
     //Declaration of animation speed and hoverstyle
     var animationSpeed = 500;
