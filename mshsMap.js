@@ -87,10 +87,12 @@ window.onload = function(){
     };
 
     //Put all region names with locations and stuff in here
-    var mathRooms = {}, engRooms = {}, sciRooms = {}, socSciRooms = {}, langRooms = {}, miscRooms = {}, unknownRooms = {}, miscNARooms = {}, bathrooms = {};
+    var mathRooms = {}, engRooms = {}, sciRooms = {}, socSciRooms = {}, langRooms = {}, miscRooms = {}, unknownRooms = {}, miscNARooms = {}, bathrooms = {}, specialRooms = {};
 
+    //specialRooms is for rooms with distinct features and/or designs, and may have their own style on a case-by-case basis.
+    
     //Not sure this is necessary
-    var allRooms = {mathRooms, engRooms, sciRooms, socSciRooms, langRooms, miscRooms, unknownRooms, miscNARooms, bathrooms};
+    var allRooms = {mathRooms, engRooms, sciRooms, socSciRooms, langRooms, miscRooms, unknownRooms, miscNARooms, bathrooms, specialRooms};
       
     //Temporary rectangles to be used as a coordinate system for other room placement
     var hundredBarriers = {};
@@ -230,10 +232,30 @@ window.onload = function(){
     miscNARooms["A301-A (Teacher's Office)"] = paper.rect(529, 271, 37, 12);
     sciRooms["A301"] = paper.rect(529, 285, 37, 12);
     
-    //Main Office and SPS polygon declaration
-    //miscNARooms("Main Office and SPS") = paper.path("M 555,390 L 570,390 L 570,400 Z");
-    var d = "M 10,30 L 60,30 L 10,80 L 60,80";
-    sciRooms["Z"] = paper.path(d);
+    //Main Office and SPS polygon declaration 
+    specialRooms["Main Office and SPS"] = paper.path("M 571,389 L 616,389 L 616,505 L 571,505 L 571,439 L 590,439 L 590,403 L 571,403 Z");
+    
+    var officeStyle = {
+        fill: "#00ffbb",
+        stroke: "#124739",
+        "stoke-width": 2,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
+    
+    specialRooms["Main Office and SPS"].attr(officeStyle);
+    
+    unknownRooms["B117"] = paper.rect(571, 404, 18, 10);
+    engRooms["B116"] = paper.rect(571, 416, 18, 10);
+    unknownRooms["B118"] = paper.rect(571, 428, 18, 10);
+    miscRooms["C114-A (Computer Lab)"] = paper.rect(512, 492, 22, 13);
+    miscRooms["C114 (Computer Lab)"] = paper.rect(534, 492, 22, 13);
+    miscRooms["C115 (Computer Lab) (Entrance through C114-A only)"] = paper.rect(512, 479, 24, 13);
+    engRooms["C117 (Entrance through hallway only)"] = paper.rect(534, 479, 22, 13);
+    miscRooms["Writing Lab"] = paper.rect(512, 463, 44, 15);
+    
+    //var d = "M 10,30 L 60,30 L 10,80 L 60,80 Z";
+    //sciRooms["Z"] = paper.path(d);
     
     //Declaration of animation speed and hoverstyle
     var animationSpeed = 500;
