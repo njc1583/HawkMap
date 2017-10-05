@@ -85,6 +85,12 @@ window.onload = function(){
         "stroke-linejoin": "miter",
         cursor: "pointer"
     };
+    
+    var universalStyle = {
+        "stoke-width": 2,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
 
     //Put all region names with locations and stuff in here
     var mathRooms = {}, engRooms = {}, sciRooms = {}, socSciRooms = {}, langRooms = {}, miscRooms = {}, unknownRooms = {}, miscNARooms = {}, bathrooms = {}, specialRooms = {};
@@ -232,6 +238,7 @@ window.onload = function(){
     miscNARooms["A301-A (Teacher's Office)"] = paper.rect(529, 271, 37, 12);
     sciRooms["A301"] = paper.rect(529, 285, 37, 12);
     
+    //Office, SPS, B-Wing
     //Main Office and SPS polygon declaration 
     specialRooms["Main Office and SPS"] = paper.path("M 571,389 L 616,389 L 616,505 L 571,505 L 571,439 L 590,439 L 590,403 L 571,403 Z");
     
@@ -248,43 +255,46 @@ window.onload = function(){
     unknownRooms["B117"] = paper.rect(571, 404, 18, 10);
     engRooms["B116"] = paper.rect(571, 416, 18, 10);
     unknownRooms["B118"] = paper.rect(571, 428, 18, 10);
+    
+    //C-Wing, Library (Some details inaccurate)
     miscRooms["C114-A (Computer Lab)"] = paper.rect(512, 492, 22, 13);
     miscRooms["C114 (Computer Lab)"] = paper.rect(534, 492, 22, 13);
     miscRooms["C115 (Computer Lab) (Entrance through C114-A only)"] = paper.rect(512, 479, 24, 13);
     engRooms["C117 (Entrance through hallway only)"] = paper.rect(534, 479, 22, 13);
-    miscRooms["Writing Lab"] = paper.rect(512, 463, 44, 15);
+    //Writing Lab declaration
+    specialRooms["Writing Lab"] = paper.rect(512, 465, 44, 13);
+    var writingLabStyle = {
+        fill: "#9e0b0b",
+        stroke: "#4f0505",
+        "stroke-width": 2,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
+    specialRooms["Writing Lab"].attr(writingLabStyle);
+    //Library declaration
+    specialRooms["Library"] = paper.path("M 462,505 L 511,505 L 511,464 L 556,464 L 556,454 L 511,454 L 511,435 L 443,435 L 443,444 L 462,444 Z");
+    var libraryStyle = {
+        fill: "#7c0ad8",
+        stroke: "#350d5e",
+        "stroke-width": 2,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
+    specialRooms["Library"].attr(libraryStyle);
+    engRooms["Literacy Center"] = paper.rect(513, 436, 20, 16);
+    langRooms["Foreign Language Lab"] = paper.rect(535, 436, 20, 16);
+    unknownRooms["C-Wing Hallway ('L'-shaped)"] = paper.path("M 516,410 L 516,422 L 556,422 L 556,418 L 520,418 Z");
     
+    //Sample of special room drawing.
     //var d = "M 10,30 L 60,30 L 10,80 L 60,80 Z";
     //sciRooms["Z"] = paper.path(d);
-    
-    //Declaration of animation speed and hoverstyle
-    var animationSpeed = 500;
-    var hoverStyle = {
-        fill: "#A8BED5"
-    }
+
     
     //Set each rooms to different styles (and add animations)
     for(var roomName in mathRooms){
-        //mathRooms[roomName].attr(mathRoomStyle);  
-        
-        (function (room) {
-        room.attr(mathRoomStyle);
-
-        room[0].addEventListener("mouseover", function() {
-            
-            room.animate(hoverStyle, animationSpeed);
-            
-        }, true);
-
-        room[0].addEventListener("mouseout", function() {
-            
-            room.animate(mathRoomStyle, animationSpeed);
-            
-        }, true);
-
-        })(mathRooms[roomName]);
+        mathRooms[roomName].attr(mathRoomStyle);  
     }
-
+    
     for(var roomName in engRooms){
         engRooms[roomName].attr(engRoomStyle);
     }
@@ -320,5 +330,4 @@ window.onload = function(){
     for(var roomName in bathrooms){
         bathrooms[roomName].attr(bathStyle);
     }
-    
   }
