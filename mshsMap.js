@@ -73,7 +73,7 @@ window.onload = function(){
     var miscRoomStyle = {
         fill: "#ff66ff",
         stroke: "#660066",
-        "stoke-width": 2,
+        "stroke-width": 2,
         "stroke-linejoin": "miter",
         cursor: "pointer"
     };
@@ -87,7 +87,7 @@ window.onload = function(){
     };
     
     var universalStyle = {
-        "stoke-width": 2,
+        "stroke-width": 2,
         "stroke-linejoin": "miter",
         cursor: "pointer"
     };
@@ -119,70 +119,70 @@ window.onload = function(){
     hundredBarriers["600-645"] = paper.rect(0, 600, 20, 100);
     
     //East side even-numbered 1st Floor A-wing rooms
-    unknownRooms["East A-Wing Stairs (1st Floor)"] = paper.rect(708, 333, 39, 11);
-    mathRooms["A128"] = paper.rect(708, 346, 39, 14);
-    mathRooms["A126"] = paper.rect(708, 361, 39, 17);
-    mathRooms["A124"] = paper.rect(708, 379, 39, 17);
-    mathRooms["A122"] = paper.rect(708, 397, 39, 17);
-    mathRooms["A120 (One-on-one help)"] = paper.rect(708, 415, 39, 14);
-    miscRooms["A118 (Driver's Ed)"] = paper.rect(708, 431, 39, 13);
-    miscNARooms["A116"] = paper.rect(708, 446, 39, 15);
-    mathRooms["A114"] = paper.rect(708, 463, 39, 18); 
-    unknownRooms["Main A-Wing Stairs (1st Floor)"] = paper.rect(708, 483, 39, 21);
+    unknownRooms["East A-Wing Stairs (1st Floor)"] = paper.rect(707, 332, 40, 12);
+    mathRooms["A128"] = paper.rect(707, 346, 40, 14);
+    mathRooms["A126"] = paper.rect(707, 361, 40, 17);
+    mathRooms["A124"] = paper.rect(707, 379, 40, 17);
+    mathRooms["A122"] = paper.rect(707, 397, 40, 17);
+    mathRooms["A120 (One-on-one help)"] = paper.rect(707, 415, 40, 14);
+    miscRooms["A118 (Driver's Ed)"] = paper.rect(707, 431, 40, 13);
+    miscNARooms["A116"] = paper.rect(707, 446, 40, 15);
+    mathRooms["A114"] = paper.rect(707, 463, 40, 18); 
+    unknownRooms["Main A-Wing Stairs (1st Floor)"] = paper.rect(707, 483, 40, 22);
       
     //West side even-numbered First Floor A-wing rooms
-    mathRooms["A112"] = paper.rect(708, 524, 39, 10);
-    mathRooms["A110"] = paper.rect(708, 535, 39, 10);
-    mathRooms["A108 (Math Department Chair)"] = paper.rect(708, 546, 39, 6);
-    engRooms["A106-A (Seminar)"] = paper.rect(708, 554, 39, 7);
-    engRooms["A106-B"] = paper.rect(708, 562, 39, 6);
-    engRooms["A104 and A104-A"] = paper.rect(708, 570, 39, 9);  
-    unknownRooms["West A-Wing Stairs (1st Floor)"] = paper.rect(708, 581, 39, 10);
-    engRooms["A102"] = paper.rect(708, 593, 39, 8);
+    mathRooms["A112"] = paper.rect(707, 524, 40, 10);
+    mathRooms["A110"] = paper.rect(707, 535, 40, 10);
+    mathRooms["A108 (Math Department Chair)"] = paper.rect(707, 546, 40, 6);
+    engRooms["A106-A (Seminar)"] = paper.rect(707, 554, 40, 7);
+    engRooms["A106-B"] = paper.rect(707, 562, 40, 6);
+    engRooms["A104 and A104-A"] = paper.rect(707, 570, 40, 9);  
+    unknownRooms["West A-Wing Stairs (1st Floor)"] = paper.rect(707, 581, 40, 10);
+    engRooms["A102"] = paper.rect(707, 593, 40, 8);
       
     //East side odd-numbered 1st Floor A-Wing rooms
-    mathRooms["A127"] = paper.rect(668, 342, 25, 17);  
-    mathRooms["A125"] = paper.rect(668, 360, 25, 17);
-    mathRooms["A123"] = paper.rect(668, 378, 25, 17);  
-    mathRooms["A121"] = paper.rect(668, 396, 25, 17);
-    unknownRooms["North A-Wing Stairs (1st Floor)"] = paper.rect(668, 415, 25, 9);  
-    mathRooms["A119"] = paper.rect(668, 426, 25, 18);
-    mathRooms["A117"] = paper.rect(668, 445, 25, 15);
-    mathRooms["A115"] = paper.rect(668, 461, 25, 18);
-    bathrooms["1st Floor A-Wing Bathrooms"] = paper.rect(668, 481, 25, 23);
+    mathRooms["A127"] = paper.rect(667, 342, 26, 17);  
+    mathRooms["A125"] = paper.rect(667, 360, 26, 17);
+    mathRooms["A123"] = paper.rect(667, 378, 26, 17);  
+    mathRooms["A121"] = paper.rect(667, 396, 26, 17);
+    unknownRooms["North A-Wing Stairs (1st Floor)"] = paper.rect(667, 415, 26, 9);  
+    mathRooms["A119"] = paper.rect(667, 426, 26, 18);
+    mathRooms["A117"] = paper.rect(667, 445, 26, 15);
+    mathRooms["A115"] = paper.rect(667, 461, 26, 18);
+    bathrooms["1st Floor A-Wing Bathrooms"] = paper.rect(667, 481, 26, 24);
     
     //West side odd-numbered 1st Floor A-wing rooms
-    mathRooms["A113"] = paper.rect(668, 524, 25, 10);
-    mathRooms["A111"] = paper.rect(668, 535, 25, 8);
-    mathRooms["A109"] = paper.rect(668, 544, 25, 8);  
-    mathRooms["A107"] = paper.rect(668, 553, 25, 10);
-    engRooms["A105"] = paper.rect(668, 565, 25, 8);
-    mathRooms["A103"] = paper.rect(668, 575, 25, 8);
-    mathRooms["A101"] = paper.rect(668, 584, 25, 8);
-    mathRooms["A101-A (Math lab)"] = paper.rect(668, 593, 25, 8);
+    mathRooms["A113"] = paper.rect(667, 524, 26, 10);
+    mathRooms["A111"] = paper.rect(667, 535, 26, 8);
+    mathRooms["A109"] = paper.rect(667, 544, 26, 8);  
+    mathRooms["A107"] = paper.rect(667, 553, 26, 10);
+    engRooms["A105"] = paper.rect(667, 565, 26, 8);
+    mathRooms["A103"] = paper.rect(667, 575, 26, 8);
+    mathRooms["A101"] = paper.rect(667, 584, 26, 8);
+    mathRooms["A101-A (Math lab)"] = paper.rect(667, 593, 26, 8);
       
     //Even-numbered 2nd Floor A-wing rooms 
-    unknownRooms["East A-Wing Stairs (2nd Floor)"] = paper.rect(711, 25, 42, 16);  
-    sciRooms["A230"] = paper.rect(711, 43, 42, 23);
-    miscNARooms["Chemistry Prep Room (Staff Only)"] = paper.rect(711, 68, 42, 9);
-    sciRooms["A228"] = paper.rect(711, 79, 42, 27);
-    socSciRooms["A224"] = paper.rect(711, 108, 42, 20);
-    socSciRooms["A222"] = paper.rect(711, 129, 42, 8);
-    socSciRooms["A220"] = paper.rect(711, 138, 42, 19);
-    langRooms["A218"] = paper.rect(711, 159, 42, 12);
-    unknownRooms["Main A-Wing Stairs (2nd Floor)"] = paper.rect(711, 173, 42, 14);
-    socSciRooms["A216"] = paper.rect(711, 189, 42, 8);
-    langRooms["A214"] = paper.rect(711, 199, 42, 9);
-    langRooms["A212"] = paper.rect(711, 209, 42, 9);
-    langRooms["A210"] = paper.rect(711, 219, 42, 9);
-    langRooms["A208"] = paper.rect(711, 229, 42, 12);
-    langRooms["A206"] = paper.rect(711, 242, 42, 12);
-    langRooms["A204"] = paper.rect(711, 255, 42, 12);
-    unknownRooms["West A-Wing Stairs (2nd Floor)"] = paper.rect(711, 269, 42, 9);
-    socSciRooms["S202"] = paper.rect(711, 280, 42, 17);
+    unknownRooms["East A-Wing Stairs (2nd Floor)"] = paper.rect(710, 24, 43, 17);  
+    sciRooms["A230"] = paper.rect(710, 43, 43, 23);
+    miscNARooms["Chemistry Prep Room (Staff Only)"] = paper.rect(710, 68, 43, 9);
+    sciRooms["A228"] = paper.rect(710, 79, 43, 27);
+    socSciRooms["A224"] = paper.rect(710, 108, 43, 20);
+    socSciRooms["A222"] = paper.rect(710, 129, 43, 8);
+    socSciRooms["A220"] = paper.rect(710, 138, 43, 19);
+    langRooms["A218"] = paper.rect(710, 159, 43, 12);
+    unknownRooms["Main A-Wing Stairs (2nd Floor)"] = paper.rect(710, 173, 43, 14);
+    socSciRooms["A216"] = paper.rect(710, 189, 43, 8);
+    langRooms["A214"] = paper.rect(710, 199, 43, 9);
+    langRooms["A212"] = paper.rect(710, 209, 43, 9);
+    langRooms["A210"] = paper.rect(710, 219, 43, 9);
+    langRooms["A208"] = paper.rect(710, 229, 43, 12);
+    langRooms["A206"] = paper.rect(710, 242, 43, 12);
+    langRooms["A204"] = paper.rect(710, 255, 43, 12);
+    unknownRooms["West A-Wing Stairs (2nd Floor)"] = paper.rect(710, 269, 43, 9);
+    socSciRooms["S202"] = paper.rect(710, 280, 43, 17);
     
     //Odd-numbered 2nd Floor A-wing rooms
-    socSciRooms["A233"] = paper.rect(661, 39, 36, 12);
+    socSciRooms["A233"] = paper.rect(661, 38, 36, 13);
     //A231 and A229 are sometimes conjoined to serve both English and Social Science classes. For this program, A231 will be considered a social science room only, and A229 will be considered an English-only room.
     socSciRooms["A231"] = paper.rect(661, 52, 36, 20);
     engRooms["A229"] = paper.rect(661, 74, 36, 18);
@@ -240,12 +240,12 @@ window.onload = function(){
     
     //Office, SPS, B-Wing
     //Main Office and SPS polygon declaration 
-    specialRooms["Main Office and SPS"] = paper.path("M 571,389 L 616,389 L 616,505 L 571,505 L 571,439 L 590,439 L 590,403 L 571,403 Z");
+    specialRooms["Main Office and SPS"] = paper.path("M 571,389 L 616,389 L 616,505 L 571,505 L 571,440 L 591,440 L 591,402 L 571,402 Z");
     
     var officeStyle = {
         fill: "#00ffbb",
         stroke: "#124739",
-        "stoke-width": 2,
+        "stroke-width": 2,
         "stroke-linejoin": "miter",
         cursor: "pointer"
     };
@@ -259,10 +259,11 @@ window.onload = function(){
     //C-Wing, Library (Some details inaccurate)
     miscRooms["C114-A (Computer Lab)"] = paper.rect(512, 492, 22, 13);
     miscRooms["C114 (Computer Lab)"] = paper.rect(534, 492, 22, 13);
-    miscRooms["C115 (Computer Lab) (Entrance through C114-A only)"] = paper.rect(512, 479, 24, 13);
-    engRooms["C117 (Entrance through hallway only)"] = paper.rect(534, 479, 22, 13);
+    miscRooms["C115 (Computer Lab) (Entrance through C114-A only)"] = paper.rect(512, 479, 12, 13);
+    miscRooms["C116 (Computer Lab) (Entrance through C114-A only)"] = paper.rect(524, 479, 10, 13);
+    engRooms["C117 (Entrance through hallway only)"] = paper.rect(536, 479, 20, 11);
     //Writing Lab declaration
-    specialRooms["Writing Lab"] = paper.rect(512, 465, 44, 13);
+    specialRooms["Writing Lab"] = paper.rect(512, 466, 44, 11);
     var writingLabStyle = {
         fill: "#9e0b0b",
         stroke: "#4f0505",
@@ -272,7 +273,7 @@ window.onload = function(){
     };
     specialRooms["Writing Lab"].attr(writingLabStyle);
     //Library declaration
-    specialRooms["Library"] = paper.path("M 462,505 L 511,505 L 511,464 L 556,464 L 556,454 L 511,454 L 511,435 L 443,435 L 443,444 L 462,444 Z");
+    specialRooms["Library"] = paper.path("M 462,505 L 510,505 L 510,464 L 556,464 L 556,454 L 511,454 L 511,435 L 443,435 L 443,444 L 462,444 Z");
     var libraryStyle = {
         fill: "#7c0ad8",
         stroke: "#350d5e",
@@ -281,10 +282,15 @@ window.onload = function(){
         cursor: "pointer"
     };
     specialRooms["Library"].attr(libraryStyle);
-    engRooms["Literacy Center"] = paper.rect(513, 436, 20, 16);
-    langRooms["Foreign Language Lab"] = paper.rect(535, 436, 20, 16);
+    engRooms["Literacy Center"] = paper.rect(513, 435, 20, 17);
+    langRooms["Foreign Language Lab"] = paper.rect(535, 435, 21, 17);
     //C-Wing "L"-shaped hallway polygon declaration (will be an unknown)
-    unknownRooms["C-Wing Hallway ('L'-shaped)"] = paper.path("M 516,410 L 516,422 L 556,422 L 556,418 L 523,418 L 523,410 Z");
+    unknownRooms["C-Wing Hallway ('L'-shaped)"] = paper.path("M 516,408 L 516,422 L 556,422 L 556,418 L 523,418 L 523,408 Z");
+    engRooms["C128"] = paper.rect(527, 424, 14, 9);
+    engRooms["C126"] = paper.rect(542, 424, 14, 9);
+    engRooms["C129"] = paper.rect(525, 408, 15, 8);
+    engRooms["C127"] = paper.rect(541, 408, 15, 8);
+    miscNARooms["English Office (With Department Chair)"] = paper.rect(516, 424, 9, 9);
     
     //Sample of special room drawing.
     //var d = "M 10,30 L 60,30 L 10,80 L 60,80 Z";
