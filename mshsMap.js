@@ -283,7 +283,8 @@ window.onload = function(){
     specialRooms["Library"].attr(libraryStyle);
     engRooms["Literacy Center"] = paper.rect(513, 436, 20, 16);
     langRooms["Foreign Language Lab"] = paper.rect(535, 436, 20, 16);
-    unknownRooms["C-Wing Hallway ('L'-shaped)"] = paper.path("M 516,410 L 516,422 L 556,422 L 556,418 L 520,418 Z");
+    //C-Wing "L"-shaped hallway polygon declaration (will be an unknown)
+    unknownRooms["C-Wing Hallway ('L'-shaped)"] = paper.path("M 516,410 L 516,422 L 556,422 L 556,418 L 523,418 L 523,410 Z");
     
     //Sample of special room drawing.
     //var d = "M 10,30 L 60,30 L 10,80 L 60,80 Z";
