@@ -273,7 +273,7 @@ window.onload = function(){
     };
     specialRooms["Writing Lab"].attr(writingLabStyle);
     //Library declaration
-    specialRooms["Library"] = paper.path("M 462,505 L 510,505 L 510,464 L 556,464 L 556,454 L 511,454 L 511,435 L 443,435 L 443,444 L 462,444 Z");
+    specialRooms["Library"] = paper.path("M 461,505 L 510,505 L 510,464 L 556,464 L 556,454 L 511,454 L 511,435 L 442,435 L 442,444 L 461,444 Z");
     var libraryStyle = {
         fill: "#7c0ad8",
         stroke: "#350d5e",
@@ -291,6 +291,18 @@ window.onload = function(){
     engRooms["C129"] = paper.rect(525, 408, 15, 8);
     engRooms["C127"] = paper.rect(541, 408, 15, 8);
     miscNARooms["English Office (With Department Chair)"] = paper.rect(516, 424, 9, 9);
+    engRooms["C134-A (Entrance through hallway only)"] = paper.rect(506, 408, 8, 14);
+    unknownRooms["C135 (Entrance through C134-A only)"] = paper.rect(506, 424, 8, 9);
+    bathrooms["C-Wing Female Bathroom"] = paper.rect(500, 408, 4, 14);
+    miscRooms["C134 (Study Hall)"] = paper.rect(483, 408, 15, 14);
+    miscRooms["C140-A (Study Hall)"] = paper.rect(468, 408, 7, 14);
+    bathrooms["C-Wing Male Bathroom"] = paper.rect(477, 408, 4, 14);
+    miscRooms["C140 (Study Hall)"] = paper.rect(442, 408, 25, 14);
+    engRooms["C136 (Entrance through C134 only)"] = paper.rect(490, 424, 14, 9);
+    engRooms["C137 (Entrance through C134 only)"] = paper.rect(477, 424, 12, 9);
+    engRooms["C141 (Entrance through C140-A only)"] = paper.rect(468, 424, 8, 9);
+    engRooms["C142 (Entrance through C140 only)"] = paper.rect(456, 424, 11, 9);
+    engRooms["C143 (Entrance through C140 only)"] = paper.rect(442, 424, 13, 9);
     
     //Sample of special room drawing.
     //var d = "M 10,30 L 60,30 L 10,80 L 60,80 Z";
