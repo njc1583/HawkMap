@@ -1557,15 +1557,15 @@
     tnT8t3VuqgQ9hjtoaon+FNRuG4wAx6FjVOL1l1njwVBLeoj7/wPXGdLHR1uOVQAAACV0RVh0ZGF0
     ZTpjcmVhdGUAMjAxNy0wOS0wNlQwOToyNjowMi0wNzowMJyEnFUAAAAldEVYdGRhdGU6bW9kaWZ5
     ADIwMTctMDktMDZUMDk6MjY6MDItMDc6MDDt2STpAAAAAElFTkSuQmCC"/>
-      <div class="popup" onclick="myFunction()"> <!-- Puts the popup that will be available for each room in the html -->
+      <div class="popup"> <!-- Puts the popup that will be available for each room in the html -->
           <span class="popuptext" id="myPopup"> </span>
       </div>
       <!-- The style for the popup -->  
       <style>
           .popup {
             position: absolute;
-            top: 0px; /* Top and left allow for positioning of the popup on the map, will be set in the popup function */
-            left: 0px;
+            top: 355px; /* Top and left allow for positioning of the popup on the map, will be set in the popup function */
+            left: 525px;
             display: inline-block;
             cursor: pointer;
           }
@@ -1584,7 +1584,7 @@
             left: 50%;
             margin-left: -80px;
           }
-            /* Popup arrow */
+            /* Popup arrow In current version, we don't use this
           .popup .popuptext::after {
             content: "";
             position: absolute;
@@ -1595,6 +1595,7 @@
             border-style: solid;
             border-color: #555 transparent transparent transparent;
           }
+          */
             /* Toggle this class when clicking on the popup container (hide and show the popup) */
           .popup .show {
             visibility: visible;
@@ -1609,6 +1610,20 @@
           @keyframes fadeIn {
             from {opacity: 0;}
             to {opacity:1 ;}
+          }
+          .popup .dshow {
+            visibility: hidden;
+            -webkit-animation: fadeOut 1s;
+            animation: fadeOut 1s
+          }
+          /* Add animation (fade in the popup) */
+          @-webkit-keyframes fadeOut {
+            from {opacity: 1;} 
+            to {opacity: 0;}
+          }
+          @keyframes fadeOut {
+            from {opacity: 1;}
+            to {opacity:0 ;}
           }
       </style>
       <script type='text/javascript' src='raphael.js'></script> <!-- Imports raphael library into javascript -->
@@ -1705,8 +1720,8 @@
     //Put all region names with locations and stuff in here
     var mathRooms = {}, engRooms = {}, sciRooms = {}, socSciRooms = {}, langRooms = {}, miscRooms = {}, unknownRooms = {}, miscNARooms = {}, bathrooms = {};
     var mathRoomsNames = {}, engRoomsNames = {}, sciRoomsNames = {}, socSciRoomsNames = {},langRoomsNames = {}, miscRoomsNames = {}, unknownRoomsNames = {}, miscNARoomsNames = {}, bathroomsNames = {};
-    var mathRoomsX = {}, engRoomsX = {}, sciRoomsX = {}, socSciRoomsX = {},langRoomsX = {}, miscRoomsX = {}, unknownRoomsX = {}, miscNARoomsX = {}, bathroomsX = {};
-    var mathRoomsY = {}, engRoomsY = {}, sciRoomsY = {}, socSciRoomsY = {},langRoomsY = {}, miscRoomsY = {}, unknownRoomsY = {}, miscNARoomsY = {}, bathroomsY = {};
+   // var mathRoomsX = {}, engRoomsX = {}, sciRoomsX = {}, socSciRoomsX = {},langRoomsX = {}, miscRoomsX = {}, unknownRoomsX = {}, miscNARoomsX = {}, bathroomsX = {};
+  //  var mathRoomsY = {}, engRoomsY = {}, sciRoomsY = {}, socSciRoomsY = {},langRoomsY = {}, miscRoomsY = {}, unknownRoomsY = {}, miscNARoomsY = {}, bathroomsY = {};
     //Not sure this is necessary
     //var regions = {mathRooms, engRooms, sciRooms, histRooms, langRooms, miscRooms};
       
@@ -1732,16 +1747,19 @@
     unknownRooms["East A-Wing Stairs"] = paper.rect(708, 333, 39, 11);
     mathRooms["A128"] = paper.rect(708, 346, 39, 14);
     mathRoomsNames["A128"] = "A128";
-    mathRoomsX["A128"] = "730px";
-    mathRoomsY["A128"] = "342px";
+   // mathRoomsX["A128"] = "380px";
+   // mathRoomsY["A128"] = "322.5px";
     mathRooms["A126"] = paper.rect(708, 361, 39, 17);
+    mathRoomsNames["A126"] = "A126";
+   // mathRoomsX["A126"] = "525px";
+   // mathRoomsY["A126"] = "355px";
     mathRooms["A124"] = paper.rect(708, 379, 39, 17);
     mathRooms["A122"] = paper.rect(708, 397, 39, 17);
     mathRooms["A120"] = paper.rect(708, 415, 39, 14);
     miscRooms["A118 (Driver's Ed)"] = paper.rect(708, 431, 39, 13);
     miscRoomsNames["A118 (Driver's Ed)"] = "A118: Driver's Ed";
-    miscRoomsX["A118 (Driver's Ed)"] = "730px";
-    miscRoomsY["A118 (Driver's Ed)"] = "427px";
+  //  miscRoomsX["A118 (Driver's Ed)"] = "730px";
+  //  miscRoomsY["A118 (Driver's Ed)"] = "427px";
     miscNARooms["A116"] = paper.rect(708, 446, 39, 15);
     mathRooms["A114"] = paper.rect(708, 463, 39, 18); 
     unknownRooms["Main A-Wing Stairs"] = paper.rect(708, 483, 39, 21);
@@ -1773,11 +1791,6 @@
     mathRooms["A109"] = paper.rect(668, 544, 25, 8);  
     mathRooms["A107"] = paper.rect(668, 553, 25, 14);
 
-   //Set each rooms to different styles
-    for(var roomName in mathRooms){
-        mathRooms[roomName].attr(mathRoomStyle);  
-    }
-
     for(var roomName in engRooms){
         engRooms[roomName].attr(engRoomStyle);
     }
@@ -1795,6 +1808,7 @@
     }   
       var animationSpeed = 500;
       var hoverStyle = {
+          fill: "#A8BED5"
       }
     for(var roomName in miscRooms){
         miscRooms[roomName].attr(miscRoomStyle);
@@ -1816,57 +1830,39 @@
         bathrooms[roomName].attr(bathStyle);
     }
       for(var roomname in miscRooms) {
-        (function (roomname) {
-            roomname[0].addEventListener("mouseover", function() {
-                roomname.animate(hoverStyle, animationSpeed);
-                var popup = document.querySelector(".popup");
-                for(var xRoomName in miscRoomsX)
-                    {
-                        popup.style.left = miscRoomsX[xRoomName];
-                    }
-                for(var yRoomName in miscRoomsY)
-                    {
-                        popup.style.top = miscRoomsY[yRoomName];
-                    }
-                for(var rRoomName in miscRoomsNames)
-                    {
-                var node = document.getElementById("myPopup").innerHTML = miscRoomsNames[rRoomName];
-                    }
+        (function (room, roomname) {
+            room.attr(miscRoomStyle);
+            room[0].addEventListener("mouseover", function() {
+                room.animate(hoverStyle, animationSpeed);
+                var node = document.getElementById("myPopup").innerHTML = roomname;
+                myFunction();
+                
+            }, true);
+
+            room[0].addEventListener("mouseout", function() {
+                room.animate(miscRoomStyle, animationSpeed);
                 myFunction();
             }, true);
 
-            roomname[0].addEventListener("mouseout", function() {
-                roomname.animate(style, animationSpeed);
-            }, true);
-
-        })(miscRooms[roomname]);
+        })(miscRooms[roomname], roomname);
       }
-                for(var roomname in mathRooms) {
-        (function (roomname) {
-            roomname[0].addEventListener("mouseover", function() {
-                roomname.animate(hoverStyle, animationSpeed);
-                var popup = document.querySelector(".popup");
-                for(var xRoomName in mathRoomsX)
-                    {
-                        popup.style.left = mathRoomsX[xRoomName];
-                    }
-                for(var yRoomName in mathRoomsY)
-                    {
-                        popup.style.top = mathRoomsY[yRoomName];
-                    }
-                for(var rRoomName in mathRoomsNames)
-                    {
-                var node = document.getElementById("myPopup").innerHTML = mathRoomsNames[rRoomName];
-                    }
+               for(var roomname in mathRooms) {
+        (function (room, roomname) {
+            room.attr(mathRoomStyle);
+            room[0].addEventListener("mouseover", function() {
+                room.animate(hoverStyle, animationSpeed);
+                var node = document.getElementById("myPopup").innerHTML = roomname;
                 myFunction();
             }, true);
 
-            roomname[0].addEventListener("mouseout", function() {
-                roomname.animate(style, animationSpeed);
+            room[0].addEventListener("mouseout", function() {
+                room.animate(mathRoomStyle, animationSpeed);
+                myFunction();
             }, true);
 
-        })(mathRooms[roomname]);
+        })(mathRooms[roomname], roomname);
       }
+                
   }
   function myFunction() {
     var popup = document.getElementById("myPopup");
