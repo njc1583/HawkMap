@@ -179,7 +179,7 @@ window.onload = function(){
     langRooms["A206"] = paper.rect(710, 242, 43, 12);
     langRooms["A204"] = paper.rect(710, 255, 43, 12);
     unknownRooms["West A-Wing Stairs (2nd Floor)"] = paper.rect(710, 269, 43, 9);
-    socSciRooms["S202"] = paper.rect(710, 280, 43, 17);
+    socSciRooms["A202"] = paper.rect(710, 280, 43, 17);
     
     //Odd-numbered 2nd Floor A-wing rooms
     socSciRooms["A233"] = paper.rect(661, 38, 36, 13);
@@ -310,8 +310,25 @@ window.onload = function(){
 
     
     //Set each rooms to different styles (and add animations)
+    var animationSpeed = 500;
+    var hoverStyle = {
+        fill: "#A8BED5"
+    }
     for(var roomName in mathRooms){
-        mathRooms[roomName].attr(mathRoomStyle);  
+        mathRooms[roomName].attr(mathRoomStyle);
+          
+        (function (room, name) {
+            room[0].addEventListener("mouseover", function() {
+                room.animate(hoverStyle, animationSpeed);
+                var node = document.getElementById("myPopup").innerHTML = name;
+                togglePopup();
+                
+            }, true);
+            room[0].addEventListener("mouseout", function() {
+                room.animate(mathRoomStyle, animationSpeed);
+                togglePopup();
+            }, true);
+        })(mathRooms[roomName], roomName);
     }
     
     for(var roomName in engRooms){
@@ -348,5 +365,25 @@ window.onload = function(){
       
     for(var roomName in bathrooms){
         bathrooms[roomName].attr(bathStyle);
+    }
+    
+    /*for(var roomType in allRooms){
+        for(var roomName in roomType){
+            
+            (function (room, name) {
+                room[0].addEventListener("mouseover", function() {
+                    var node = document.getElementById("myPopup").innerHTML = name;
+                    togglePopup();
+                }, true);
+                    room[0].addEventListener("mouseout", function() {
+                    togglePopup();
+                }, true);
+            })(roomType[roomName], roomName);
+        }
+    }*/
+    
+    function togglePopup(){
+        var popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
     }
   }
