@@ -99,7 +99,7 @@ window.onload = function(){
     
     //Not sure this is necessary
     var allRooms = {mathRooms, engRooms, sciRooms, socSciRooms, langRooms, miscRooms, unknownRooms, miscNARooms, bathrooms, specialRooms};
-      
+   
     //Temporary rectangles to be used as a coordinate system for other room placement
     var hundredBarriers = {};
     hundredBarriers["0-100, 0-100"] = paper.rect(0, 0, 100, 100);
@@ -257,10 +257,15 @@ window.onload = function(){
     unknownRooms["B118"] = paper.rect(571, 428, 18, 10);
     
     //C-Wing, Library (Some details inaccurate)
-    miscRooms["C114-A (Computer Lab)"] = paper.rect(512, 492, 22, 13);
-    miscRooms["C114 (Computer Lab)"] = paper.rect(534, 492, 22, 13);
-    miscRooms["C115 (Computer Lab) (Entrance through C114-A only)"] = paper.rect(512, 479, 12, 13);
-    miscRooms["C116 (Computer Lab) (Entrance through C114-A only)"] = paper.rect(524, 479, 10, 13);
+    //C114 and C114-A will have to be polygons to accomodate bathrooms
+    //miscRooms["C114-A (Computer Lab)"] = paper.rect(512, 492, 22, 13);
+    //miscRooms["C114 (Computer Lab)"] = paper.rect(534, 492, 22, 13);
+    miscRooms["C114-A (Computer Lab)"] = paper.path("M 512,491 L 534,491 L 534,498 L 527,498 L 527,505 L 512,505 Z");
+    miscRooms["C114 (Computer Lab)"] = paper.path("M 535,492 L 556,492 L 556,505 L 542,505 L 542,498 L 535,498 Z");
+    bathrooms["C-Wing Male Bathroom (Staff Only)"] = paper.rect(529, 500, 5, 5);
+    bathrooms["C-Wing Female Bathroom (Staff Only)"] = paper.rect(535, 500, 5, 5);
+    miscRooms["C115 (Computer Lab) (Entrance through C114-A only)"] = paper.rect(512, 479, 12, 11);
+    miscRooms["C116 (Computer Lab) (Entrance through C114-A only)"] = paper.rect(524, 479, 10, 11);
     engRooms["C117 (Entrance through hallway only)"] = paper.rect(536, 479, 20, 11);
     //Writing Lab declaration
     specialRooms["Writing Lab"] = paper.rect(512, 466, 44, 11);
@@ -313,7 +318,8 @@ window.onload = function(){
     var animationSpeed = 500;
     var hoverStyle = {
         fill: "#A8BED5"
-    }
+    };
+    
     for(var roomName in mathRooms){
         mathRooms[roomName].attr(mathRoomStyle);
           
@@ -333,22 +339,87 @@ window.onload = function(){
     
     for(var roomName in engRooms){
         engRooms[roomName].attr(engRoomStyle);
+        
+        (function (room, name) {
+            room[0].addEventListener("mouseover", function() {
+                room.animate(hoverStyle, animationSpeed);
+                var node = document.getElementById("myPopup").innerHTML = name;
+                togglePopup();
+                
+            }, true);
+            room[0].addEventListener("mouseout", function() {
+                room.animate(engRoomStyle, animationSpeed);
+                togglePopup();
+            }, true);
+        })(engRooms[roomName], roomName);
     }
 
     for(var roomName in sciRooms){
         sciRooms[roomName].attr(sciRoomStyle);
+        
+        (function (room, name) {
+            room[0].addEventListener("mouseover", function() {
+                room.animate(hoverStyle, animationSpeed);
+                var node = document.getElementById("myPopup").innerHTML = name;
+                togglePopup();
+                
+            }, true);
+            room[0].addEventListener("mouseout", function() {
+                room.animate(sciRoomStyle, animationSpeed);
+                togglePopup();
+            }, true);
+        })(sciRooms[roomName], roomName);
     }
 
     for(var roomName in socSciRooms){
         socSciRooms[roomName].attr(socSciRoomStyle);
+        
+        (function (room, name) {
+            room[0].addEventListener("mouseover", function() {
+                room.animate(hoverStyle, animationSpeed);
+                var node = document.getElementById("myPopup").innerHTML = name;
+                togglePopup();
+                
+            }, true);
+            room[0].addEventListener("mouseout", function() {
+                room.animate(socSciRoomStyle, animationSpeed);
+                togglePopup();
+            }, true);
+        })(socSciRooms[roomName], roomName);
     }
 
     for(var roomName in langRooms){
         langRooms[roomName].attr(langRoomStyle);
+        
+        (function (room, name) {
+            room[0].addEventListener("mouseover", function() {
+                room.animate(hoverStyle, animationSpeed);
+                var node = document.getElementById("myPopup").innerHTML = name;
+                togglePopup();
+                
+            }, true);
+            room[0].addEventListener("mouseout", function() {
+                room.animate(langRoomStyle, animationSpeed);
+                togglePopup();
+            }, true);
+        })(langRooms[roomName], roomName);
     }   
 
     for(var roomName in miscRooms){
         miscRooms[roomName].attr(miscRoomStyle);
+        
+        (function (room, name) {
+            room[0].addEventListener("mouseover", function() {
+                room.animate(hoverStyle, animationSpeed);
+                var node = document.getElementById("myPopup").innerHTML = name;
+                togglePopup();
+                
+            }, true);
+            room[0].addEventListener("mouseout", function() {
+                room.animate(miscRoomStyle, animationSpeed);
+                togglePopup();
+            }, true);
+        })(miscRooms[roomName], roomName);
     }
       
     for(var roomName in hundredBarriers){
@@ -357,14 +428,66 @@ window.onload = function(){
       
     for(var roomName in miscNARooms){
         miscNARooms[roomName].attr(miscNARoomstyle);
+        
+        (function (room, name) {
+            room[0].addEventListener("mouseover", function() {
+                room.animate(hoverStyle, animationSpeed);
+                var node = document.getElementById("myPopup").innerHTML = name;
+                togglePopup();
+                
+            }, true);
+            room[0].addEventListener("mouseout", function() {
+                room.animate(miscNARoomstyle, animationSpeed);
+                togglePopup();
+            }, true);
+        })(miscNARooms[roomName], roomName);
     }
       
     for(var roomName in unknownRooms){
         unknownRooms[roomName].attr(unknownRoomStyle);
+        
+        (function (room, name) {
+            room[0].addEventListener("mouseover", function() {
+                room.animate(hoverStyle, animationSpeed);
+                var node = document.getElementById("myPopup").innerHTML = name;
+                togglePopup();
+                
+            }, true);
+            room[0].addEventListener("mouseout", function() {
+                room.animate(unknownRoomStyle, animationSpeed);
+                togglePopup();
+            }, true);
+        })(unknownRooms[roomName], roomName);
     }
       
     for(var roomName in bathrooms){
         bathrooms[roomName].attr(bathStyle);
+        
+        (function (room, name) {
+            room[0].addEventListener("mouseover", function() {
+                room.animate(hoverStyle, animationSpeed);
+                var node = document.getElementById("myPopup").innerHTML = name;
+                togglePopup();
+                
+            }, true);
+            room[0].addEventListener("mouseout", function() {
+                room.animate(bathStyle, animationSpeed);
+                togglePopup();
+            }, true);
+        })(bathrooms[roomName], roomName);
+    }
+    
+    for(var roomName in specialRooms){
+        (function (room, name) {
+            room[0].addEventListener("mouseover", function() {
+                var node = document.getElementById("myPopup").innerHTML = name;
+                togglePopup();
+                
+            }, true);
+            room[0].addEventListener("mouseout", function() {
+                togglePopup();
+            }, true);
+        })(specialRooms[roomName], roomName);
     }
     
     /*for(var roomType in allRooms){
@@ -372,10 +495,11 @@ window.onload = function(){
             
             (function (room, name) {
                 room[0].addEventListener("mouseover", function() {
-                    var node = document.getElementById("myPopup").innerHTML = name;
+                    var node = document.getElementById("myPopup").innerHTML =   name;
                     togglePopup();
+                
                 }, true);
-                    room[0].addEventListener("mouseout", function() {
+                room[0].addEventListener("mouseout", function() {
                     togglePopup();
                 }, true);
             })(roomType[roomName], roomName);
