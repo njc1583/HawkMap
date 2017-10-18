@@ -240,17 +240,19 @@ window.onload = function(){
     
     //Office, SPS, B-Wing
     //Main Office and SPS polygon declaration 
-    specialRooms["Main Office and SPS"] = paper.path("M 571,389 L 616,389 L 616,505 L 571,505 L 571,440 L 591,440 L 591,402 L 571,402 Z");
+    specialRooms["Main Office and SPS"] = paper.path("M 571,389 L 616,389 616,505 571,505 571,440 591,440 591,402 571,402 Z");
     
     var officeStyle = {
         fill: "#00ffbb",
         stroke: "#124739",
         "stroke-width": 2,
         "stroke-linejoin": "miter",
+        "stroke-linejoin": "miter",
         cursor: "pointer"
     };
     
     specialRooms["Main Office and SPS"].attr(officeStyle);
+    specialRooms["Main Office and SPS"].styleID = officeStyle;
     
     unknownRooms["B117"] = paper.rect(571, 404, 18, 10);
     engRooms["B116"] = paper.rect(571, 416, 18, 10);
@@ -260,8 +262,8 @@ window.onload = function(){
     //C114 and C114-A will have to be polygons to accomodate bathrooms
     //miscRooms["C114-A (Computer Lab)"] = paper.rect(512, 492, 22, 13);
     //miscRooms["C114 (Computer Lab)"] = paper.rect(534, 492, 22, 13);
-    miscRooms["C114-A (Computer Lab)"] = paper.path("M 512,491 L 534,491 L 534,498 L 527,498 L 527,505 L 512,505 Z");
-    miscRooms["C114 (Computer Lab)"] = paper.path("M 535,492 L 556,492 L 556,505 L 542,505 L 542,498 L 535,498 Z");
+    miscRooms["C114-A (Computer Lab)"] = paper.path("M 512,491 L 534,491 534,498 527,498 527,505 512,505 Z");
+    miscRooms["C114 (Computer Lab)"] = paper.path("M 535,492 L 556,492 556,505 542,505 542,498 535,498 Z");
     bathrooms["C-Wing Male Bathroom (Staff Only)"] = paper.rect(529, 500, 5, 5);
     bathrooms["C-Wing Female Bathroom (Staff Only)"] = paper.rect(535, 500, 5, 5);
     miscRooms["C115 (Computer Lab) (Entrance through C114-A only)"] = paper.rect(512, 479, 12, 11);
@@ -277,8 +279,10 @@ window.onload = function(){
         cursor: "pointer"
     };
     specialRooms["Writing Lab"].attr(writingLabStyle);
+    specialRooms["Writing Lab"].styleID = writingLabStyle;
     //Library declaration
-    specialRooms["Library"] = paper.path("M 461,505 L 510,505 L 510,464 L 556,464 L 556,454 L 511,454 L 511,435 L 442,435 L 442,444 L 461,444 Z");
+    specialRooms["Library"] = paper.path("M 461,497 L 471,497 471,505 510,505 510,464 556,464 556,454 511,454 511,435 442,435 442,444 461,444 Z");
+    
     var libraryStyle = {
         fill: "#7c0ad8",
         stroke: "#350d5e",
@@ -286,7 +290,12 @@ window.onload = function(){
         "stroke-linejoin": "miter",
         cursor: "pointer"
     };
+    
     specialRooms["Library"].attr(libraryStyle);
+    specialRooms["Library"].styleID = libraryStyle;
+    
+    bathrooms["C-Wing Male Bathrooms"] = paper.rect(461, 499, 4, 6);
+    bathrooms["C-Wing Female Bathrooms"] = paper.rect(465, 499, 4, 6);
     engRooms["Literacy Center"] = paper.rect(513, 435, 20, 17);
     langRooms["Foreign Language Lab"] = paper.rect(535, 435, 21, 17);
     //C-Wing "L"-shaped hallway polygon declaration (will be an unknown)
@@ -308,6 +317,31 @@ window.onload = function(){
     engRooms["C141 (Entrance through C140-A only)"] = paper.rect(468, 424, 8, 9);
     engRooms["C142 (Entrance through C140 only)"] = paper.rect(456, 424, 11, 9);
     engRooms["C143 (Entrance through C140 only)"] = paper.rect(442, 424, 13, 9);
+    //Rooms adjacent to library (C103 through C108)
+    unknownRooms["C108"] = paper.rect(442, 446, 17, 6);
+    specialRooms["C107 (Chrome Depot)"] = paper.rect(442, 454, 17, 9);
+    
+    var chromeDepotStyle = {
+        fill: "#afa011",
+        stroke: "#56501c",
+        "stroke-width": 2,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
+    
+    specialRooms["C107 (Chrome Depot)"].attr(chromeDepotStyle);
+    specialRooms["C107 (Chrome Depot)"].styleID = chromeDepotStyle;
+    
+    miscNARooms["C106 (Tech Offices)"] = paper.rect(442, 465, 17, 9);
+    miscNARooms["C105"] = paper.rect(442, 475, 17, 8);
+    miscRooms["C104"] = paper.rect(442, 485, 17, 9);
+    unknownRooms["C103"] = paper.rect(442, 496, 17, 9);
+    
+    //North C-Wing Block
+    miscRooms["C145 (Business Classes)"] = paper.rect(387, 406, 22, 16);
+    miscRooms["C146 (Business Classes)"] = paper.rect(410, 406, 22, 16);
+    miscRooms["C147-A (Health)"] = paper.rect(387, 423, 22, 16);
+    miscNARooms["C147"]
     
     //Sample of special room drawing.
     //var d = "M 10,30 L 60,30 L 10,80 L 60,80 Z";
@@ -322,7 +356,8 @@ window.onload = function(){
     
     for(var roomName in mathRooms){
         mathRooms[roomName].attr(mathRoomStyle);
-          
+        //mathRooms[roomName].styleID = mathRoomStyle;
+        
         (function (room, name) {
             room[0].addEventListener("mouseover", function() {
                 room.animate(hoverStyle, animationSpeed);
@@ -339,6 +374,7 @@ window.onload = function(){
     
     for(var roomName in engRooms){
         engRooms[roomName].attr(engRoomStyle);
+        //engRooms[roomName].styleID = engRoomStyle;
         
         (function (room, name) {
             room[0].addEventListener("mouseover", function() {
@@ -356,6 +392,7 @@ window.onload = function(){
 
     for(var roomName in sciRooms){
         sciRooms[roomName].attr(sciRoomStyle);
+        //sciRooms[roomName].styleID = sciRoomStyle;
         
         (function (room, name) {
             room[0].addEventListener("mouseover", function() {
@@ -373,6 +410,7 @@ window.onload = function(){
 
     for(var roomName in socSciRooms){
         socSciRooms[roomName].attr(socSciRoomStyle);
+        //socSciRooms[roomName].styleID = socSciRoomStyle;
         
         (function (room, name) {
             room[0].addEventListener("mouseover", function() {
@@ -390,6 +428,7 @@ window.onload = function(){
 
     for(var roomName in langRooms){
         langRooms[roomName].attr(langRoomStyle);
+        //langRooms[roomName].styleID = langRoomStyle;
         
         (function (room, name) {
             room[0].addEventListener("mouseover", function() {
@@ -407,6 +446,7 @@ window.onload = function(){
 
     for(var roomName in miscRooms){
         miscRooms[roomName].attr(miscRoomStyle);
+        //miscRooms[roomName].styleID = miscRoomStyle;
         
         (function (room, name) {
             room[0].addEventListener("mouseover", function() {
@@ -428,6 +468,7 @@ window.onload = function(){
       
     for(var roomName in miscNARooms){
         miscNARooms[roomName].attr(miscNARoomstyle);
+        //miscNARooms[roomName].styleID = miscNARoomstyle;
         
         (function (room, name) {
             room[0].addEventListener("mouseover", function() {
@@ -445,6 +486,7 @@ window.onload = function(){
       
     for(var roomName in unknownRooms){
         unknownRooms[roomName].attr(unknownRoomStyle);
+        //unknownRooms[roomName].styleID = unknownRoomStyle;
         
         (function (room, name) {
             room[0].addEventListener("mouseover", function() {
@@ -462,6 +504,7 @@ window.onload = function(){
       
     for(var roomName in bathrooms){
         bathrooms[roomName].attr(bathStyle);
+        //bathrooms[roomName].styleID = bathStyle;
         
         (function (room, name) {
             room[0].addEventListener("mouseover", function() {
@@ -478,31 +521,38 @@ window.onload = function(){
     }
     
     for(var roomName in specialRooms){
-        (function (room, name) {
+        var specificStyle = specialRooms[roomName].styleID;
+        
+        (function (room, name, style) {
             room[0].addEventListener("mouseover", function() {
+                room.animate(hoverStyle, animationSpeed);
                 var node = document.getElementById("myPopup").innerHTML = name;
                 togglePopup();
                 
             }, true);
             room[0].addEventListener("mouseout", function() {
+                room.animate(style, animationSpeed);
                 togglePopup();
             }, true);
-        })(specialRooms[roomName], roomName);
+        })(specialRooms[roomName], roomName, specificStyle);
     }
     
     /*for(var roomType in allRooms){
         for(var roomName in roomType){
             
-            (function (room, name) {
+            var specificStyle = roomType[roomName].styleID;
+            
+            (function (room, name, style) {
                 room[0].addEventListener("mouseover", function() {
-                    var node = document.getElementById("myPopup").innerHTML =   name;
+                    room.animate(hoverStyle, animationSpeed);
+                    var node = document.getElementById("myPopup").innerHTML = name;
                     togglePopup();
-                
                 }, true);
                 room[0].addEventListener("mouseout", function() {
-                    togglePopup();
+                    room.animate(style, animationSpeed);
+                    togglePopup(0;)
                 }, true);
-            })(roomType[roomName], roomName);
+            })(roomType[roomName], roomName, specificStyle);
         }
     }*/
     
