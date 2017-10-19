@@ -93,13 +93,14 @@ window.onload = function(){
     };
 
     //Put all region names with locations and stuff in here
-    var mathRooms = {}, engRooms = {}, sciRooms = {}, socSciRooms = {}, langRooms = {}, miscRooms = {}, unknownRooms = {}, miscNARooms = {}, bathrooms = {}, specialRooms = {};
+    var mathRooms = [], engRooms = [], sciRooms = [], socSciRooms = [], langRooms = [], miscRooms = [], unknownRooms = [], miscNARooms = [], bathrooms = [], specialRooms = [];
 
     //specialRooms is for rooms with distinct features and/or designs, and may have their own style on a case-by-case basis.
     
     //Not sure this is necessary
-    var allRooms = {mathRooms, engRooms, sciRooms, socSciRooms, langRooms, miscRooms, unknownRooms, miscNARooms, bathrooms, specialRooms};
-   
+    var allRoomTypes = [mathRooms, engRooms, sciRooms, socSciRooms, langRooms, miscRooms, unknownRooms, miscNARooms, bathrooms, specialRooms];
+    var allRooms = [];
+    
     //Temporary rectangles to be used as a coordinate system for other room placement
     var hundredBarriers = {};
     hundredBarriers["0-100, 0-100"] = paper.rect(0, 0, 100, 100);
@@ -141,7 +142,7 @@ window.onload = function(){
     engRooms["A102"] = paper.rect(707, 593, 40, 8);
       
     //East side odd-numbered 1st Floor A-Wing rooms
-    mathRooms["A127"] = paper.rect(667, 342, 26, 17);  
+    mathRooms["A127"] = paper.rect(667, 342, 26, 17);
     mathRooms["A125"] = paper.rect(667, 360, 26, 17);
     mathRooms["A123"] = paper.rect(667, 378, 26, 17);  
     mathRooms["A121"] = paper.rect(667, 396, 26, 17);
@@ -338,10 +339,10 @@ window.onload = function(){
     unknownRooms["C103"] = paper.rect(442, 496, 17, 9);
     
     //North C-Wing Block
-    miscRooms["C145 (Business Classes)"] = paper.rect(387, 406, 22, 16);
+    /*miscRooms["C145 (Business Classes)"] = paper.rect(387, 406, 22, 16);
     miscRooms["C146 (Business Classes)"] = paper.rect(410, 406, 22, 16);
     miscRooms["C147-A (Health)"] = paper.rect(387, 423, 22, 16);
-    miscNARooms["C147"]
+    miscNARooms["C147"]*/
     
     //Sample of special room drawing.
     //var d = "M 10,30 L 60,30 L 10,80 L 60,80 Z";
@@ -356,7 +357,7 @@ window.onload = function(){
     
     for(var roomName in mathRooms){
         mathRooms[roomName].attr(mathRoomStyle);
-        //mathRooms[roomName].styleID = mathRoomStyle;
+        mathRooms[roomName].styleID = mathRoomStyle;
         
         (function (room, name) {
             room[0].addEventListener("mouseover", function() {
@@ -374,7 +375,7 @@ window.onload = function(){
     
     for(var roomName in engRooms){
         engRooms[roomName].attr(engRoomStyle);
-        //engRooms[roomName].styleID = engRoomStyle;
+        engRooms[roomName].styleID = engRoomStyle;
         
         (function (room, name) {
             room[0].addEventListener("mouseover", function() {
@@ -392,7 +393,7 @@ window.onload = function(){
 
     for(var roomName in sciRooms){
         sciRooms[roomName].attr(sciRoomStyle);
-        //sciRooms[roomName].styleID = sciRoomStyle;
+        sciRooms[roomName].styleID = sciRoomStyle;
         
         (function (room, name) {
             room[0].addEventListener("mouseover", function() {
@@ -410,7 +411,7 @@ window.onload = function(){
 
     for(var roomName in socSciRooms){
         socSciRooms[roomName].attr(socSciRoomStyle);
-        //socSciRooms[roomName].styleID = socSciRoomStyle;
+        socSciRooms[roomName].styleID = socSciRoomStyle;
         
         (function (room, name) {
             room[0].addEventListener("mouseover", function() {
@@ -428,7 +429,7 @@ window.onload = function(){
 
     for(var roomName in langRooms){
         langRooms[roomName].attr(langRoomStyle);
-        //langRooms[roomName].styleID = langRoomStyle;
+        langRooms[roomName].styleID = langRoomStyle;
         
         (function (room, name) {
             room[0].addEventListener("mouseover", function() {
@@ -446,7 +447,7 @@ window.onload = function(){
 
     for(var roomName in miscRooms){
         miscRooms[roomName].attr(miscRoomStyle);
-        //miscRooms[roomName].styleID = miscRoomStyle;
+        miscRooms[roomName].styleID = miscRoomStyle;
         
         (function (room, name) {
             room[0].addEventListener("mouseover", function() {
@@ -468,7 +469,7 @@ window.onload = function(){
       
     for(var roomName in miscNARooms){
         miscNARooms[roomName].attr(miscNARoomstyle);
-        //miscNARooms[roomName].styleID = miscNARoomstyle;
+        miscNARooms[roomName].styleID = miscNARoomstyle;
         
         (function (room, name) {
             room[0].addEventListener("mouseover", function() {
@@ -486,7 +487,7 @@ window.onload = function(){
       
     for(var roomName in unknownRooms){
         unknownRooms[roomName].attr(unknownRoomStyle);
-        //unknownRooms[roomName].styleID = unknownRoomStyle;
+        unknownRooms[roomName].styleID = unknownRoomStyle;
         
         (function (room, name) {
             room[0].addEventListener("mouseover", function() {
@@ -504,7 +505,7 @@ window.onload = function(){
       
     for(var roomName in bathrooms){
         bathrooms[roomName].attr(bathStyle);
-        //bathrooms[roomName].styleID = bathStyle;
+        bathrooms[roomName].styleID = bathStyle;
         
         (function (room, name) {
             room[0].addEventListener("mouseover", function() {
@@ -537,23 +538,26 @@ window.onload = function(){
         })(specialRooms[roomName], roomName, specificStyle);
     }
     
-    /*for(var roomType in allRooms){
+    /*for(var roomType in allRoomTypes){
         for(var roomName in roomType){
-            
-            var specificStyle = roomType[roomName].styleID;
-            
-            (function (room, name, style) {
-                room[0].addEventListener("mouseover", function() {
-                    room.animate(hoverStyle, animationSpeed);
-                    var node = document.getElementById("myPopup").innerHTML = name;
-                    togglePopup();
-                }, true);
-                room[0].addEventListener("mouseout", function() {
-                    room.animate(style, animationSpeed);
-                    togglePopup(0;)
-                }, true);
-            })(roomType[roomName], roomName, specificStyle);
+            allRooms.push(roomType[roomName]);
         }
+    }
+    
+    for(var roomName in allRooms){
+        var specificStyle = allRooms[roomName].styleID;
+            
+        (function (room, name, style) {
+            room[0].addEventListener("mouseover", function() {
+                room.animate(hoverStyle, animationSpeed);
+                var node = document.getElementById("myPopup").innerHTML = name;
+                togglePopup();
+            }, true);
+            room[0].addEventListener("mouseout", function() {
+                room.animate(style, animationSpeed);
+                togglePopup(0;)
+            }, true);
+        })(allRooms[roomName], roomName, specificStyle);
     }*/
     
     function togglePopup(){
