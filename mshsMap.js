@@ -81,12 +81,6 @@ window.onload = function(){
     var hundredBarriersStyle = {
         fill: "#ffffff",
         stroke: "#000000",
-        "stroke-width": 1,
-        "stroke-linejoin": "miter",
-        cursor: "pointer"
-    };
-    
-    var universalStyle = {
         "stroke-width": 2,
         "stroke-linejoin": "miter",
         cursor: "pointer"
@@ -360,10 +354,43 @@ window.onload = function(){
     unknownRooms["C103"] = paper.rect(442, 496, 17, 9);
     
     //North C-Wing Block
-    /*miscRooms["C145 (Business Classes)"] = paper.rect(387, 406, 22, 16);
-    miscRooms["C146 (Business Classes)"] = paper.rect(410, 406, 22, 16);
-    miscRooms["C147-A (Health)"] = paper.rect(387, 423, 22, 16);
-    miscNARooms["C147"]*/
+    //Barier for North C-wing; wiill be removed later
+    hundredBarriers["North C-Wing Barrier"] = paper.rect(387, 406, 45, 100);
+    
+    miscRooms["C145-A"] = paper.rect(387, 406, 22, 10);
+    miscRooms["C145-B"] = paper.rect(410, 406, 22, 10);
+    miscRooms["C147-A"] = paper.rect(392, 417, 17, 9);
+    bathrooms["Male Bathroom (Staff Only)"] = paper.rect(411, 418, 21, 8);
+    
+    specialRooms["C147-B (Career Resource Center AKA: \"CRC\")"] = paper.rect(387, 428, 22, 10);
+    
+    var crcStyle = {
+        fill: "#1a4275",
+        stroke: "#091d38",
+        "stroke-width": 2,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
+    
+    specialRooms["C147-B (Career Resource Center AKA: \"CRC\")"].attr(crcStyle);
+    specialRooms["C147-B (Career Resource Center AKA: \"CRC\")"].styleID = crcStyle;
+    
+    miscNARooms["C146 (Vision, Oritentation & Mobility)"] = paper.rect(411, 428, 21, 10);
+    specialRooms["Dean's Office"] = paper.rect(387, 440, 22, 10);
+    
+    var deanOfficeStyle = {
+        fill: "#af0a52",
+        stroke: "#660d33",
+        "stroke-width": 2,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    }
+    
+    specialRooms["Dean's Office"].attr(deanOfficeStyle);
+    specialRooms["Dean's Office"].styleID = deanOfficeStyle;
+    
+    miscNARooms["C147-C (Meeting room)"] = paper.rect(411, 439, 21, 11);
+    miscRooms["C148"] = paper.rect(387, 452, 22, 8);
     
     //Sample of special room drawing.
     //var d = "M 10,30 L 60,30 L 10,80 L 60,80 Z";
@@ -510,7 +537,7 @@ window.onload = function(){
         unknownRooms[roomName].attr(unknownRoomStyle);
         unknownRooms[roomName].styleID = unknownRoomStyle;
         
-        /*(function (room, name) {
+        (function (room, name) {
             room[0].addEventListener("mouseover", function() {
                 room.animate(hoverStyle, animationSpeed);
                 var node = document.getElementById("myPopup").innerHTML = name;
@@ -521,7 +548,7 @@ window.onload = function(){
                 room.animate(unknownRoomStyle, animationSpeed);
                 togglePopup();
             }, true);
-        })(unknownRooms[roomName], roomName);*/
+        })(unknownRooms[roomName], roomName);
     }
       
     for(var roomName in bathrooms){
@@ -542,7 +569,7 @@ window.onload = function(){
         })(bathrooms[roomName], roomName);
     }
     
-    /*for(var roomName in specialRooms){
+    for(var roomName in specialRooms){
         var specificStyle = specialRooms[roomName].styleID;
         
         (function (room, name, style) {
@@ -557,9 +584,9 @@ window.onload = function(){
                 togglePopup();
             }, true);
         })(specialRooms[roomName], roomName, specificStyle);
-    }*/
+    }
     
-    for(var i = 0; i < allRoomTypes.length; i++){
+    /*for(var i = 0; i < allRoomTypes.length; i++){
         
         var roomType = allRoomTypes[i];
         
@@ -585,7 +612,7 @@ window.onload = function(){
                 togglePopup();
             }, true);
         })(allRooms[roomName], roomName, roomStyle);
-    }
+    }*/
     
     function togglePopup(){
         var popup = document.getElementById("myPopup");
