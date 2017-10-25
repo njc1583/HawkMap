@@ -359,7 +359,7 @@ window.onload = function(){
     
     miscRooms["C145-A"] = paper.rect(387, 406, 22, 10);
     miscRooms["C145-B"] = paper.rect(410, 406, 22, 10);
-    miscRooms["C147-A"] = paper.rect(392, 417, 17, 9);
+    miscRooms["C147-A"] = paper.rect(387, 417, 22, 9);
     bathrooms["Male Bathroom (Staff Only)"] = paper.rect(411, 418, 21, 8);
     
     specialRooms["C147-B (Career Resource Center AKA: \"CRC\")"] = paper.rect(387, 428, 22, 10);
@@ -391,6 +391,17 @@ window.onload = function(){
     
     miscNARooms["C147-C (Meeting room)"] = paper.rect(411, 439, 21, 11);
     miscRooms["C148"] = paper.rect(387, 452, 22, 8);
+    unknownRooms["C148-D"] = paper.rect(411, 452, 21, 8);
+    miscRooms["C101-B"] = paper.rect(387, 461, 22, 8);
+    unknownRooms["Truly Unknown Room"] = paper.rect(411, 461, 21, 8);
+    miscNARooms["C150 (Offices)"] = paper.rect(387, 471, 22, 8);
+    miscRooms["C101-C"] = paper.rect(411, 471, 21, 8);
+    miscRooms["C101 (Study Hall)"] = paper.rect(387, 481, 45, 11);
+    miscRooms["C100-A"] = paper.rect(387, 493, 22, 13);
+    miscNARooms["C101-A (Access through C101 only)"] = paper.rect(411, 494, 10, 3);
+    bathrooms["Female Bathroom (Staff Only)"] = paper.rect(423, 494, 9, 3);
+    miscNARooms["C100-C"] = paper.rect(423, 499, 9, 3);
+    miscRooms["C100-B"] = paper.path("M 410,499 L 421,499 L 421,504 L 432,504 L 432,506 L 410,506 Z");
     
     //Sample of special room drawing.
     //var d = "M 10,30 L 60,30 L 10,80 L 60,80 Z";
@@ -555,7 +566,7 @@ window.onload = function(){
         bathrooms[roomName].attr(bathStyle);
         bathrooms[roomName].styleID = bathStyle;
         
-        (function (room, name) {
+        /*(function (room, name) {
             room[0].addEventListener("mouseover", function() {
                 room.animate(hoverStyle, animationSpeed);
                 var node = document.getElementById("myPopup").innerHTML = name;
@@ -566,13 +577,13 @@ window.onload = function(){
                 room.animate(bathStyle, animationSpeed);
                 togglePopup();
             }, true);
-        })(bathrooms[roomName], roomName);
+        })(bathrooms[roomName], roomName);*/
     }
     
     for(var roomName in specialRooms){
         var specificStyle = specialRooms[roomName].styleID;
         
-        (function (room, name, style) {
+        /*(function (room, name, style) {
             room[0].addEventListener("mouseover", function() {
                 room.animate(hoverStyle, animationSpeed);
                 var node = document.getElementById("myPopup").innerHTML = name;
@@ -583,7 +594,7 @@ window.onload = function(){
                 room.animate(style, animationSpeed);
                 togglePopup();
             }, true);
-        })(specialRooms[roomName], roomName, specificStyle);
+        })(specialRooms[roomName], roomName, specificStyle);*/
     }
     
     /*for(var i = 0; i < allRoomTypes.length; i++){
@@ -594,6 +605,12 @@ window.onload = function(){
             
             allRooms.push(roomType[k]);
             
+        }
+    }*/
+    
+    for(var roomType in allRoomTypes){
+        for(var roomName in roomType){
+            allRooms.push(roomType[roomName]);
         }
     }
     
@@ -612,7 +629,7 @@ window.onload = function(){
                 togglePopup();
             }, true);
         })(allRooms[roomName], roomName, roomStyle);
-    }*/
+    }
     
     function togglePopup(){
         var popup = document.getElementById("myPopup");
