@@ -403,6 +403,10 @@ window.onload = function(){
     miscNARooms["C100-C"] = paper.rect(423, 499, 9, 3);
     miscRooms["C100-B"] = paper.path("M 410,499 L 421,499 L 421,504 L 432,504 L 432,506 L 410,506 Z");
     
+    //South V-Wing 
+    hundredBarriers["South V-Wing Barrier"] = paper.rect(273, 406, 102, 100);
+    
+    
     //Sample of special room drawing.
     //var d = "M 10,30 L 60,30 L 10,80 L 60,80 Z";
     //sciRooms["Z"] = paper.path(d);
