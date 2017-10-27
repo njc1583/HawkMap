@@ -418,209 +418,71 @@ window.onload = function(){
         fill: "#A8BED5"
     };
     
+    //Not technically a room type
+    for(var roomName in hundredBarriers){
+        hundredBarriers[roomName].attr(hundredBarriersStyle);
+    }
+    
     for(var roomName in mathRooms){
         mathRooms[roomName].attr(mathRoomStyle);
         mathRooms[roomName].styleID = mathRoomStyle;
-        
-        (function (room, name) {
-            room[0].addEventListener("mouseover", function() {
-                room.animate(hoverStyle, animationSpeed);
-                var node = document.getElementById("myPopup").innerHTML = name;
-                togglePopup();
-                
-            }, true);
-            room[0].addEventListener("mouseout", function() {
-                room.animate(mathRoomStyle, animationSpeed);
-                togglePopup();
-            }, true);
-        })(mathRooms[roomName], roomName);
     }
     
     for(var roomName in engRooms){
         engRooms[roomName].attr(engRoomStyle);
         engRooms[roomName].styleID = engRoomStyle;
-        
-        (function (room, name) {
-            room[0].addEventListener("mouseover", function() {
-                room.animate(hoverStyle, animationSpeed);
-                var node = document.getElementById("myPopup").innerHTML = name;
-                togglePopup();
-                
-            }, true);
-            room[0].addEventListener("mouseout", function() {
-                room.animate(engRoomStyle, animationSpeed);
-                togglePopup();
-            }, true);
-        })(engRooms[roomName], roomName);
     }
 
     for(var roomName in sciRooms){
         sciRooms[roomName].attr(sciRoomStyle);
         sciRooms[roomName].styleID = sciRoomStyle;
-        
-        (function (room, name) {
-            room[0].addEventListener("mouseover", function() {
-                room.animate(hoverStyle, animationSpeed);
-                var node = document.getElementById("myPopup").innerHTML = name;
-                togglePopup();
-                
-            }, true);
-            room[0].addEventListener("mouseout", function() {
-                room.animate(sciRoomStyle, animationSpeed);
-                togglePopup();
-            }, true);
-        })(sciRooms[roomName], roomName);
     }
 
     for(var roomName in socSciRooms){
         socSciRooms[roomName].attr(socSciRoomStyle);
         socSciRooms[roomName].styleID = socSciRoomStyle;
-        
-        (function (room, name) {
-            room[0].addEventListener("mouseover", function() {
-                room.animate(hoverStyle, animationSpeed);
-                var node = document.getElementById("myPopup").innerHTML = name;
-                togglePopup();
-                
-            }, true);
-            room[0].addEventListener("mouseout", function() {
-                room.animate(socSciRoomStyle, animationSpeed);
-                togglePopup();
-            }, true);
-        })(socSciRooms[roomName], roomName);
     }
 
     for(var roomName in langRooms){
         langRooms[roomName].attr(langRoomStyle);
         langRooms[roomName].styleID = langRoomStyle;
-        
-        (function (room, name) {
-            room[0].addEventListener("mouseover", function() {
-                room.animate(hoverStyle, animationSpeed);
-                var node = document.getElementById("myPopup").innerHTML = name;
-                togglePopup();
-                
-            }, true);
-            room[0].addEventListener("mouseout", function() {
-                room.animate(langRoomStyle, animationSpeed);
-                togglePopup();
-            }, true);
-        })(langRooms[roomName], roomName);
     }   
 
     for(var roomName in miscRooms){
         miscRooms[roomName].attr(miscRoomStyle);
         miscRooms[roomName].styleID = miscRoomStyle;
-        
-        (function (room, name) {
-            room[0].addEventListener("mouseover", function() {
-                room.animate(hoverStyle, animationSpeed);
-                var node = document.getElementById("myPopup").innerHTML = name;
-                togglePopup();
-                
-            }, true);
-            room[0].addEventListener("mouseout", function() {
-                room.animate(miscRoomStyle, animationSpeed);
-                togglePopup();
-            }, true);
-        })(miscRooms[roomName], roomName);
-    }
-      
-    for(var roomName in hundredBarriers){
-        hundredBarriers[roomName].attr(hundredBarriersStyle);
     }
       
     for(var roomName in miscNARooms){
         miscNARooms[roomName].attr(miscNARoomstyle);
         miscNARooms[roomName].styleID = miscNARoomstyle;
-        
-        (function (room, name) {
-            room[0].addEventListener("mouseover", function() {
-                room.animate(hoverStyle, animationSpeed);
-                var node = document.getElementById("myPopup").innerHTML = name;
-                togglePopup();
-                
-            }, true);
-            room[0].addEventListener("mouseout", function() {
-                room.animate(miscNARoomstyle, animationSpeed);
-                togglePopup();
-            }, true);
-        })(miscNARooms[roomName], roomName);
     }
       
     for(var roomName in unknownRooms){
         unknownRooms[roomName].attr(unknownRoomStyle);
         unknownRooms[roomName].styleID = unknownRoomStyle;
-        
-        (function (room, name) {
-            room[0].addEventListener("mouseover", function() {
-                room.animate(hoverStyle, animationSpeed);
-                var node = document.getElementById("myPopup").innerHTML = name;
-                togglePopup();
-                
-            }, true);
-            room[0].addEventListener("mouseout", function() {
-                room.animate(unknownRoomStyle, animationSpeed);
-                togglePopup();
-            }, true);
-        })(unknownRooms[roomName], roomName);
     }
       
     for(var roomName in bathrooms){
         bathrooms[roomName].attr(bathStyle);
         bathrooms[roomName].styleID = bathStyle;
-        
-        /*(function (room, name) {
-            room[0].addEventListener("mouseover", function() {
-                room.animate(hoverStyle, animationSpeed);
-                var node = document.getElementById("myPopup").innerHTML = name;
-                togglePopup();
-                
-            }, true);
-            room[0].addEventListener("mouseout", function() {
-                room.animate(bathStyle, animationSpeed);
-                togglePopup();
-            }, true);
-        })(bathrooms[roomName], roomName);*/
     }
     
-    for(var roomName in specialRooms){
-        var specificStyle = specialRooms[roomName].styleID;
-        
-        /*(function (room, name, style) {
-            room[0].addEventListener("mouseover", function() {
-                room.animate(hoverStyle, animationSpeed);
-                var node = document.getElementById("myPopup").innerHTML = name;
-                togglePopup();
-                
-            }, true);
-            room[0].addEventListener("mouseout", function() {
-                room.animate(style, animationSpeed);
-                togglePopup();
-            }, true);
-        })(specialRooms[roomName], roomName, specificStyle);*/
-    }
-    
-    /*for(var i = 0; i < allRoomTypes.length; i++){
-        
+    for(var i = 0; i < allRoomTypes.length; i++){
         var roomType = allRoomTypes[i];
         
-        for(var k = 0; k < roomType.length; k++){
-            
-            allRooms.push(roomType[k]);
-            
-        }
-    }*/
-    
-    for(var roomType in allRoomTypes){
         for(var roomName in roomType){
-            allRooms.push(roomType[roomName]);
+            allRooms[roomName] = roomType[roomName];
         }
     }
     
-    for(var roomName in allRooms){
+    //This could take us somewhere
+    //allRooms["Library"] = specialRooms["Library"];
+    //allRooms["Main Office and SPS"] = specialRooms["Main Office and SPS"];
+    
+    for (var roomName in allRooms){
         var roomStyle = allRooms[roomName].styleID;
-        
+                
         (function (room, name, style) {
             room[0].addEventListener("mouseover", function() {
                 room.animate(hoverStyle, animationSpeed);
