@@ -315,7 +315,9 @@ window.onload = function(){
     engRooms["Literacy Center"] = paper.rect(513, 435, 20, 17);
     langRooms["Foreign Language Lab"] = paper.rect(535, 435, 21, 17);
     //C-Wing "L"-shaped hallway polygon declaration (will be an unknown)
-    unknownRooms["C-Wing Hallway ('L'-shaped)"] = paper.path("M 516,408 L 516,422 L 556,422 L 556,418 L 523,418 L 523,408 Z");
+    specialRooms["C-Wing Hallway ('L'-shaped)"] = paper.path("M 516,408 L 516,422 L 556,422 L 556,418 L 523,418 L 523,408 Z");
+    specialRooms["C-Wing Hallway ('L'-shaped)"].attr(bathStyle);
+    specialRooms["C-Wing Hallway ('L'-shaped)"].styleID = bathStyle;
     engRooms["C128"] = paper.rect(527, 424, 14, 9);
     engRooms["C126"] = paper.rect(542, 424, 14, 9);
     engRooms["C129"] = paper.rect(525, 408, 15, 8);
@@ -378,7 +380,8 @@ window.onload = function(){
     miscNARooms["C146 (Vision, Oritentation & Mobility)"] = paper.rect(411, 428, 21, 10);
     specialRooms["Dean's Office"] = paper.rect(387, 440, 22, 10);
     
-    var deanOfficeStyle = {
+    //Will be used later for Red and Black team buildings
+    var counselorTeamStyle = {
         fill: "#af0a52",
         stroke: "#660d33",
         "stroke-width": 2,
@@ -386,8 +389,8 @@ window.onload = function(){
         cursor: "pointer"
     }
     
-    specialRooms["Dean's Office"].attr(deanOfficeStyle);
-    specialRooms["Dean's Office"].styleID = deanOfficeStyle;
+    specialRooms["Dean's Office"].attr(counselorTeamStyle);
+    specialRooms["Dean's Office"].styleID = counselorTeamStyle;
     
     miscNARooms["C147-C (Meeting room)"] = paper.rect(411, 439, 21, 11);
     miscRooms["C148"] = paper.rect(387, 452, 22, 8);
@@ -405,7 +408,105 @@ window.onload = function(){
     
     //South V-Wing 
     hundredBarriers["South V-Wing Barrier"] = paper.rect(273, 406, 102, 100);
+    miscRooms["V114"] = paper.rect(273, 406, 20, 8);
+    miscNARooms["V115 (Business Department Chair)"] = paper.rect(295, 406, 12, 8);
+    unknownRooms["V113-A"] = paper.rect(273, 416, 33, 8);
+    specialRooms["V113 (Preschool)"] = paper.rect(273, 426, 33, 9);
     
+    var preschoolStyle = {
+        fill: "#e06f0d",
+        stroke: "#633002",
+        "stroke-width": 2,
+        "Stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
+    
+    specialRooms["V113 (Preschool)"].attr(preschoolStyle);
+    specialRooms["V113 (Preschool)"].styleID = preschoolStyle;
+    miscRooms["V112"] = paper.rect(273, 437, 33, 9);
+    miscRooms["V111"] = paper.rect(273, 447, 33, 9);
+    miscRooms["V110"] = paper.rect(273, 457, 33, 9);
+    miscRooms["V109"] = paper.rect(273, 467, 33, 9);
+    miscRooms["V108"] = paper.rect(273, 477, 33, 9);
+    miscRooms["V107"] = paper.rect(273, 487, 33, 9);
+    miscRooms["V106"] = paper.rect(273, 497, 33, 9);
+    miscNARooms["V116-A (Business Office [Entrance through hallway only])"] = paper.rect(308, 406, 20, 8);
+    miscRooms["V116-B (Entrance through hall only)"] = paper.rect(308, 416, 20, 8);
+    miscRooms["V117 (Entrance through hall only)"] = paper.rect(308, 425, 20, 10);
+    miscNARooms["V115 (Business and Technical Education Department Chair [Entrance through hall only])"] = paper.rect(338, 406, 12, 8);
+    unknownRooms["V119 (Entrance through hall only)"] = paper.rect(338, 416, 12, 8);
+    miscRooms["V118 (Entrance through hall only)"] = paper.rect(342, 426, 18, 9);
+    miscNARooms["V100-A (Speech and Language Patohologist; Assistive Tech)"] = paper.rect(362, 426, 13, 9); 
+    miscNARooms["V100-B (Storage)"] = paper.rect(365, 406, 10, 10);
+    miscRooms["V100"] = paper.path("M 352,406 L 352,424 L 375,424 L 375,418 L 363,418 L 363,406 Z");
+    specialRooms["Courtyard (Staff Only)"] = paper.path("M 308,437 L 308,470 L 375,470 L 375,460 L 363,460 L 363,450 L 375,450 L 375,437 Z");
+    
+    var courtyardStyle = {
+        fill: "#195918",
+        stroke: "#0d2d0d",
+        "stroke-width": 2,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
+    
+    specialRooms["Courtyard (Staff Only)"].attr(courtyardStyle);
+    specialRooms["Courtyard (Staff Only)"].styleID = courtyardStyle;
+    miscNARooms["V101-C (Police Officer)"] = paper.rect(365, 452, 10, 6);
+    
+    specialRooms["V103 (Black Team)"] = paper.path("M 308,472 L 308,506 L 325,506 L 325,490 L 342,490 L 342,472 Z");
+    specialRooms["V103 (Black Team)"].attr(counselorTeamStyle);
+    specialRooms["V103 (Black Team)"].styleID = counselorTeamStyle;
+
+    specialRooms["V102 (Red Team)"] = paper.path("M 343,472 L 343,490 L 360,490 L 360,498 L 375,498 L 375,472 Z");
+    specialRooms["V102 (Red Team)"].attr(counselorTeamStyle);
+    specialRooms["V102 (Red Team)"].styleID = counselorTeamStyle;
+    
+    specialRooms["V104 (Nurse's Office)"] = paper.rect(327, 492, 10, 14);
+    
+    var nurseStyle = {
+        fill: "#ed76e3",
+        stroke: "#b225a6",
+        "stroke-width": 2,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
+    
+    specialRooms["V104 (Nurse's Office)"].attr(nurseStyle);
+    specialRooms["V104 (Nurse's Office)"].styleID = nurseStyle;
+    
+    specialRooms["V105 (Book Store)"] = paper.rect(339, 492, 10, 14);
+    
+    var bookStoreStyle = {
+        fill: "#ffc17a",
+        stroke: "#7c5a33",
+        "stroke-width": 2,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
+    
+    specialRooms["V105 (Book Store)"].attr(bookStoreStyle);
+    specialRooms["V105 (Book Store)"].styleID = bookStoreStyle;
+    
+    specialRooms["V105 (Book Store Storage)"] = paper.rect(350, 492, 8, 14);
+    specialRooms["V105 (Book Store Storage)"].attr(bookStoreStyle);
+    specialRooms["V105 (Book Store Storage)"].styleID = bookStoreStyle;
+    
+    specialRooms["Front Desk"] = paper.rect(360, 500, 15, 6);
+    
+    var frontDeskStyle = {
+        fill: "#87b5ff",
+        stroke: "#3e6199",
+        "stroke-width": 2,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
+    
+    specialRooms["Front Desk"].attr(frontDeskStyle);
+    specialRooms["Front Desk"].styleID = frontDeskStyle;
+    
+    specialRooms["V-Wing Hallway"] = paper.path("M 330,406 L 330,436 L 340,436 Z");
+    specialRooms["V-Wing Hallway"].attr(bathStyle);
+    specialRooms["V-Wing Hallway"].styleID = bathStyle;
     
     //Sample of special room drawing.
     //var d = "M 10,30 L 60,30 L 10,80 L 60,80 Z";
@@ -475,11 +576,7 @@ window.onload = function(){
             allRooms[roomName] = roomType[roomName];
         }
     }
-    
-    //This could take us somewhere
-    //allRooms["Library"] = specialRooms["Library"];
-    //allRooms["Main Office and SPS"] = specialRooms["Main Office and SPS"];
-    
+
     for (var roomName in allRooms){
         var roomStyle = allRooms[roomName].styleID;
                 
@@ -501,4 +598,4 @@ window.onload = function(){
         var popup = document.getElementById("myPopup");
         popup.classList.toggle("show");
     }
-  }
+}
