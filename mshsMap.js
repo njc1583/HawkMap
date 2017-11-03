@@ -510,7 +510,80 @@ window.onload = function () {
 
     //Northmost V-Wing 
     hundredBarriers["Northmost V-Wing"] = paper.rect(131, 406, 132, 100);
+    unknownRooms["V130 (Unkown Purpose)"] = paper.rect(131, 406, 9, 20);
+    unknownRooms["V131 (Unkown Purpose)"] = paper.rect(141, 406, 9, 20);
+    unknownRooms["Mech Rooms (Yeah these are called the mech rooms but buddy, I have /no/ idea what these are.)"] = paper.rect(151, 406, 29, 20);
+    unknownRooms["V134 (No idea here either)"] = paper.rect(181, 406, 19, 20);
+    specialRooms["Kitchen"] = paper.rect(202, 406, 61, 20);
     
+    var kitchenStyle = {
+        fill: "#1ec7ed",
+        stroke: "#10414c",
+        "stroke-width": 2,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
+    
+    specialRooms["Kitchen"].attr(kitchenStyle);
+    specialRooms["Kitchen"].styleID = kitchenStyle;
+    
+    specialRooms["Loading Bay"] = paper.path("M 131,428 L 200,428 L 200,476 L 172,476 L 172,466 L 131,466 Z");
+    
+    var loadingBayStyle = {
+        fill: "#662c04",
+        stroke: "#281304",
+        "stroke-width": 2,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
+    
+    specialRooms["Loading Bay"].attr(loadingBayStyle);
+    specialRooms["Loading Bay"].styleID = loadingBayStyle;
+    
+    specialRooms["Hallway to Loading Bay"] = paper.rect(201, 428, 62, 9);
+    specialRooms["Hallway to Loading Bay"].attr(loadingBayStyle);
+    specialRooms["Hallway to Loading Bay"].styleID = loadingBayStyle;
+    miscRooms["V120-C"] = paper.rect(131, 468, 19, 12);
+    miscRooms["V120-B"] = paper.rect(131, 481, 19, 12);
+    miscRooms["V120-A"] = paper.rect(131, 494, 19, 12);
+    bathrooms["Hallway to V120's"] = paper.rect(152, 468, 9, 38);
+    unknownRooms["V120-D"] = paper.rect(163, 468, 7, 19);
+    miscNARooms["V121-D (Storage)"] = paper.rect(163, 489, 7, 17);
+    miscRooms["V121-B (Auto Lab)"] = paper.rect(172, 478, 28, 28);
+    miscRooms["V122"] = paper.rect(201, 478, 28, 28);
+    miscRooms["V123"] = paper.rect(230, 488, 33, 18);
+    specialRooms["V124 Wing"] = paper.rect(202, 439, 61, 13);
+    
+    var v124WingStyle = {
+        fill: "#fcac00",
+        stroke: "#684700",
+        "stroke-width": 2,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
+    
+    specialRooms["V124 Wing"].attr(v124WingStyle);
+    specialRooms["V124 Wing"].styleID = v124WingStyle;
+    miscRooms["V125 (Entrance Through Hallway)"] = paper.rect(202, 454, 27, 11);
+    miscRooms["V126 (Entrance Through Hallway)"] = paper.rect(202, 466, 27, 11);
+    bathrooms["Hallway to V125, V126, V127"] = paper.path("M 231,454 L 263,454 L 263,464 L 241,464 L 241,486 L 231,486 Z");
+    miscRooms["V127"] = paper.rect(243, 466, 20, 21);
+    
+    //PA-Wing
+    specialRooms["Auditorium"] = paper.rect(195, 520, 58, 72);
+    bathrooms["V-Wing Hallway"] = paper.path("M 182,520 L 193,520 Z");
+    //hundredBarriers["V-Wing Barrier"] = paper.rect(146, 520, 165, 89);
+    
+    var audiStyle = {
+        fill: "#af0896",
+        stroke: "#470b3e",
+        "stroke-width": 2,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
+    
+    specialRooms["Auditorium"].attr(audiStyle);
+    specialRooms["Auditorium"].styleID = audiStyle;
     
     //Sample of special room drawing.
     //var d = "M 10,30 L 60,30 L 10,80 L 60,80 Z";
