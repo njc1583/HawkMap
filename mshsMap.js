@@ -570,9 +570,8 @@ window.onload = function () {
     miscRooms["V127"] = paper.rect(243, 466, 20, 21);
     
     //PA-Wing
-    specialRooms["Auditorium"] = paper.rect(195, 520, 58, 72);
-    bathrooms["V-Wing Hallway"] = paper.path("M 182,520 L 193,520 Z");
-    //hundredBarriers["V-Wing Barrier"] = paper.rect(146, 520, 165, 89);
+    hundredBarriers["V-Wing Barrier"] = paper.rect(146, 520, 165, 89);
+    specialRooms["Auditorium"] = paper.rect(195, 530, 58, 62);
     
     var audiStyle = {
         fill: "#af0896",
@@ -584,6 +583,8 @@ window.onload = function () {
     
     specialRooms["Auditorium"].attr(audiStyle);
     specialRooms["Auditorium"].styleID = audiStyle;
+    
+    bathrooms["V-Wing Hallway"] = paper.path("M 182,520 L 193,520  L 193,594 L 255,594 L 255,520 L 268,520 L 268,609 L 182,609 Z");
     
     //Sample of special room drawing.
     //var d = "M 10,30 L 60,30 L 10,80 L 60,80 Z";
