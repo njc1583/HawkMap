@@ -571,6 +571,7 @@ window.onload = function () {
     
     //PA-Wing
     hundredBarriers["V-Wing Barrier"] = paper.rect(146, 520, 165, 89);
+    
     specialRooms["Auditorium"] = paper.rect(195, 530, 58, 62);
     
     var audiStyle = {
@@ -583,8 +584,20 @@ window.onload = function () {
     
     specialRooms["Auditorium"].attr(audiStyle);
     specialRooms["Auditorium"].styleID = audiStyle;
+    specialRooms["Backstage Entrance"] = paper.rect(195, 520, 10, 9);
+    specialRooms["Backstage Entrance"].attr(audiStyle);
+    specialRooms["Backstage Entrance"].styleID = audiStyle;
+    bathrooms["PA-Wing Male Bathroom"] = paper.rect(207, 520, 16, 8);
+    bathrooms["PA-Wing Female Bathroom"] = paper.rect(224, 520, 16, 8);
+    miscNARooms["Custodial Closet"] = paper.rect(242, 520, 11, 8);
     
-    bathrooms["V-Wing Hallway"] = paper.path("M 182,520 L 193,520  L 193,594 L 255,594 L 255,520 L 268,520 L 268,609 L 182,609 Z");
+    bathrooms["V-Wing Hallway"] = paper.path("M 182,520 L 193,520  L 193,594 L 255,594 L 255,520 L 268,520 L 268,603 L 258,603 L 258,609 L 192,609 L 192,603 L 182,603 Z");
+    bathrooms["Lobby Male Bathroom"] = paper.rect(182, 604, 9, 5);
+    bathrooms["Lobby Female Bathroom"] = paper.rect(259, 604, 9, 5);
+    
+    miscNARooms["PA111 (Fine Arts Department Chair)"] = paper.rect(146, 520, 34, 8);
+    miscNARooms["PA110 (Fine Arts Office)"] = paper.rect(146, 529, 34, 8);
+    miscNARooms["PA109-A (Office of Mr. Hutter)"] = paper.rect(146, 538, 34, 8);
     
     //Sample of special room drawing.
     //var d = "M 10,30 L 60,30 L 10,80 L 60,80 Z";
