@@ -598,6 +598,61 @@ window.onload = function () {
     miscNARooms["PA111 (Fine Arts Department Chair)"] = paper.rect(146, 520, 34, 8);
     miscNARooms["PA110 (Fine Arts Office)"] = paper.rect(146, 529, 34, 8);
     miscNARooms["PA109-A (Office of Mr. Hutter)"] = paper.rect(146, 538, 34, 8);
+    miscRooms["PA109"] = paper.rect(146, 548, 34, 8);
+    miscNARooms["PA109-B (Orchestra Direction Office) PA109-C (Not a clue)"] = paper.rect(146, 558, 34, 8);
+    miscRooms["PA108-PA109 (Includes costume shops, and several practice rooms)"] = paper.rect(146, 568, 34, 8);
+    miscRooms["PA107 (Orchestra Room)"] = paper.rect(146, 577, 34, 16);
+    miscNARooms["Uniform Storage"] = paper.rect(146, 595, 34, 7);
+    miscNARooms["Instrument Storage"] = paper.rect(146, 603, 34, 6);
+    
+    miscNARooms["PA101 (Theatre) and PA101-A (Stage manager's office)"] = paper.rect(270, 520, 41, 8);
+    miscRooms["PA102"] = paper.rect(270, 530, 41, 8);
+    miscRooms["PA103 D-G"] = paper.rect(270, 539, 41, 8);
+    miscNARooms["PA104 (Choral library)"] = paper.rect(270, 549, 41, 8);
+    miscNARooms["PA105-D (Storage)"] = paper.rect(270, 558, 41, 8);
+    miscRooms["PA105"] = paper.rect(270, 568, 41, 20);
+    unknownRooms["PA105 A-B"] = paper.rect(270, 590, 41, 8);
+    miscRooms["PA105-UV (MIDI Lab; John Conradi's Playground)"] = paper.rect(270, 600, 41, 9);
+    
+    //Gym and Cafe declarations
+    specialRooms["Spec Gym"] = paper.rect(31, 221, 97, 128);
+    
+    var specStyle = {
+        fill: "#b7ab09",
+        stroke: "#3a3710",
+        "stroke-width": 2,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
+    
+    specialRooms["Spec Gym"].attr(specStyle);
+    specialRooms["Spec Gym"].styleID = specStyle;
+    
+    specialRooms["Cafeteria"] = paper.rect(314, 274, 57, 74);
+    
+    var cafStyle = {
+        fill: "#0d913d",
+        stroke: "#0f4221",
+        "stroke-width": 2,
+        "stroke-linejoin": "miter",
+        cusor: "cursor"
+    };
+    
+    specialRooms["Cafeteria"].attr(cafStyle);
+    specialRooms["Cafeteria"].styleID = cafStyle;
+    miscRooms["Weight Room"] = paper.rect(146, 198, 46, 34);
+    specialRooms["Field House"] = paper.path("M 146,135 L 160,135 L 146,160 Z");
+    
+    var fHouseStyle = {
+        fill: "#dbdad9",
+        stroke: "#2b2a29",
+        "stroke-width": 2,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
+    
+    specialRooms["Field House"].attr(fHouseStyle);
+    specialRooms["Field House"].styleID = fHouseStyle;
     
     //Sample of special room drawing.
     //var d = "M 10,30 L 60,30 L 10,80 L 60,80 Z";
