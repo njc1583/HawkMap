@@ -78,12 +78,11 @@ window.onload = function () {
         cursor: "pointer"
     };
 
-    var hundredBarriersStyle = {
+    var barriersStyle = {
         fill: "#ffffff",
         stroke: "#000000",
         "stroke-width": 2,
         "stroke-linejoin": "miter",
-        cursor: "pointer"
     };
 
     //Put all region names with locations and stuff in here
@@ -117,25 +116,13 @@ window.onload = function () {
     var allRooms = [];
 
     //Temporary rectangles to be used as a coordinate system for other room placement
-    var hundredBarriers = [];
-    hundredBarriers["0-100, 0-100"] = paper.rect(0, 0, 100, 100);
-    hundredBarriers["100-200"] = paper.rect(100, 0, 100, 20);
-    hundredBarriers["200-300"] = paper.rect(200, 0, 100, 20);
-    hundredBarriers["300-400"] = paper.rect(300, 0, 100, 20);
-    hundredBarriers["400-500"] = paper.rect(400, 0, 100, 20);
-    hundredBarriers["500-600"] = paper.rect(500, 0, 100, 20);
-    hundredBarriers["600-700"] = paper.rect(600, 0, 100, 20);
-    hundredBarriers["700-760"] = paper.rect(700, 0, 100, 20);
-
-    hundredBarriers["100-200"] = paper.rect(0, 100, 20, 100);
-    hundredBarriers["200-300"] = paper.rect(0, 200, 20, 100);
-    hundredBarriers["300-400"] = paper.rect(0, 300, 20, 100);
-    hundredBarriers["400-500"] = paper.rect(0, 400, 20, 100);
-    hundredBarriers["500-600"] = paper.rect(0, 500, 20, 100);
-    hundredBarriers["600-645"] = paper.rect(0, 600, 20, 100);
-
+    var barriers = [];
+    barriers["A-Wing 3rd Floor Outline"] = paper.rect(529, 24, 92, 273);
+    
+    //barriers["Entire Map"] = paper.rect(0, 0, MAP_WIDTH, MAP_HEIGHT);
+    
     //East side even-numbered 1st Floor A-wing rooms
-    unknownRooms["East A-Wing Stairs (1st Floor)"] = paper.rect(707, 332, 40, 12);
+    /*unknownRooms["East A-Wing Stairs (1st Floor)"] = paper.rect(707, 332, 40, 12);
     mathRooms["A128"] = paper.rect(707, 346, 40, 14);
     mathRooms["A126"] = paper.rect(707, 361, 40, 17);
     mathRooms["A124"] = paper.rect(707, 379, 40, 17);
@@ -357,7 +344,7 @@ window.onload = function () {
 
     //North C-Wing Block
     //Barier for North C-wing; wiill be removed later
-    hundredBarriers["North C-Wing Barrier"] = paper.rect(387, 406, 45, 100);
+    barriers["North C-Wing Barrier"] = paper.rect(387, 406, 45, 100);
 
     miscRooms["C145-A"] = paper.rect(387, 406, 22, 10);
     miscRooms["C145-B"] = paper.rect(410, 406, 22, 10);
@@ -407,7 +394,7 @@ window.onload = function () {
     miscRooms["C100-B"] = paper.path("M 410,499 L 421,499 L 421,504 L 432,504 L 432,506 L 410,506 Z");
 
     //South V-Wing 
-    hundredBarriers["South V-Wing Barrier"] = paper.rect(273, 406, 102, 100);
+    barriers["South V-Wing Barrier"] = paper.rect(273, 406, 102, 100);
     miscRooms["V114"] = paper.rect(273, 406, 20, 8);
     miscNARooms["V115 (Business Department Chair)"] = paper.rect(295, 406, 12, 8);
     unknownRooms["V113-A"] = paper.rect(273, 416, 33, 8);
@@ -509,7 +496,7 @@ window.onload = function () {
     specialRooms["V-Wing Hallway"].styleID = bathStyle;
 
     //Northmost V-Wing 
-    hundredBarriers["Northmost V-Wing"] = paper.rect(131, 406, 132, 100);
+    barriers["Northmost V-Wing"] = paper.rect(131, 406, 132, 100);
     unknownRooms["V130 (Unkown Purpose)"] = paper.rect(131, 406, 9, 20);
     unknownRooms["V131 (Unkown Purpose)"] = paper.rect(141, 406, 9, 20);
     unknownRooms["Mech Rooms (Yeah these are called the mech rooms but buddy, I have /no/ idea what these are.)"] = paper.rect(151, 406, 29, 20);
@@ -570,7 +557,7 @@ window.onload = function () {
     miscRooms["V127"] = paper.rect(243, 466, 20, 21);
     
     //PA-Wing
-    hundredBarriers["V-Wing Barrier"] = paper.rect(146, 520, 165, 89);
+    barriers["V-Wing Barrier"] = paper.rect(146, 520, 165, 89);
     
     specialRooms["Auditorium"] = paper.rect(195, 530, 58, 62);
     
@@ -635,15 +622,15 @@ window.onload = function () {
         stroke: "#0f4221",
         "stroke-width": 2,
         "stroke-linejoin": "miter",
-        cusor: "cursor"
+        cursor: "pointer"
     };
     
     specialRooms["Cafeteria"].attr(cafStyle);
     specialRooms["Cafeteria"].styleID = cafStyle;
     miscRooms["Weight Room"] = paper.rect(146, 198, 46, 34);
-    specialRooms["Field House"] = paper.path("M 146,135 L 160,135 L 146,160 Z");
+    specialRooms["Field House"] = paper.path("M 146,135 L 316,135 L 316,155 L 287,155 L 287,216 L 316,216 L 316,232 L 194,232 L 194,196 L 146,196 Z");
     
-    var fHouseStyle = {
+    var gymStyle = {
         fill: "#dbdad9",
         stroke: "#2b2a29",
         "stroke-width": 2,
@@ -651,14 +638,48 @@ window.onload = function () {
         cursor: "pointer"
     };
     
-    specialRooms["Field House"].attr(fHouseStyle);
-    specialRooms["Field House"].styleID = fHouseStyle;
+    specialRooms["Field House"].attr(gymStyle);
+    specialRooms["Field House"].styleID = gymStyle;
+    miscRooms["Wrestling Room"] = paper.rect(289, 157, 27, 57);
+    miscNARooms["Office of Some Description"] = paper.rect(146, 234, 55, 33);
+    specialRooms["Boys' Locker Room"] = paper.rect(203, 234, 97, 33);
     
-    //Sample of special room drawing.
-    //var d = "M 10,30 L 60,30 L 10,80 L 60,80 Z";
-    //sciRooms["Z"] = paper.path(d);
-
-
+    var lockStyle = {
+        fill: "#850791",
+        stroke: "#2a072d",
+        "stroke-width": 2,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
+    
+    specialRooms["Boys' Locker Room"].attr(lockStyle);
+    specialRooms["Boys' Locker Room"].styleID = lockStyle;
+    specialRooms["Pool"] = paper.rect(169, 269, 46, 77);
+    
+    var poolStyle = {
+        fill: "#0c0cb7",
+        stroke: "#0b0b3f",
+        "stroke-width": 2,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
+    
+    specialRooms["Pool"].attr(poolStyle);
+    specialRooms["Pool"].styleID = poolStyle;
+    
+    specialRooms["Back Gym"] = paper.rect(217, 269, 42, 77);
+    specialRooms["Back Gym"].attr(gymStyle);
+    specialRooms["Back Gym"].styleID = gymStyle;
+    miscRooms["Dance Studio"] = paper.rect(261, 269, 39, 60);
+    barriers["PE-Wing Hallway"] = paper.rect(261, 331, 39, 15);
+    specialRooms["Fitness Center"] = paper.rect(169, 348, 65, 48);
+    specialRooms["Fitness Center"].attr(gymStyle);
+    specialRooms["Fitness Center"].styleID = gymStyle;
+    specialRooms["Girls' Locker Room"] = paper.rect(236, 348, 64, 48);
+    specialRooms["Girls' Locker Room"].attr(lockStyle);
+    specialRooms["Girls' Locker Room"].styleId = lockStyle;
+    */
+    
     //Set each rooms to different styles (and add animations)
     var animationSpeed = 500;
     var hoverStyle = {
@@ -666,8 +687,8 @@ window.onload = function () {
     };
 
     //Not technically a room type
-    for (var roomName in hundredBarriers) {
-        hundredBarriers[roomName].attr(hundredBarriersStyle);
+    for (var roomName in barriers) {
+        barriers[roomName].attr(barriersStyle);
     }
 
     for (var roomName in mathRooms) {
