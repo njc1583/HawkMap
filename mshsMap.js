@@ -117,12 +117,24 @@ window.onload = function () {
 
     //Temporary rectangles to be used as a coordinate system for other room placement
     var barriers = [];
-    barriers["A-Wing 3rd Floor Outline"] = paper.rect(529, 24, 92, 273);
+    specialRooms["Entire Map"] = paper.rect(1, 1, MAP_WIDTH - 2, MAP_HEIGHT - 2);
     
-    //barriers["Entire Map"] = paper.rect(0, 0, MAP_WIDTH, MAP_HEIGHT);
+    var entireMapStyle = {
+        fill: "#e2e2e2",
+        stroke: "#000000",
+        "stroke-width": 2,
+        "stroke-linejoin": "miter"
+    };
+    
+    specialRooms["Entire Map"].attr(entireMapStyle);
+    specialRooms["Entire Map"].styleID = entireMapStyle;
+    
+    barriers["A-Wing 3rd Floor Outline"] = paper.rect(529, 24, 91, 273);
+    barriers["A-Wing 2nd Floor Outline"] = paper.path("M 661,38 L 697,38 L 697,24 L 753,24 L 753,297 L 661,297 Z");
+    barriers["The rest of the dang school"] = paper.path("M 146,135 L 316,135 L 316,274 L 371,274 L 371,347 L 316,347 L 316,389 L 616,389 L 616,505 L 667,505 L 667,342 L 693,342 L 693,332 L 747,332 L 747,601 L 667,601 L 667,520 L 311,520 L 311,609 L 146,609 L 146,481 L 131,481 L 131,379 L 147,379 L 147,314 L 128,314 L 128,349 L 031,349 L 031,222 L 128,222 L 128,266 L 146,266 L Z");
     
     //East side even-numbered 1st Floor A-wing rooms
-    /*unknownRooms["East A-Wing Stairs (1st Floor)"] = paper.rect(707, 332, 40, 12);
+    unknownRooms["East A-Wing Stairs (1st Floor)"] = paper.rect(707, 332, 40, 12);
     mathRooms["A128"] = paper.rect(707, 346, 40, 14);
     mathRooms["A126"] = paper.rect(707, 361, 40, 17);
     mathRooms["A124"] = paper.rect(707, 379, 40, 17);
@@ -615,7 +627,7 @@ window.onload = function () {
     specialRooms["Spec Gym"].attr(specStyle);
     specialRooms["Spec Gym"].styleID = specStyle;
     
-    specialRooms["Cafeteria"] = paper.rect(314, 274, 57, 74);
+    specialRooms["Cafeteria"] = paper.rect(316, 274, 55, 74);
     
     var cafStyle = {
         fill: "#0d913d",
@@ -678,7 +690,9 @@ window.onload = function () {
     specialRooms["Girls' Locker Room"] = paper.rect(236, 348, 64, 48);
     specialRooms["Girls' Locker Room"].attr(lockStyle);
     specialRooms["Girls' Locker Room"].styleId = lockStyle;
-    */
+     
+    
+    
     
     //Set each rooms to different styles (and add animations)
     var animationSpeed = 500;
