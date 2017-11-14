@@ -134,6 +134,32 @@ window.onload = function () {
     barriers["A-Wing 2nd Floor Outline"] = paper.path("M 661,38 L 697,38 L 697,24 L 753,24 L 753,297 L 661,297 Z");
     barriers["The rest of the dang school"] = paper.path("M 146,135 L 316,135 L 316,274 L 371,274 L 371,347 L 316,347 L 316,389 L 616,389 L 616,505 L 667,505 L 667,342 L 693,342 L 693,332 L 747,332 L 747,601 L 667,601 L 667,520 L 311,520 L 311,609 L 146,609 L 146,481 L 131,481 L 131,379 L 147,379 L 147,314 L 128,314 L 128,349 L 031,349 L 031,222 L 128,222 L 128,267 L 146,267 L Z");
     
+    specialRooms["The Famous Maine South Pond"] = paper.path("M 330,643 L 653,643 C 653,643 491.5,510 330,643 Z");
+    
+    var pondStyle = {
+        fill: "#68eaff",
+        stroke: "#0f7677",
+        "stroke-width": 2,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
+    
+    specialRooms["The Famous Maine South Pond"].attr(pondStyle);
+    specialRooms["The Famous Maine South Pond"].styleID = pondStyle;
+    
+    /*specialRooms["Circle Drive"] = paper.path("M 313,522 L 313,643 L 328,643 C 328,643 466,506 657,643 L 665,643 L 665,522 Z");
+    
+    var parkingLotStyle = {
+        fill: "#f2f2f2",
+        stroke: "#878787",
+        "stroke-width": 2,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
+    
+    specialRooms["Circle Drive"].attr(parkingLotStyle);
+    specialRooms["Circle Drive"].styleID = parkingLotStyle;*/
+    
     //East side even-numbered 1st Floor A-wing rooms
     unknownRooms["East A-Wing Stairs (1st Floor)"] = paper.rect(707, 332, 40, 12);
     mathRooms["A128"] = paper.rect(707, 346, 40, 14);
@@ -690,7 +716,7 @@ window.onload = function () {
     specialRooms["Fitness Center"].styleID = gymStyle;
     specialRooms["Girls' Locker Room"] = paper.rect(236, 348, 64, 48);
     specialRooms["Girls' Locker Room"].attr(lockStyle);
-    specialRooms["Girls' Locker Room"].styleId = lockStyle;
+    specialRooms["Girls' Locker Room"].styleID = lockStyle;
      
     
     
