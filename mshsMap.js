@@ -1,6 +1,6 @@
 window.onload = function () {
-    var MAP_WIDTH = 760;
-    var MAP_HEIGHT = 645;
+    var MAP_WIDTH = 770;
+    var MAP_HEIGHT = 653;
 
     var paper = Raphael(0, 0, MAP_WIDTH, MAP_HEIGHT);
 
@@ -95,7 +95,8 @@ window.onload = function () {
         unknownRooms = [],
         miscNARooms = [],
         bathrooms = [],
-        specialRooms = [];
+        specialRooms = [],
+        extraNonHoverRooms = [];
 
     //specialRooms is for rooms with distinct features and/or designs, and may have their own style on a case-by-case basis.
 
@@ -110,14 +111,14 @@ window.onload = function () {
         unknownRooms,
         miscNARooms,
         bathrooms,
-        specialRooms
+        specialRooms,
     ];
 
     var allRooms = [];
 
     //Temporary rectangles to be used as a coordinate system for other room placement
     var barriers = [];
-    specialRooms["Entire Map"] = paper.rect(1, 1, MAP_WIDTH - 2, MAP_HEIGHT - 2);
+    extraNonHoverRooms["Entire Map"] = paper.rect(1, 1, MAP_WIDTH - 2, MAP_HEIGHT - 2);
     
     var entireMapStyle = {
         fill: "#e2e2e2",
@@ -126,12 +127,12 @@ window.onload = function () {
         "stroke-linejoin": "miter"
     };
     
-    specialRooms["Entire Map"].attr(entireMapStyle);
-    specialRooms["Entire Map"].styleID = entireMapStyle;
+    extraNonHoverRooms["Entire Map"].attr(entireMapStyle);
+    extraNonHoverRooms["Entire Map"].styleID = entireMapStyle;
     
     barriers["A-Wing 3rd Floor Outline"] = paper.rect(529, 24, 91, 273);
     barriers["A-Wing 2nd Floor Outline"] = paper.path("M 661,38 L 697,38 L 697,24 L 753,24 L 753,297 L 661,297 Z");
-    barriers["The rest of the dang school"] = paper.path("M 146,135 L 316,135 L 316,274 L 371,274 L 371,347 L 316,347 L 316,389 L 616,389 L 616,505 L 667,505 L 667,342 L 693,342 L 693,332 L 747,332 L 747,601 L 667,601 L 667,520 L 311,520 L 311,609 L 146,609 L 146,481 L 131,481 L 131,379 L 147,379 L 147,314 L 128,314 L 128,349 L 031,349 L 031,222 L 128,222 L 128,266 L 146,266 L Z");
+    barriers["The rest of the dang school"] = paper.path("M 146,135 L 316,135 L 316,274 L 371,274 L 371,347 L 316,347 L 316,389 L 616,389 L 616,505 L 667,505 L 667,342 L 693,342 L 693,332 L 747,332 L 747,601 L 667,601 L 667,520 L 311,520 L 311,609 L 146,609 L 146,481 L 131,481 L 131,379 L 147,379 L 147,314 L 128,314 L 128,349 L 031,349 L 031,222 L 128,222 L 128,267 L 146,267 L Z");
     
     //East side even-numbered 1st Floor A-wing rooms
     unknownRooms["East A-Wing Stairs (1st Floor)"] = paper.rect(707, 332, 40, 12);
@@ -590,7 +591,7 @@ window.onload = function () {
     bathrooms["PA-Wing Female Bathroom"] = paper.rect(224, 520, 16, 8);
     miscNARooms["Custodial Closet"] = paper.rect(242, 520, 11, 8);
     
-    bathrooms["V-Wing Hallway"] = paper.path("M 182,520 L 193,520  L 193,594 L 255,594 L 255,520 L 268,520 L 268,603 L 258,603 L 258,609 L 192,609 L 192,603 L 182,603 Z");
+    bathrooms["PA-Wing Hallway"] = paper.path("M 182,520 L 193,520  L 193,594 L 255,594 L 255,520 L 268,520 L 268,603 L 258,603 L 258,609 L 192,609 L 192,603 L 182,603 Z");
     bathrooms["Lobby Male Bathroom"] = paper.rect(182, 604, 9, 5);
     bathrooms["Lobby Female Bathroom"] = paper.rect(259, 604, 9, 5);
     
@@ -643,7 +644,7 @@ window.onload = function () {
     specialRooms["Field House"] = paper.path("M 146,135 L 316,135 L 316,155 L 287,155 L 287,216 L 316,216 L 316,232 L 194,232 L 194,196 L 146,196 Z");
     
     var gymStyle = {
-        fill: "#dbdad9",
+        fill: "#a8a8a8",
         stroke: "#2b2a29",
         "stroke-width": 2,
         "stroke-linejoin": "miter",
