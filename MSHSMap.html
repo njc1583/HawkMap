@@ -1556,21 +1556,35 @@
     tnT8t3VuqgQ9hjtoaon+FNRuG4wAx6FjVOL1l1njwVBLeoj7/wPXGdLHR1uOVQAAACV0RVh0ZGF0
     ZTpjcmVhdGUAMjAxNy0wOS0wNlQwOToyNjowMi0wNzowMJyEnFUAAAAldEVYdGRhdGU6bW9kaWZ5
     ADIwMTctMDktMDZUMDk6MjY6MDItMDc6MDDt2STpAAAAAElFTkSuQmCC"/>
+      
       <div class="popup"> <!-- Puts the popup that will be available for each room in the html -->
           <span class="popuptext" id="myPopup"> </span> <!-- Text of the popup --> 
       </div>
-     <div id="searchheader"> <!-- Search form and search button -->
+      
+      <div id="searchheader"> <!-- Search form and search button -->
         <form id="search">
-            <input type="text" class="textinput" id="textinput" autocomplete="off" name="q" size="21" maxlength="120"><input type="submit" value="Search" class="searchbutton">
+            <input type="text" class="textinput" id="textinput" autocomplete="off" name="q" size="21" maxlength="120">
+            <input type="submit" value="Search" id="searchbutton"> <!-- Search button and field inputs -->
         </form>
-     </div>
-         <!-- <button type="button">Click Me!</button> -->
-        <form id= "clear"> <!-- Clear button -->
-            <input type="submit" disabled = "true" value = "Clear Room" class= "clearbutton">
-        </form>
+      </div>
+      <form id= "possiblerooms">
+        <input type="submit" value = "Possible Rooms" id= "possibleroomsbutton">
+      </form>
+      <form id= "clear"> <!-- Clear button -->
+        <input type="submit" disabled = "true" value = "Clear Room" id= "clearbutton">
+          </form>
+      <div id="possibleRoomTables">
+      <table id= "ARooms">
+          <colgroup>
+            <col style="background-color: #0be8dd" id= "ARooms">
+  </colgroup>
+        <tr>
+          <th>A Rooms</th>
+        </tr>
+      </table>
+            </div> 
       
       <link rel="stylesheet" type="text/css" href="MSHSMap.css"> <!-- Links to other files of the map -->
-      <link rel="stylesheet" type="text/css" href="MSHSMap.css">
       <script type='text/javascript' src='raphael.js'></script> <!-- Enables use of Raphael -->
       <script type='text/javascript' src='raphael.min.js'></script>
       <script type = 'text/javascript' src = 'MSHSMap.js'></script> 
