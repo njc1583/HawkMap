@@ -129,7 +129,7 @@ window.onload = function () {
 
     extraNonHoverRooms["Entire Map"].attr(entireMapStyle);
     extraNonHoverRooms["Entire Map"].styleID = entireMapStyle;
-    
+
     barriers["A-Wing 3rd Floor Outline"] = paper.rect(529, 24, 91, 273);
     barriers["A-Wing 2nd Floor Outline"] = paper.path("M 661,38 L 697,38 L 697,24 L 753,24 L 753,297 L 661,297 Z");
     barriers["The rest of the dang school"] = paper.path("M 146,135 L 316,135 L 316,274 L 371,274 L 371,347 L 316,347 L 316,389 L 616,389 L 616,505 L 667,505 L 667,342 L 693,342 L 693,332 L 747,332 L 747,601 L 667,601 L 667,520 L 311,520 L 311,609 L 146,609 L 146,481 L 131,481 L 131,379 L 147,379 L 147,314 L 128,314 L 128,349 L 031,349 L 031,222 L 128,222 L 128,267 L 146,267 L Z");
@@ -760,8 +760,8 @@ window.onload = function () {
         bathrooms[roomName].attr(bathStyle);
         bathrooms[roomName].styleID = bathStyle;
     }
-    
-    for(var roomName in barriers){
+
+    for (var roomName in barriers) {
         barriers[roomName].attr(barriersStyle);
     }
 
@@ -800,6 +800,7 @@ window.onload = function () {
         popup.classList.toggle("show");
     }
 
+    /*
     function clearShow() {
         var clear = document.getElementById("clearbutton");
         clear.style.visibility = "visible";
@@ -837,16 +838,19 @@ window.onload = function () {
         else
             table.style.visibility = "visible";
     }
+    */
 
     //Search bar function
-    
-    Array.sort(allRooms);
 
+    //Array.sort(allRooms);
+
+    /*
     var s = document.getElementById('search'); //Search form
     var inputs = document.getElementsByTagName("input"); //inputs to be used for enabling and disabling
     var c = document.getElementById('clear'); //Clear form
     var pr = document.getElementById('possiblerooms');
     var g = document.getElementById('ARooms');
+    */
 
     /*s.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -988,5 +992,25 @@ window.onload = function () {
         body.appendChild(tbl);
         // sets the border attribute of tbl to 2;
         tbl.setAttribute("border", "2");
+    }*/
+}
+
+function filterSearch() {
+    var input, filter, i;
+    
+    input = document.getElementById("searchbar");
+    filter = input.value.toUpperCase();
+    
+    
+    
+    /*for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
     }*/
 }
