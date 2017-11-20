@@ -794,217 +794,28 @@ window.onload = function () {
         })(allRooms[roomName], roomName, roomStyle);
     }
 
-    //Hides and shows the popup
-    function togglePopup() {
-        var popup = document.getElementById("myPopup");
-        popup.classList.toggle("show");
+    var table = document.getElementById("tableOfRooms");
+
+    //Populates search table with all rooms
+    for (var roomName in allRooms) {
+        var node = document.createElement("TR");
+        var textnode = document.createTextNode(roomName);
+        node.appendChild(textnode);
+
+        table.appendChild(node);
     }
 
-    /*
-    function clearShow() {
-        var clear = document.getElementById("clearbutton");
-        clear.style.visibility = "visible";
-    }
-
-    function clearHide() {
-        var clear = document.getElementById("clearbutton");
-        clear.style.visibility = "hidden";
-    }
-
-    function searchShow() {
-        var search = document.getElementById("searchbutton");
-        search.style.visibility = "visible";
-    }
-
-    function searchHide() {
-        var search = document.getElementById("searchbutton");
-        search.style.visibility = "hidden";
-    }
-
-    function possibleroomsShow() {
-        var possiblerooms = document.getElementById("possibleroomsbutton");
-        possiblerooms.style.visibility = "visible";
-    }
-
-    function possibleroomsHide() {
-        var possiblerooms = document.getElementById("possibleroomsbutton");
-        possiblerooms.style.visibility = "hidden";
-    }
-
-    function toggleTable() {
-        var table = document.getElementById("ARooms");
-        if (table.style.visibility == "visible")
-            table.style.visibility = "hidden";
-        else
-            table.style.visibility = "visible";
-    }
-    */
-
-    //Search bar function
-
-    //Array.sort(allRooms);
-
-    /*
-    var s = document.getElementById('search'); //Search form
-    var inputs = document.getElementsByTagName("input"); //inputs to be used for enabling and disabling
-    var c = document.getElementById('clear'); //Clear form
-    var pr = document.getElementById('possiblerooms');
-    var g = document.getElementById('ARooms');
-    */
-
-    /*s.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var b = document.getElementById('textinput').value; //Gets text submitted by user
-        b = b.toUpperCase().trim();
-        var indexA = b.indexOf('A');
-        var indexC = b.indexOf('C');
-        if ((indexA != -1 && b.length - indexA >= 4) || (indexC != -1 && b.length - indexC >= 4)) //If A or B is in the name and has three characters after it
-        {
-            if (indexA != -1 && indexC != -1 && indexA < indexC)
-                var z = b.substring(indexA, indexA + 4); //gets the roomname
-            else if (indexA != -1 && indexC != -1 && indexA > indexC)
-                var z = b.substring(indexC, indexC + 4);
-            else if (indexC == -1)
-                var z = b.substring(indexA, indexA + 4);
-            else
-                var z = b.substring(indexC, indexC + 4);
-            for (var roomName in allRooms) //Searches through all rooms and finds if it contains the roomname entered by the user
-            {
-                (function (room, roomname) {
-                    var name = roomname.substring(0, 4);
-                    if (name == z) {
-                        room.animate(hoverStyle, animationSpeed);
-                        document.getElementById("myPopup").innerHTML = roomname; //animates the room and popup
-                        togglePopup();
-                        return;
-                    }
-                })(allRooms[roomName], roomName);
-            }
-        }
-        inputs[2].disabled = true;
-        inputs[0].readOnly = true;
-        inputs[1].disabled = true;
-        inputs[3].disabled = false;
-        clearShow();
-        possibleroomsHide();
-        searchHide();
-    });
-    
-    c.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var b = document.getElementById('textinput').value; //Gets text submitted by user
-        b = b.toUpperCase().trim();
-        var indexA = b.indexOf('A');
-        var indexC = b.indexOf('C');
-        if ((indexA != -1 && b.length - indexA >= 4) || (indexC != -1 && b.length - indexC >= 4)) //If A or B is in the name and has three characters after it
-        {
-            if (indexA != -1 && indexC != -1 && indexA < indexC)
-                var z = b.substring(indexA, indexA + 4); //gets the roomname
-            else if (indexA != -1 && indexC != -1 && indexA > indexC)
-                var z = b.substring(indexC, indexC + 4);
-            else if (indexC == -1)
-                var z = b.substring(indexA, indexA + 4);
-            else
-                var z = b.substring(indexC, indexC + 4);
-            for (var roomName in allRooms) {
-                (function (room, roomname) {
-                    var name = roomname.substring(0, 4);
-                    if (name == z) {
-                        room.animate(room.styleID, animationSpeed);
-                        togglePopup();
-                        return;
-                    }
-                })(allRooms[roomName], roomName);
-            }
-        }
-        s.reset();
-        inputs[2].disabled = false;
-        searchShow();
-        inputs[0].readOnly = false;
-        inputs[1].disabled = false;
-        inputs[3].disabled = true;
-        clearHide();
-        c.reset();
-        possibleroomsShow();
-        pr.reset();
-    });*/
-    /*
-    pr.addEventListener('submit', function (e) {
-        e.preventDefault();
-        toggleTable();
-        generate_table();
-    });
-
-    g.addEventListener('mouseover', function () {
-        var tblBody = document.createElement("tbody");
-        for (var roomName in allRooms) {
-            (function (name) {
-                var cell = document.createElement("td");
-                var cellText = document.createTextNode(name);
-                cell.appendChild(cellText);
-                row.appendChild(cell);
-                tblBody.appendChild(row);
-                g.appendChild(tblBody);
-            })(roomName);
-        }
-    }, true);
-
-
-
-    function generate_table() {
-        // get the reference for the body
-        var tblBody = document.createElement("tbody");
-        var table = document.getElementById("ARooms");
-        // creating all cells
-        for (var i = 0; i < 2; i++) {
-
-            var cell = document.createElement("td");
-            var row = document.createElement("tr");
-            for (var roomName in allRooms) {
-                if (roomName.charAt(0) == 'A')
-                    var cellText = document.createTextNode(roomName);
-                cell.appendChild(cellText);
-            }
-            row.appendChild(cell);
-            tblBody.appendChild(row);
-            table.appendChild(tblbody)
-
-            // creates a table row
-            var row = document.createElement("tr");
-
-            for (var j = 0; j < 2; j++) {
-                // Create a <td> element and a text node, make the text
-                // node the contents of the <td>, and put the <td> at
-                // the end of the table row
-                var cell = document.createElement("td");
-                var cellText = document.createTextNode("cell in row " + i + ", column " + j);
-                cell.appendChild(cellText);
-                row.appendChild(cell);
-            }
-
-            // add the row to the end of the table body
-            tblBody.appendChild(row);
-        }
-
-        // put the <tbody> in the <table>
-        table.appendChild(tblBody);
-        // appends <table> into <body>
-        body.appendChild(tbl);
-        // sets the border attribute of tbl to 2;
-        tbl.setAttribute("border", "2");
-    }*/
 }
 
 function filterSearch() {
-    var input, filter, i;
-    
+    var input, filter, table, tr, td, i;
     input = document.getElementById("searchbar");
     filter = input.value.toUpperCase();
-    
-    
-    
-    /*for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
+    table = document.getElementById("tableOfRooms");
+    tr = table.getElementsByTagName("Room Type");
+
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("Name")[0];
         if (td) {
             if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
                 tr[i].style.display = "";
@@ -1012,5 +823,22 @@ function filterSearch() {
                 tr[i].style.display = "none";
             }
         }
-    }*/
+    }
 }
+
+function togglePopup() {
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+}
+
+
+/*for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+        } else {
+            tr[i].style.display = "none";
+        }
+    }
+}*/

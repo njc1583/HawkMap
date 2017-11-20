@@ -5,7 +5,7 @@
 </head>
 
 <body>
-   
+
     <div class="popup">
         <!-- Puts the popup that will be available for each room in the html -->
         <span class="popuptext" id="myPopup"> </span>
@@ -28,8 +28,17 @@
         
     </div>
     -->
-    
-    <input type="text" id="searchbar" onkeyup="filterSearch()" placeholder="Search for a room...">
+
+    <input type="text" id="searchbar" onkeyup="filterSearch()" placeholder="Search for a room..." title="Type in a room.">
+
+    <table id="tableOfRooms">
+        <tr class="header">
+            <th style="width:60%">Name</th>
+            <th style="width:40%">Room Type</th>
+        </tr>
+    </table>
+
+
     <!--
     <form id="possiblerooms">
         <input type="submit" value="Possible Rooms" id="possibleroomsbutton">
