@@ -1,6 +1,6 @@
  .popup {
      position: absolute;
-     top: 355px;
+     top: 380px;
      /* Top and left allow for positioning of the popup on the map, will be set in the popup function */
      left: 525px;
      display: inline-block;
