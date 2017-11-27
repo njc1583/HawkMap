@@ -7,16 +7,16 @@ window.onload = function () {
     //Creation of all styles for rooms
     //Bathrooms: Grey
     var bathStyle = {
-        fill: "#cec4c4",
+        fill: "#a9a9a9",
         stroke: "#696969",
         "stroke-width": 2,
         "stroke-linejoin": "miter",
         cursor: "pointer"
     };
-    //Administrative/Other non-academic rooms: Dark Purple
+    //Administrative/Other non-academic rooms: Brown
     var miscNARoomstyle = {
-        fill: "#998b8b",
-        stroke: "#474040",
+        fill: "#915b15",
+        stroke: "#442a08",
         "stroke-width": 2,
         "stroke-linejoin": "miter",
         cursor: "pointer"
@@ -31,8 +31,8 @@ window.onload = function () {
     };
     //Math: Blue
     var mathRoomStyle = {
-        fill: "#2658ff",
-        stroke: "#000cff",
+        fill: "#0be8dd",
+        stroke: "#0e726d",
         "stroke-width": 2,
         "stroke-linejoin": "miter",
         cursor: "pointer"
@@ -55,7 +55,7 @@ window.onload = function () {
     };
     //Social Science: Orange
     var socSciRoomStyle = {
-        fill: "#ff7b00",
+        fill: "#dd800d",
         stroke: "#96570a",
         "stroke-width": 2,
         "stroke-linejoin": "miter",
@@ -71,7 +71,7 @@ window.onload = function () {
     };
     //Miscellanious rooms (such as art electives): Purple
     var miscRoomStyle = {
-        fill: "#ff008c",
+        fill: "#ff66ff",
         stroke: "#660066",
         "stroke-width": 2,
         "stroke-linejoin": "miter",
@@ -111,7 +111,7 @@ window.onload = function () {
         unknownRooms,
         miscNARooms,
         bathrooms,
-        specialRooms,
+        specialRooms
     ];
 
     var allRooms = [];
@@ -134,7 +134,7 @@ window.onload = function () {
     barriers["A-Wing 2nd Floor Outline"] = paper.path("M 661,38 L 697,38 L 697,24 L 753,24 L 753,297 L 661,297 Z");
     barriers["The rest of the dang school"] = paper.path("M 146,135 L 316,135 L 316,274 L 371,274 L 371,347 L 316,347 L 316,389 L 616,389 L 616,505 L 667,505 L 667,342 L 693,342 L 693,332 L 747,332 L 747,601 L 667,601 L 667,520 L 311,520 L 311,609 L 146,609 L 146,481 L 131,481 L 131,379 L 147,379 L 147,314 L 128,314 L 128,349 L 031,349 L 031,222 L 128,222 L 128,267 L 146,267 L Z");
 
-    specialRooms["The Maine South Pond"] = paper.path("M 330,643 L 653,643 C 653,643 491.5,510 330,643 Z");
+    specialRooms["The Famous Maine South Pond"] = paper.path("M 330,643 L 653,643 C 653,643 491.5,510 330,643 Z");
 
     var pondStyle = {
         fill: "#68eaff",
@@ -144,21 +144,8 @@ window.onload = function () {
         cursor: "pointer"
     };
 
-    specialRooms["The Maine South Pond"].attr(pondStyle);
-    specialRooms["The Maine South Pond"].styleID = pondStyle;
-
-    /*specialRooms["Circle Drive"] = paper.path("M 313,522 L 313,643 L 328,643 C 328,643 466,506 657,643 L 665,643 L 665,522 Z");
-    
-    var parkingLotStyle = {
-        fill: "#f2f2f2",
-        stroke: "#878787",
-        "stroke-width": 2,
-        "stroke-linejoin": "miter",
-        cursor: "pointer"
-    };
-    
-    specialRooms["Circle Drive"].attr(parkingLotStyle);
-    specialRooms["Circle Drive"].styleID = parkingLotStyle;*/
+    specialRooms["The Famous Maine South Pond"].attr(pondStyle);
+    specialRooms["The Famous Maine South Pond"].styleID = pondStyle;
 
     //East side even-numbered 1st Floor A-wing rooms
     unknownRooms["East A-Wing Stairs (1st Floor)"] = paper.rect(707, 332, 40, 12);
@@ -271,7 +258,7 @@ window.onload = function () {
     sciRooms["A315"] = paper.rect(529, 125, 37, 17);
     miscNARooms["A313-A (Teachers' Office)"] = paper.rect(529, 144, 37, 8);
     sciRooms["A313"] = paper.rect(529, 154, 37, 22);
-    bathrooms["3rd Floor A-wing Bathrooms"] = paper.rect(529, 178, 37, 14);
+    bathrooms["3rd Floor A-wiing Bathrooms"] = paper.rect(529, 178, 37, 14);
     miscNARooms["A311 (Science Department Chair)"] = paper.rect(529, 194, 37, 8);
     sciRooms["A309"] = paper.rect(529, 204, 37, 14);
     miscNARooms["A307 (Teachers' Office)"] = paper.rect(529, 220, 37, 6);
@@ -623,9 +610,9 @@ window.onload = function () {
 
     miscNARooms["PA111 (Fine Arts Department Chair)"] = paper.rect(146, 520, 34, 8);
     miscNARooms["PA110 (Fine Arts Office)"] = paper.rect(146, 529, 34, 8);
-    miscNARooms["PA109-A (Band Office)"] = paper.rect(146, 538, 34, 8);
+    miscNARooms["PA109-A (Office of Mr. Hutter)"] = paper.rect(146, 538, 34, 8);
     miscRooms["PA109"] = paper.rect(146, 548, 34, 8);
-    miscNARooms["PA109-B (Orchestra Direction Office) and PA109-C"] = paper.rect(146, 558, 34, 8);
+    miscNARooms["PA109-B (Orchestra Direction Office) PA109-C (Not a clue)"] = paper.rect(146, 558, 34, 8);
     miscRooms["PA108-PA109 (Includes costume shops, and several practice rooms)"] = paper.rect(146, 568, 34, 8);
     miscRooms["PA107 (Orchestra Room)"] = paper.rect(146, 577, 34, 16);
     miscNARooms["Uniform Storage"] = paper.rect(146, 595, 34, 7);
@@ -638,13 +625,13 @@ window.onload = function () {
     miscNARooms["PA105-D (Storage)"] = paper.rect(270, 558, 41, 8);
     miscRooms["PA105"] = paper.rect(270, 568, 41, 20);
     unknownRooms["PA105 A-B"] = paper.rect(270, 590, 41, 8);
-    miscRooms["PA105-UV (MIDI Lab)"] = paper.rect(270, 600, 41, 9);
+    miscRooms["PA105-UV (MIDI Lab; John Conradi's Playground)"] = paper.rect(270, 600, 41, 9);
 
     //Gym and Cafe declarations
     specialRooms["Spec Gym"] = paper.rect(31, 221, 97, 128);
 
     var specStyle = {
-        fill: "#ffff00",
+        fill: "#b7ab09",
         stroke: "#3a3710",
         "stroke-width": 2,
         "stroke-linejoin": "miter",
@@ -680,7 +667,7 @@ window.onload = function () {
     specialRooms["Field House"].attr(gymStyle);
     specialRooms["Field House"].styleID = gymStyle;
     miscRooms["Wrestling Room"] = paper.rect(289, 157, 27, 57);
-    miscNARooms["Coachs' Office"] = paper.rect(146, 234, 55, 33);
+    miscNARooms["Office of Some Description"] = paper.rect(146, 234, 55, 33);
     specialRooms["Boys' Locker Room"] = paper.rect(203, 234, 97, 33);
 
     var lockStyle = {
@@ -702,8 +689,10 @@ window.onload = function () {
         "stroke-linejoin": "miter",
         cursor: "pointer"
     };
+
     specialRooms["Pool"].attr(poolStyle);
     specialRooms["Pool"].styleID = poolStyle;
+
     specialRooms["Back Gym"] = paper.rect(217, 269, 42, 77);
     specialRooms["Back Gym"].attr(gymStyle);
     specialRooms["Back Gym"].styleID = gymStyle;
@@ -807,27 +796,88 @@ window.onload = function () {
     var table = document.getElementById("tableOfRooms");
 
     //Populates search table with all rooms
+    /*
     for (var roomName in allRooms) {
-        var roomNameNode = document.createElement("TR");
+
+        var roomNode = document.createElement("TR");
         var roomTypeNode = document.createElement("TD");
         var nameTextNode = document.createTextNode(roomName);
         var typeTextNode = document.createTextNode("MATH");
-        
-        roomNameNode.appendChild(nameTextNode);
-        roomTypeNode.appendChild(typeTextNode);
-        
-        /*var secondColumbNode = document.createElement("TR");
-        textnode = document.createTextNode("MATH");
-        secondColumbNode.appendChild(textnode);
-        table.appendChild(secondColumbNode);*/
 
-        table.appendChild(roomNameNode);
-        table.appendChild(roomTypeNode);
+        roomNode.append(nameTextNode);
+        roomTypeNode.append(typeTextNode);
+        roomNode.append(roomTypeNode);
+
+        table.append(roomNode);
+
     }
+    */
+    //Populates search table with all rooms based on room type
+    for (var i = 0; i < allRoomTypes.length; i++) {
+        var roomType = allRoomTypes[i];
+
+        for (var roomName in roomType) {
+            //allRooms[roomName] = roomType[roomName];
+            var roomNode = document.createElement("TR");
+            var roomNameNode = document.createElement("TD");
+            var nameTextNode = document.createTextNode(roomName);
+            var typeTextNode;
+            var typeString;
+            
+            switch(roomType){
+                case mathRooms:
+                    typeString = "Math";
+                    break;
+                case engRooms:
+                    typeString = "English";
+                    break;
+                case sciRooms:
+                    typeString = "Science";
+                    break;
+                case miscRooms: 
+                    typeString = "Elective";
+                    break;
+                case socSciRooms:
+                    typeString = "Social Science";
+                    break;
+                case langRooms:
+                    typeString = "Foreign Language";
+                    break;
+                case bathrooms:
+                    typeString = "Bathroom";
+                    break;
+                case miscNARooms:
+                    typeString = "Office Or Non-Academic Room";
+                    break;
+                case unknownRooms:
+                    typeString = "Unkown";
+                    break;
+                case barriers:
+                    typeString = "Stairs";
+                    break;
+                case specialRooms: 
+                    typeString = "Special";
+                    break;
+                default:
+                    typeString = "PLACEHOLDER";
+                    break;
+            }
+            
+            typeTextNode = document.createTextNode(typeString);
+            
+            roomNode.append(typeTextNode);
+            roomNameNode.append(nameTextNode);
+            roomNode.append(roomNameNode);
+            
+            table.append(roomNode);
+        }
+    }
+
 }
 
 function filterSearch() {
     var input, filter, table, tr, td, i;
+
     input = document.getElementById("searchbar");
     filter = input.value.toUpperCase();
     table = document.getElementById("tableOfRooms");

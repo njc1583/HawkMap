@@ -209,7 +209,7 @@
 
  #tableOfRooms {
      border-collapse: collapse;
-     width: 40%;
+     width: 350px;
      border: 1px solid #ddd;
      font-size: 18px;
      position: absolute;
