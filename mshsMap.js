@@ -795,23 +795,6 @@ window.onload = function () {
 
     var table = document.getElementById("tableOfRooms");
 
-    //Populates search table with all rooms
-    /*
-    for (var roomName in allRooms) {
-
-        var roomNode = document.createElement("TR");
-        var roomTypeNode = document.createElement("TD");
-        var nameTextNode = document.createTextNode(roomName);
-        var typeTextNode = document.createTextNode("MATH");
-
-        roomNode.append(nameTextNode);
-        roomTypeNode.append(typeTextNode);
-        roomNode.append(roomTypeNode);
-
-        table.append(roomNode);
-
-    }
-    */
     //Populates search table with all rooms based on room type
     for (var i = 0; i < allRoomTypes.length; i++) {
         var roomType = allRoomTypes[i];
@@ -899,15 +882,3 @@ function togglePopup() {
     var popup = document.getElementById("myPopup");
     popup.classList.toggle("show");
 }
-
-
-/*for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-        } else {
-            tr[i].style.display = "none";
-        }
-    }
-}*/
