@@ -1,18 +1,67 @@
-<!DOCTYPE html5>
 <html>
-  <head>
-    <meta charset="utf-8" />
+
+<head>
     <title>MSHS Interactive Map</title>
-  </head>
-  <body>
-      
+
     <div class="popup">
-        <span class="popuptext" id="myPopup"></span> 
-    </div>  
-    <script type='text/javascript' src='raphael.js'></script>
-    <script type='text/javascript' src='raphael.min.js'></script>
-    <script type = 'text/javascript' src = 'mshsMap.js'></script> 
+        <!-- Puts the popup that will be available for each room in the html -->
+        <span class="popuptext" id="myPopup"> </span>
+        <!-- Text of the popup -->
+    </div>
+
+    <!--
+    <div id="searchheader">
+        <!-- Search form and search button 
+        <form id="search">
+            <input type="text" class="textinput" id="textinput" autocomplete="on" name="q" size="21" maxlength="120">
+            <input type="submit" value="Search" id="searchbutton">
+            <!-- Search button and field inputs
+        </form>
+    </div>
+    -->
+
+    <!--
+    <div id="searchbar" class="textinput" type="text" autocomplete="off" placeholder="Search for a room...">
+        
+    </div>
+    -->
+
+    <input type="text" id="searchbar" onkeyup="filterSearch()" placeholder="Search for a room..." title="Type in a room.">
+
+    <table id="tableOfRooms">
+        <tr class="header">
+            <th style="width:40%;">Room Type</th>
+            <th style="width:60%;">Room Name</th>
+        </tr>
+    </table>
+
+
+    <!--
+    <form id="possiblerooms">
+        <input type="submit" value="Possible Rooms" id="possibleroomsbutton">
+    </form>
+    <form id="clear">
+        <!-- Clear button 
+        <input type="submit" disabled="true" value="Clear Room" id="clearbutton">
+    </form>
+    <div id="possibleRoomTables">
+        <table id="ARooms">
+            <colgroup>
+                <col style="background-color: #0be8dd" id="ARooms">
+            </colgroup>
+            <tr>
+                <th>A Rooms</th>
+            </tr>
+        </table>
+    </div>
+    -->
+
     <link rel="stylesheet" type="text/css" href="mshsMap.css">
-      
-  </body>
+    <!-- Links to other files of the map -->
+    <script type='text/javascript' src='raphael.js'></script>
+    <!-- Enables use of Raphael -->
+    <script type='text/javascript' src='raphael.min.js'></script>
+    <script type='text/javascript' src='mshsMap.js'></script>
+</body>
+
 </html>

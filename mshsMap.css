@@ -1,64 +1,305 @@
-.popup {
-            position: absolute;
-            top: 380px; /* Top and left allow for positioning of the popup on the map, will be set in the popup function */
-            left: 525px;
-            display: inline-block;
-            cursor: pointer;
-          }
-            /* The actual popup (appears on top) */
-          .popup .popuptext {
-            visibility: hidden;
-            width: 160px;
-            background-color: #555;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 8px 0;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            margin-left: -80px;
-            font-family: "Times New Roman";
-          }
-            /* Popup arrow In current version, we don't use this
-          .popup .popuptext::after {
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: #555 transparent transparent transparent;
-          }
-          */
-            /* Toggle this class when clicking on the popup container (hide and show the popup) */
-          .popup .show {
-            visibility: visible;
-            -webkit-animation: fadeIn 1s;
-            animation: fadeIn 1s
-          }
-          /* Add animation (fade in the popup) */
-          @-webkit-keyframes fadeIn {
-            from {opacity: 0;} 
-            to {opacity: 1;}
-          }
-          @keyframes fadeIn {
-            from {opacity: 0;}
-            to {opacity:1 ;}
-          }
-          .popup .dshow {
-            visibility: hidden;
-            -webkit-animation: fadeOut 1s;
-            animation: fadeOut 1s
-          }
-          /* Add animation (fade in the popup) */
-          @-webkit-keyframes fadeOut {
-            from {opacity: 1;} 
-            to {opacity: 0;}
-          }
-          @keyframes fadeOut {
-            from {opacity: 1;}
-            to {opacity:0 ;}
-          }
+ .popup {
+     position: absolute;
+     top: 380px;
+     /* Top and left allow for positioning of the popup on the map, will be set in the popup function */
+     left: 525px;
+     display: inline-block;
+     cursor: pointer;
+ }
+
+ /* The actual popup (appears on top) */
+
+ .popup .popuptext {
+     visibility: hidden;
+     /* Popup starts hidden, will be shown by toggling show */
+     width: 160px;
+     background-color: #555;
+     color: #fff;
+     text-align: center;
+     border-radius: 6px;
+     padding: 8px 0;
+     position: absolute;
+     z-index: 1;
+     bottom: 125%;
+     left: 50%;
+     margin-left: -80px;
+ }
+
+ /* Toggle this class when clicking on the popup container (hide and show the popup) */
+
+ .popup .show {
+     visibility: visible;
+     -webkit-animation: fadeIn 1s;
+     animation: fadeIn 1s
+ }
+
+ /* Add animation (fade in the popup) */
+
+ @-webkit-keyframes fadeIn {
+     from {
+         opacity: 0;
+     }
+     to {
+         opacity: 1;
+     }
+ }
+
+ @keyframes fadeIn {
+     from {
+         opacity: 0;
+     }
+     to {
+         opacity: 1;
+     }
+ }
+
+ /* Disables Highlighting Feature */
+
+ div.noSelect {
+     -webkit-user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+ }
+
+ /*
+ #ARooms {
+     position: absolute;
+     top: 10px;
+     left: 815px;
+     background-Color: dimgray;
+     visibility: hidden;
+     cursor: pointer;
+ }
+
+ #ARooms:hover {
+     background-color: white;
+ }
+
+ #clearbutton {
+     background-color: dimgray;
+     -moz-border-radius: 5px;
+     -webkit-border-radius: 5px;
+     border-radius: 5px;
+     border: .5px solid #000000;
+     display: inline-block;
+     cursor: pointer;
+     color: white;
+     font-family: sans-serif;
+     font-size: 12px;
+     visibility: hidden;
+     padding: 5px 10px;
+     text-shadow: 0px 1px 0px #000000;
+ }
+
+ #clearbutton:active {
+     outline: none;
+     border: none;
+     position: relative;
+     top: 1px;
+ }
+
+ #clearbutton:hover {
+     -webkit-animation: changeGreen 1s;
+     animation: changeGreen 1s;
+     background-color: green;
+ }
+
+ #possibleroomsbutton {
+     background-color: dimgray;
+     position: absolute;
+     top: 660px;
+     left: 238px;
+     -moz-border-radius: 5px;
+     -webkit-border-radius: 5px;
+     border-radius: 5px;
+     border: .5px solid #000000;
+     display: inline-block;
+     cursor: pointer;
+     color: white;
+     font-family: sans-serif;
+     font-size: 12px;
+     visibility: visible;
+     padding: 5px 10px;
+     text-shadow: 0px 1px 0px #000000;
+ }
+
+ #possibleroomsbutton:active {
+     outline: none;
+     border: none;
+     position: absolute;
+ }
+
+ #possibleroomsbutton:hover {
+     -webkit-animation: changeYellow 1s;
+     animation: changeYellow 1s;
+     background-color: purple;
+ }
+*/
+
+ #searchbutton:active {
+     outline: none;
+     border: none;
+     position: relative;
+ }
+
+ #searchbutton {
+     background-color: dimgray;
+     position: absolute;
+     top: 660px;
+     left: 170px;
+     -moz-border-radius: 5px;
+     -webkit-border-radius: 5px;
+     border-radius: 5px;
+     border: .5px solid #000000;
+     display: inline-block;
+     cursor: pointer;
+     color: white;
+     font-family: sans-serif;
+     font-size: 12px;
+     padding: 5px 10px;
+     text-shadow: 0px 1px 0px #000000;
+ }
+
+ #searchbutton:hover {
+     -webkit-animation: changeBlue 1s;
+     animation: changeBlue 1s;
+     background-color: blue;
+
+ }
+
+ #searchbar {
+     border-radius: 5px;
+     outline: none;
+     background-color: dimgray;
+     border: 2px solid black;
+     color: white;
+     position: absolute;
+     left: 10px;
+     top: 660px;
+     width: 150px;
+     height: 25px;
+     text-decoration-color: white;
+ }
+
+ #searchbar:focus {
+     -webkit-animation: changeDimGray .5s;
+     animation: changeDimGray .5s;
+     -moz-border-radius: 5px;
+     -webkit-border-radius: 5px;
+     border-radius: 5px;
+     outline: none;
+     background-color: dimgray;
+     border: 2px solid black;
+     color: white;
+     text-decoration-color: white;
+ }
+
+ #searchbar:hover {
+     -webkit-animation: changeDimGray .5s;
+     animation: changeDimGray .5s;
+     -moz-border-radius: 5px;
+     -webkit-border-radius: 5px;
+     border-radius: 5px;
+     outline: none;
+     background-color: dimgray;
+     border: 2px solid black;
+     color: white;
+     text-decoration-color: white;
+ }
+
+ #tableOfRooms {
+     border-collapse: collapse;
+     width: 350px;
+     border: 1px solid #ddd;
+     font-size: 18px;
+     position: absolute;
+     left: 10px;
+     top: 700px;
+ }
+
+ #tableOfRooms th,
+ #tableOfRooms td {
+     text-align: left;
+     padding: 2px;
+ }
+
+ #tableOfRooms tr {
+     border-bottom: 1px solid #ddd;
+ }
+
+ #tableOfRooms tr.header,
+ #tableOfRooms tr:hover {
+     background-color: #f1f1f1;
+ }
+
+ @-webkit-keyframes changeBlue {
+     from {
+         background-color: dimgray;
+     }
+     to {
+         background-color: blue;
+     }
+ }
+
+ @keyframes changeBlue {
+     from {
+         background-color: dimgray;
+     }
+     to {
+         background-color: blue;
+     }
+ }
+
+ @-webkit-keyframes changeGreen {
+     from {
+         background-color: dimgray;
+     }
+     to {
+         background-color: green;
+     }
+ }
+
+ @keyframes changeGreen {
+     from {
+         background-color: dimgray;
+     }
+     to {
+         background-color: green;
+     }
+ }
+
+ @-webkit-keyframes changeDimGray {
+     from {
+         background-color: white;
+     }
+     to {
+         background-color: dimgray;
+     }
+ }
+
+ @keyframes changeDimGray {
+     from {
+         background-color: white;
+     }
+     to {
+         background-color: dimgray;
+     }
+ }
+
+ @-webkit-keyframes changeYellow {
+     from {
+         background-color: dimgray;
+     }
+     to {
+         background-color: purple;
+     }
+ }
+
+ @keyframes changeYellow {
+     from {
+         background-color: dimgray;
+     }
+     to {
+         background-color: purple;
+     }
+ }
