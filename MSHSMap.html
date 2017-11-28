@@ -1,39 +1,91 @@
 <html>
-  <head>
+
+<head>
     <title>MSHS Interactive Map</title>
-  </head>
-  <body>
-      
-      <div class="popup"> <!-- Puts the popup that will be available for each room in the html -->
-          <span class="popuptext" id="myPopup"> </span> <!-- Text of the popup --> 
-      </div>
-      
-      <div id="searchheader"> <!-- Search form and search button -->
+</head>
+
+<body>
+    <!-- map image link -->
+    
+
+    <div class="popup" id= "popup">
+        <!-- Puts the popup that will be available for each room in the html -->
+        <span class="popuptext" id="myPopup"> </span>
+        <!-- Text of the popup -->
+    </div>
+
+    <div id="searchheader">
+        <!-- Search form and search button -->
         <form id="search">
             <input type="text" class="textinput" id="textinput" autocomplete="off" name="q" size="21" maxlength="120">
-            <input type="submit" value="Search" id="searchbutton"> <!-- Search button and field inputs -->
+            <input type="submit" value="Search" id="searchbutton">
+            <!-- Search button and field inputs -->
         </form>
-      </div>
-      <form id= "possiblerooms">
-        <input type="submit" value = "Possible Rooms" id= "possibleroomsbutton">
-      </form>
-      <form id= "clear"> <!-- Clear button -->
-        <input type="submit" disabled = "true" value = "Clear Room" id= "clearbutton">
-          </form>
-      <div id="possibleRoomTables">
-      <table id= "ARooms">
-          <colgroup>
-            <col style="background-color: #0be8dd" id= "ARooms">
-  </colgroup>
-        <tr>
-          <th>A Rooms</th>
-        </tr>
-      </table>
-            </div> 
-      
-      <link rel="stylesheet" type="text/css" href="MSHSMap.css"> <!-- Links to other files of the map -->
-      <script type='text/javascript' src='raphael.js'></script> <!-- Enables use of Raphael -->
-      <script type='text/javascript' src='raphael.min.js'></script>
-      <script type = 'text/javascript' src = 'MSHSMap.js'></script> 
-    </body>
+    </div>
+    <form id="possiblerooms">
+        <input type="submit" value="Possible Rooms" id="possibleroomsbutton">
+    </form>
+    <form id="clear">
+        <!-- Clear button -->
+        <input type="submit" disabled="true" value="Clear Room" id="clearbutton">
+    </form>
+    <div id="possibleRoomTables">
+        <table id="ARooms">
+            <colgroup>
+                <col style="background-color: dimgray">
+            </colgroup>
+            <tr>
+                <th>A Rooms</th>
+            </tr>
+        </table>
+        <table id="BRooms">
+            <colgroup>
+                <col style="background-color: dimgray">
+            </colgroup>
+            <tr>
+                <th>B Rooms</th>
+            </tr>
+        </table>
+        <table id="CRooms">
+            <colgroup>
+                <col style="background-color: dimgray">
+            </colgroup>
+            <tr>
+                <th>C Rooms</th>
+            </tr>
+        </table>
+        <table id="PARooms">
+            <colgroup>
+                <col style="background-color: dimgray">
+            </colgroup>
+            <tr>
+                <th>PA Rooms</th>
+            </tr>
+        </table>
+        <table id="VRooms">
+            <colgroup>
+                <col style="background-color: dimgray">
+            </colgroup>
+            <tr>
+                <th>V Rooms</th>
+            </tr>
+        </table>
+        <table id="SpecialRooms">
+            <colgroup>
+                <col style="background-color: dimgray">
+            </colgroup>
+            <tr>
+                <th>Special Rooms</th>
+            </tr>
+        </table>
+    </div>
+
+    <link rel="stylesheet" type="text/css" href="MSHSMap.css">
+    <!-- Links to other files of the map -->
+    <script type='text/javascript' src='raphael.js'></script>
+    <!-- Enables use of Raphael -->
+    <script type='text/javascript' src='raphael.min.js'></script>
+    <script type='text/javascript' src='MSHSMap.js'></script>
+</body>
+
 </html>

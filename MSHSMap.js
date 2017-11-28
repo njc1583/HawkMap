@@ -1,22 +1,22 @@
 window.onload = function () {
-    var MAP_WIDTH = 760;
-    var MAP_HEIGHT = 645;
+    var MAP_WIDTH = 770;
+    var MAP_HEIGHT = 653;
 
     var paper = Raphael(0, 0, MAP_WIDTH, MAP_HEIGHT);
 
     //Creation of all styles for rooms
     //Bathrooms: Grey
     var bathStyle = {
-        fill: "#a9a9a9",
+        fill: "#cec4c4",
         stroke: "#696969",
         "stroke-width": 2,
         "stroke-linejoin": "miter",
         cursor: "pointer"
     };
-    //Administrative/Other non-academic rooms: Brown
+    //Administrative/Other non-academic rooms: Dark Purple
     var miscNARoomstyle = {
-        fill: "#915b15",
-        stroke: "#442a08",
+        fill: "#998b8b",
+        stroke: "#474040",
         "stroke-width": 2,
         "stroke-linejoin": "miter",
         cursor: "pointer"
@@ -31,8 +31,8 @@ window.onload = function () {
     };
     //Math: Blue
     var mathRoomStyle = {
-        fill: "#0be8dd",
-        stroke: "#0e726d",
+        fill: "#2658ff",
+        stroke: "#000cff",
         "stroke-width": 2,
         "stroke-linejoin": "miter",
         cursor: "pointer"
@@ -55,7 +55,7 @@ window.onload = function () {
     };
     //Social Science: Orange
     var socSciRoomStyle = {
-        fill: "#dd800d",
+        fill: "#ff7b00",
         stroke: "#96570a",
         "stroke-width": 2,
         "stroke-linejoin": "miter",
@@ -71,7 +71,7 @@ window.onload = function () {
     };
     //Miscellanious rooms (such as art electives): Purple
     var miscRoomStyle = {
-        fill: "#ff66ff",
+        fill: "#ff008c",
         stroke: "#660066",
         "stroke-width": 2,
         "stroke-linejoin": "miter",
@@ -95,8 +95,8 @@ window.onload = function () {
         unknownRooms = [],
         miscNARooms = [],
         bathrooms = [],
-        specialRooms = [];
-        map = [];
+        specialRooms = [],
+        extraNonHoverRooms = [];
 
     //specialRooms is for rooms with distinct features and/or designs, and may have their own style on a case-by-case basis.
 
@@ -111,29 +111,55 @@ window.onload = function () {
         unknownRooms,
         miscNARooms,
         bathrooms,
-        specialRooms
+        specialRooms,
     ];
 
     var allRooms = [];
 
     //Temporary rectangles to be used as a coordinate system for other room placement
     var barriers = [];
-    map["Entire Map"] = paper.rect(1, 1, MAP_WIDTH - 2, MAP_HEIGHT - 2);
-    
+    extraNonHoverRooms["Entire Map"] = paper.rect(1, 1, MAP_WIDTH - 2, MAP_HEIGHT - 2);
+
     var entireMapStyle = {
         fill: "#e2e2e2",
         stroke: "#000000",
         "stroke-width": 2,
         "stroke-linejoin": "miter"
     };
-    
-    map["Entire Map"].attr(entireMapStyle);
-    map["Entire Map"].styleID = entireMapStyle;
-    
+
+    extraNonHoverRooms["Entire Map"].attr(entireMapStyle);
+    extraNonHoverRooms["Entire Map"].styleID = entireMapStyle;
+
     barriers["A-Wing 3rd Floor Outline"] = paper.rect(529, 24, 91, 273);
     barriers["A-Wing 2nd Floor Outline"] = paper.path("M 661,38 L 697,38 L 697,24 L 753,24 L 753,297 L 661,297 Z");
-    barriers["The rest of the dang school"] = paper.path("M 146,135 L 316,135 L 316,274 L 371,274 L 371,347 L 316,347 L 316,389 L 616,389 L 616,505 L 667,505 L 667,342 L 693,342 L 693,332 L 747,332 L 747,601 L 667,601 L 667,520 L 311,520 L 311,609 L 146,609 L 146,481 L 131,481 L 131,379 L 147,379 L 147,314 L 128,314 L 128,349 L 031,349 L 031,222 L 128,222 L 128,266 L 146,266 L Z");
+    barriers["The rest of the dang school"] = paper.path("M 146,135 L 316,135 L 316,274 L 371,274 L 371,347 L 316,347 L 316,389 L 616,389 L 616,505 L 667,505 L 667,342 L 693,342 L 693,332 L 747,332 L 747,601 L 667,601 L 667,520 L 311,520 L 311,609 L 146,609 L 146,481 L 131,481 L 131,379 L 147,379 L 147,314 L 128,314 L 128,349 L 031,349 L 031,222 L 128,222 L 128,267 L 146,267 L Z");
+
+    specialRooms["The Maine South Pond"] = paper.path("M 330,643 L 653,643 C 653,643 491.5,510 330,643 Z");
+
+    var pondStyle = {
+        fill: "#68eaff",
+        stroke: "#0f7677",
+        "stroke-width": 2,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
+
+    specialRooms["The Maine South Pond"].attr(pondStyle);
+    specialRooms["The Maine South Pond"].styleID = pondStyle;
+
+    /*specialRooms["Circle Drive"] = paper.path("M 313,522 L 313,643 L 328,643 C 328,643 466,506 657,643 L 665,643 L 665,522 Z");
     
+    var parkingLotStyle = {
+        fill: "#f2f2f2",
+        stroke: "#878787",
+        "stroke-width": 2,
+        "stroke-linejoin": "miter",
+        cursor: "pointer"
+    };
+    
+    specialRooms["Circle Drive"].attr(parkingLotStyle);
+    specialRooms["Circle Drive"].styleID = parkingLotStyle;*/
+
     //East side even-numbered 1st Floor A-wing rooms
     unknownRooms["East A-Wing Stairs (1st Floor)"] = paper.rect(707, 332, 40, 12);
     mathRooms["A128"] = paper.rect(707, 346, 40, 14);
@@ -245,7 +271,7 @@ window.onload = function () {
     sciRooms["A315"] = paper.rect(529, 125, 37, 17);
     miscNARooms["A313-A (Teachers' Office)"] = paper.rect(529, 144, 37, 8);
     sciRooms["A313"] = paper.rect(529, 154, 37, 22);
-    bathrooms["3rd Floor A-wiing Bathrooms"] = paper.rect(529, 178, 37, 14);
+    bathrooms["3rd Floor A-wing Bathrooms"] = paper.rect(529, 178, 37, 14);
     miscNARooms["A311 (Science Department Chair)"] = paper.rect(529, 194, 37, 8);
     sciRooms["A309"] = paper.rect(529, 204, 37, 14);
     miscNARooms["A307 (Teachers' Office)"] = paper.rect(529, 220, 37, 6);
@@ -515,7 +541,7 @@ window.onload = function () {
     unknownRooms["Mech Rooms (Yeah these are called the mech rooms but buddy, I have /no/ idea what these are.)"] = paper.rect(151, 406, 29, 20);
     unknownRooms["V134 (No idea here either)"] = paper.rect(181, 406, 19, 20);
     specialRooms["Kitchen"] = paper.rect(202, 406, 61, 20);
-    
+
     var kitchenStyle = {
         fill: "#1ec7ed",
         stroke: "#10414c",
@@ -523,12 +549,12 @@ window.onload = function () {
         "stroke-linejoin": "miter",
         cursor: "pointer"
     };
-    
+
     specialRooms["Kitchen"].attr(kitchenStyle);
     specialRooms["Kitchen"].styleID = kitchenStyle;
-    
+
     specialRooms["Loading Bay"] = paper.path("M 131,428 L 200,428 L 200,476 L 172,476 L 172,466 L 131,466 Z");
-    
+
     var loadingBayStyle = {
         fill: "#662c04",
         stroke: "#281304",
@@ -536,10 +562,10 @@ window.onload = function () {
         "stroke-linejoin": "miter",
         cursor: "pointer"
     };
-    
+
     specialRooms["Loading Bay"].attr(loadingBayStyle);
     specialRooms["Loading Bay"].styleID = loadingBayStyle;
-    
+
     specialRooms["Hallway to Loading Bay"] = paper.rect(201, 428, 62, 9);
     specialRooms["Hallway to Loading Bay"].attr(loadingBayStyle);
     specialRooms["Hallway to Loading Bay"].styleID = loadingBayStyle;
@@ -553,7 +579,7 @@ window.onload = function () {
     miscRooms["V122"] = paper.rect(201, 478, 28, 28);
     miscRooms["V123"] = paper.rect(230, 488, 33, 18);
     specialRooms["V124 Wing"] = paper.rect(202, 439, 61, 13);
-    
+
     var v124WingStyle = {
         fill: "#fcac00",
         stroke: "#684700",
@@ -561,19 +587,19 @@ window.onload = function () {
         "stroke-linejoin": "miter",
         cursor: "pointer"
     };
-    
+
     specialRooms["V124 Wing"].attr(v124WingStyle);
     specialRooms["V124 Wing"].styleID = v124WingStyle;
     miscRooms["V125 (Entrance Through Hallway)"] = paper.rect(202, 454, 27, 11);
     miscRooms["V126 (Entrance Through Hallway)"] = paper.rect(202, 466, 27, 11);
     bathrooms["Hallway to V125, V126, V127"] = paper.path("M 231,454 L 263,454 L 263,464 L 241,464 L 241,486 L 231,486 Z");
     miscRooms["V127"] = paper.rect(243, 466, 20, 21);
-    
+
     //PA-Wing
     barriers["V-Wing Barrier"] = paper.rect(146, 520, 165, 89);
-    
+
     specialRooms["Auditorium"] = paper.rect(195, 530, 58, 62);
-    
+
     var audiStyle = {
         fill: "#af0896",
         stroke: "#470b3e",
@@ -581,7 +607,7 @@ window.onload = function () {
         "stroke-linejoin": "miter",
         cursor: "pointer"
     };
-    
+
     specialRooms["Auditorium"].attr(audiStyle);
     specialRooms["Auditorium"].styleID = audiStyle;
     specialRooms["Backstage Entrance"] = paper.rect(195, 520, 10, 9);
@@ -590,21 +616,21 @@ window.onload = function () {
     bathrooms["PA-Wing Male Bathroom"] = paper.rect(207, 520, 16, 8);
     bathrooms["PA-Wing Female Bathroom"] = paper.rect(224, 520, 16, 8);
     miscNARooms["Custodial Closet"] = paper.rect(242, 520, 11, 8);
-    
-    bathrooms["V-Wing Hallway"] = paper.path("M 182,520 L 193,520  L 193,594 L 255,594 L 255,520 L 268,520 L 268,603 L 258,603 L 258,609 L 192,609 L 192,603 L 182,603 Z");
+
+    bathrooms["PA-Wing Hallway"] = paper.path("M 182,520 L 193,520  L 193,594 L 255,594 L 255,520 L 268,520 L 268,603 L 258,603 L 258,609 L 192,609 L 192,603 L 182,603 Z");
     bathrooms["Lobby Male Bathroom"] = paper.rect(182, 604, 9, 5);
     bathrooms["Lobby Female Bathroom"] = paper.rect(259, 604, 9, 5);
-    
+
     miscNARooms["PA111 (Fine Arts Department Chair)"] = paper.rect(146, 520, 34, 8);
     miscNARooms["PA110 (Fine Arts Office)"] = paper.rect(146, 529, 34, 8);
-    miscNARooms["PA109-A (Office of Mr. Hutter)"] = paper.rect(146, 538, 34, 8);
+    miscNARooms["PA109-A (Band Office)"] = paper.rect(146, 538, 34, 8);
     miscRooms["PA109"] = paper.rect(146, 548, 34, 8);
-    miscNARooms["PA109-B (Orchestra Direction Office) PA109-C (Not a clue)"] = paper.rect(146, 558, 34, 8);
+    miscNARooms["PA109-B (Orchestra Direction Office) and PA109-C"] = paper.rect(146, 558, 34, 8);
     miscRooms["PA108-PA109 (Includes costume shops, and several practice rooms)"] = paper.rect(146, 568, 34, 8);
     miscRooms["PA107 (Orchestra Room)"] = paper.rect(146, 577, 34, 16);
     miscNARooms["Uniform Storage"] = paper.rect(146, 595, 34, 7);
     miscNARooms["Instrument Storage"] = paper.rect(146, 603, 34, 6);
-    
+
     miscNARooms["PA101 (Theatre) and PA101-A (Stage manager's office)"] = paper.rect(270, 520, 41, 8);
     miscRooms["PA102"] = paper.rect(270, 530, 41, 8);
     miscRooms["PA103 D-G"] = paper.rect(270, 539, 41, 8);
@@ -612,24 +638,24 @@ window.onload = function () {
     miscNARooms["PA105-D (Storage)"] = paper.rect(270, 558, 41, 8);
     miscRooms["PA105"] = paper.rect(270, 568, 41, 20);
     unknownRooms["PA105 A-B"] = paper.rect(270, 590, 41, 8);
-    miscRooms["PA105-UV (MIDI Lab; John Conradi's Playground)"] = paper.rect(270, 600, 41, 9);
-    
+    miscRooms["PA105-UV (MIDI Lab)"] = paper.rect(270, 600, 41, 9);
+
     //Gym and Cafe declarations
     specialRooms["Spec Gym"] = paper.rect(31, 221, 97, 128);
-    
+
     var specStyle = {
-        fill: "#b7ab09",
+        fill: "#ffff00",
         stroke: "#3a3710",
         "stroke-width": 2,
         "stroke-linejoin": "miter",
         cursor: "pointer"
     };
-    
+
     specialRooms["Spec Gym"].attr(specStyle);
     specialRooms["Spec Gym"].styleID = specStyle;
-    
+
     specialRooms["Cafeteria"] = paper.rect(316, 274, 55, 74);
-    
+
     var cafStyle = {
         fill: "#0d913d",
         stroke: "#0f4221",
@@ -637,12 +663,12 @@ window.onload = function () {
         "stroke-linejoin": "miter",
         cursor: "pointer"
     };
-    
+
     specialRooms["Cafeteria"].attr(cafStyle);
     specialRooms["Cafeteria"].styleID = cafStyle;
     miscRooms["Weight Room"] = paper.rect(146, 198, 46, 34);
     specialRooms["Field House"] = paper.path("M 146,135 L 316,135 L 316,155 L 287,155 L 287,216 L 316,216 L 316,232 L 194,232 L 194,196 L 146,196 Z");
-    
+
     var gymStyle = {
         fill: "#a8a8a8",
         stroke: "#2b2a29",
@@ -650,13 +676,13 @@ window.onload = function () {
         "stroke-linejoin": "miter",
         cursor: "pointer"
     };
-    
+
     specialRooms["Field House"].attr(gymStyle);
     specialRooms["Field House"].styleID = gymStyle;
     miscRooms["Wrestling Room"] = paper.rect(289, 157, 27, 57);
-    miscNARooms["Office of Some Description"] = paper.rect(146, 234, 55, 33);
+    miscNARooms["Coachs' Office"] = paper.rect(146, 234, 55, 33);
     specialRooms["Boys' Locker Room"] = paper.rect(203, 234, 97, 33);
-    
+
     var lockStyle = {
         fill: "#850791",
         stroke: "#2a072d",
@@ -664,11 +690,11 @@ window.onload = function () {
         "stroke-linejoin": "miter",
         cursor: "pointer"
     };
-    
+
     specialRooms["Boys' Locker Room"].attr(lockStyle);
     specialRooms["Boys' Locker Room"].styleID = lockStyle;
     specialRooms["Pool"] = paper.rect(169, 269, 46, 77);
-    
+
     var poolStyle = {
         fill: "#0c0cb7",
         stroke: "#0b0b3f",
@@ -676,10 +702,10 @@ window.onload = function () {
         "stroke-linejoin": "miter",
         cursor: "pointer"
     };
-    
+
     specialRooms["Pool"].attr(poolStyle);
     specialRooms["Pool"].styleID = poolStyle;
-    
+
     specialRooms["Back Gym"] = paper.rect(217, 269, 42, 77);
     specialRooms["Back Gym"].attr(gymStyle);
     specialRooms["Back Gym"].styleID = gymStyle;
@@ -693,284 +719,326 @@ window.onload = function () {
     specialRooms["Girls' Locker Room"].styleID = lockStyle;
 
 
-    
+
     //Set each rooms to different styles (and add animations)
     var animationSpeed = 500;
     var hoverStyle = {
         fill: "white"
     };
-    
+
     //Sets attributes of each room
-    
-    
-    for(var roomName in mathRooms){
+
+
+    for (var roomName in mathRooms) {
         mathRooms[roomName].attr(mathRoomStyle);
         mathRooms[roomName].styleID = mathRoomStyle;
     }
-    
-    for(var roomName in engRooms){
+
+    for (var roomName in engRooms) {
         engRooms[roomName].attr(engRoomStyle);
         engRooms[roomName].styleID = engRoomStyle;
     }
 
-    for(var roomName in sciRooms){
+    for (var roomName in sciRooms) {
         sciRooms[roomName].attr(sciRoomStyle);
         sciRooms[roomName].styleID = sciRoomStyle;
     }
 
-    for(var roomName in socSciRooms){
+    for (var roomName in socSciRooms) {
         socSciRooms[roomName].attr(socSciRoomStyle);
         socSciRooms[roomName].styleID = socSciRoomStyle;
     }
 
-    for(var roomName in langRooms){
+    for (var roomName in langRooms) {
         langRooms[roomName].attr(langRoomStyle);
         langRooms[roomName].styleID = langRoomStyle;
-    }   
+    }
 
-    for(var roomName in miscRooms){
+    for (var roomName in miscRooms) {
         miscRooms[roomName].attr(miscRoomStyle);
         miscRooms[roomName].styleID = miscRoomStyle;
     }
-      
-    for(var roomName in miscNARooms){
+
+    for (var roomName in miscNARooms) {
         miscNARooms[roomName].attr(miscNARoomstyle);
         miscNARooms[roomName].styleID = miscNARoomstyle;
     }
-      
-    for(var roomName in unknownRooms){
+
+    for (var roomName in unknownRooms) {
         unknownRooms[roomName].attr(unknownRoomStyle);
         unknownRooms[roomName].styleID = unknownRoomStyle;
     }
-      
-    for(var roomName in bathrooms){
+
+    for (var roomName in bathrooms) {
         bathrooms[roomName].attr(bathStyle);
         bathrooms[roomName].styleID = bathStyle;
     }
-    
+
     //Fills allRooms with roomnames
-    
-    for(var i = 0; i < allRoomTypes.length; i++){
+
+    for (var i = 0; i < allRoomTypes.length; i++) {
         var roomType = allRoomTypes[i];
-        
-        for(var roomName in roomType){
+
+        for (var roomName in roomType) {
             allRooms[roomName] = roomType[roomName];
         }
     }
-    
+
     //Enables mouseover and mouseout functions for the rooms
-    
-    for (var roomName in allRooms){
+    for (var roomName in allRooms) {
         var roomStyle = allRooms[roomName].styleID;
-                
+
         (function (room, name, style) {
-            room[0].addEventListener("mouseover", function() {
+            room[0].addEventListener("mouseover", function () {
                 room.animate(hoverStyle, animationSpeed);
                 var node = document.getElementById("myPopup").innerHTML = name;
                 togglePopup();
-                
             }, true);
-            room[0].addEventListener("mouseout", function() {
+            room[0].addEventListener("mouseover", getClickPosition, false);
+            room[0].addEventListener("mouseout", function () {
                 room.animate(style, animationSpeed);
                 togglePopup();
             }, true);
         })(allRooms[roomName], roomName, roomStyle);
     }
+
+    function getClickPosition(e) {
+        var popup = document.getElementById("popup");
+        popup.style.left = e.clientX;
+        popup.style.top = e.clientY;
+    }
+    
     
     //Hides and shows the popup
-    function togglePopup(){
+    function togglePopup() {
         var popup = document.getElementById("myPopup");
         popup.classList.toggle("show");
     }
-    
-    function clearShow(){
+ 
+    function clearShow() {
         var clear = document.getElementById("clearbutton");
         clear.style.visibility = "visible";
     }
-    
-    function clearHide(){
+
+    function clearHide() {
         var clear = document.getElementById("clearbutton");
         clear.style.visibility = "hidden";
     }
-    
-    function searchShow(){
+
+    function searchShow() {
         var search = document.getElementById("searchbutton");
         search.style.visibility = "visible";
     }
-    
-    function searchHide(){
+
+    function searchHide() {
         var search = document.getElementById("searchbutton");
         search.style.visibility = "hidden";
     }
-    
-    function possibleroomsShow(){
+
+    function possibleroomsShow() {
         var possiblerooms = document.getElementById("possibleroomsbutton");
         possiblerooms.style.visibility = "visible";
     }
-    
-    function possibleroomsHide(){
+
+    function possibleroomsHide() {
         var possiblerooms = document.getElementById("possibleroomsbutton");
         possiblerooms.style.visibility = "hidden";
     }
-    
-    function toggleTable()
-    {
-        var table = document.getElementById("ARooms");
-        if(table.style.visibility == "visible")
+
+    function toggleTable() {
+        var table = document.getElementById("possibleRoomTables");
+        if (table.style.visibility == "visible")
             table.style.visibility = "hidden";
         else
             table.style.visibility = "visible";
     }
-    
+
+    function toggleSmallTables(name) {
+        var table = document.getElementById(name);
+        if (table.style.visibility == "visible")
+            table.style.visibility = "hidden";
+        else
+            table.style.visibility = "visible";
+    }
     //Search bar function
-    
+
     var a = document.getElementById('search'); //Search form
     var inputs = document.getElementsByTagName("input"); //inputs to be used for enabling and disabling
     var c = document.getElementById('clear'); //Clear form
     var d = document.getElementById('possiblerooms');
     var g = document.getElementById('ARooms');
-    a.addEventListener('submit',function(e) {
+    a.addEventListener('submit', function (e) {
         e.preventDefault();
         var b = document.getElementById('textinput').value; //Gets text submitted by user
         b = b.toUpperCase().trim();
         var indexA = b.indexOf('A');
         var indexC = b.indexOf('C');
-        if((indexA != -1 && b.length - indexA >= 4) || (indexC != -1 && b.length - indexC >= 4)) //If A or B is in the name and has three characters after it
-            { 
-                if(indexA != -1 && indexC != -1 && indexA < indexC)
-                    var z = b.substring(indexA, indexA + 4); //gets the roomname
-                else if(indexA != -1 && indexC != -1 && indexA > indexC)
-                    var z = b.substring(indexC, indexC + 4);
-                else if(indexC == -1)
-                    var z = b.substring(indexA, indexA + 4);
-                else
-                    var z = b.substring(indexC, indexC + 4);
-            for(var roomName in allRooms) //Searches through all rooms and finds if it contains the roomname entered by the user
-                {
-                (function (room, roomname) 
-                    {
+        if ((indexA != -1 && b.length - indexA >= 4) || (indexC != -1 && b.length - indexC >= 4)) //If A or B is in the name and has three characters after it
+        {
+            if (indexA != -1 && indexC != -1 && indexA < indexC)
+                var z = b.substring(indexA, indexA + 4); //gets the roomname
+            else if (indexA != -1 && indexC != -1 && indexA > indexC)
+                var z = b.substring(indexC, indexC + 4);
+            else if (indexC == -1)
+                var z = b.substring(indexA, indexA + 4);
+            else
+                var z = b.substring(indexC, indexC + 4);
+            for (var roomName in allRooms) //Searches through all rooms and finds if it contains the roomname entered by the user
+            {
+                (function (room, roomname) {
                     var name = roomname.substring(0, 4);
-                    if(name == z)
-                        {
+                    if (name == z) {
                         room.animate(hoverStyle, animationSpeed);
                         document.getElementById("myPopup").innerHTML = roomname; //animates the room and popup
                         togglePopup();
                         return;
-                        }
-                    })(allRooms[roomName], roomName);
-                }
+                    }
+                })(allRooms[roomName], roomName);
             }
-            inputs[2].disabled = true;
-            inputs[0].readOnly = true;
-            inputs[1].disabled = true;
-            inputs[3].disabled = false;
-            clearShow();
-            possibleroomsHide();
-            searchHide();
+        }
+        inputs[2].disabled = true;
+        inputs[0].readOnly = true;
+        inputs[1].disabled = true;
+        inputs[3].disabled = false;
+        clearShow();
+        possibleroomsHide();
+        searchHide();
     });
-            c.addEventListener('submit', function(e) {
-                e.preventDefault();
+    c.addEventListener('submit', function (e) {
+        e.preventDefault();
         var b = document.getElementById('textinput').value; //Gets text submitted by user
         b = b.toUpperCase().trim();
         var indexA = b.indexOf('A');
         var indexC = b.indexOf('C');
-        if((indexA != -1 && b.length - indexA >= 4) || (indexC != -1 && b.length - indexC >= 4)) //If A or B is in the name and has three characters after it
-            { 
-                if(indexA != -1 && indexC != -1 && indexA < indexC)
-                    var z = b.substring(indexA, indexA + 4); //gets the roomname
-                else if(indexA != -1 && indexC != -1 && indexA > indexC)
-                    var z = b.substring(indexC, indexC + 4);
-                else if(indexC == -1)
-                    var z = b.substring(indexA, indexA + 4);
-                else
-                    var z = b.substring(indexC, indexC + 4);
-                    for(var roomName in allRooms)
-                        {
-                        (function (room, roomname) {
-                            var name = roomname.substring(0, 4);
-                                if(name == z)
-                                    {
-                                    room.animate(room.styleID, animationSpeed);
-                                    togglePopup();
-                                    return;
-                                    }
-                            })(allRooms[roomName], roomName);
-                        }
+        if ((indexA != -1 && b.length - indexA >= 4) || (indexC != -1 && b.length - indexC >= 4)) //If A or B is in the name and has three characters after it
+        {
+            if (indexA != -1 && indexC != -1 && indexA < indexC)
+                var z = b.substring(indexA, indexA + 4); //gets the roomname
+            else if (indexA != -1 && indexC != -1 && indexA > indexC)
+                var z = b.substring(indexC, indexC + 4);
+            else if (indexC == -1)
+                var z = b.substring(indexA, indexA + 4);
+            else
+                var z = b.substring(indexC, indexC + 4);
+            for (var roomName in allRooms) {
+                (function (room, roomname) {
+                    var name = roomname.substring(0, 4);
+                    if (name == z) {
+                        room.animate(room.styleID, animationSpeed);
+                        togglePopup();
+                        return;
                     }
-            a.reset();
-            inputs[2].disabled = false;
-            searchShow();
-            inputs[0].readOnly = false;
-            inputs[1].disabled = false;
-            inputs[3].disabled = true;
-            clearHide();
-            c.reset();
-            possibleroomsShow();
-            d.reset();
-        });
-    d.addEventListener('submit',function(e) {
+                })(allRooms[roomName], roomName);
+            }
+        }
+        a.reset();
+        inputs[2].disabled = false;
+        searchShow();
+        inputs[0].readOnly = false;
+        inputs[1].disabled = false;
+        inputs[3].disabled = true;
+        clearHide();
+        c.reset();
+        possibleroomsShow();
+        d.reset();
+    });
+    d.addEventListener('submit', function (e) {
         e.preventDefault();
         toggleTable();
-        generate_table();
     });
-       
-    g.addEventListener('mouseover', function() {
+
+    g.addEventListener('click', function () {
+        var table = document.createElement("tbl");
         var tblBody = document.createElement("tbody");
-        for (var roomName in allRooms){
-        (function (name) {  
-      var cell = document.createElement("td");
-      var cellText = document.createTextNode(name);
-      cell.appendChild(cellText);
-            row.appendChild(cell);
-      tblBody.appendChild(row);
-            g.appendChild(tblBody);
-        })(roomName);
+        for (var roomName in allRooms) {
+            if (roomName.charAt(0) == 'A' && roomName != 'Auditorium') {
+                var row = document.createElement("tr");
+                var cell = document.createElement("td");
+                var cellText = document.createTextNode(roomName);
+                cell.appendChild(cellText);
+                row.appendChild(cell);
+                tblBody.appendChild(row);
+            }
         }
-  }, true);
-  
-  }
-/*
-function generate_table() {
-  // get the reference for the body
-  var tblBody = document.createElement("tbody");
-  var table = document.getElementById("ARooms");
-  // creating all cells
-  for (var i = 0; i < 2; i++) {
-      /*
-      var cell = document.createElement("td");
-      var row = document.createElement("tr");
-      for(var roomName in allRooms)
-      {
-      if(roomName.charAt(0) == 'A')
-      var cellText = document.createTextNode(roomName);
-      cell.appendChild(cellText);
-      }
-      row.appendChild(cell);
-      tblBody.appendChild(row);
-      table.appendChild(tblbody)
-      
-    // creates a table row
-    var row = document.createElement("tr");
- 
-    for (var j = 0; j < 2; j++) {
-      // Create a <td> element and a text node, make the text
-      // node the contents of the <td>, and put the <td> at
-      // the end of the table row
-      var cell = document.createElement("td");
-      var cellText = document.createTextNode("cell in row "+i+", column "+j);
-      cell.appendChild(cellText);
-      row.appendChild(cell);
-    }
- 
-    // add the row to the end of the table body
-    tblBody.appendChild(row);
-  }
- 
-  // put the <tbody> in the <table>
-  table.appendChild(tblBody);
-  // appends <table> into <body>
-  body.appendChild(tbl);
-  // sets the border attribute of tbl to 2;
-  tbl.setAttribute("border", "2");
+        g.appendChild(tblBody);
+    }, true);
+
+    g.addEventListener('mouseout', function () {
+        g.innerHTML = "";
+        var table = document.createElement("tbl");
+        var tblBody = document.createElement("tbody");
+        var row = document.createElement("tr");
+        var cell = document.createElement("th");
+        var cellText = document.createTextNode("A Rooms");
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+        tblBody.appendChild(row);
+        table.appendChild(tblBody);
+        g.appendChild(table);
+    }, true);
+
+    var h = document.getElementById('BRooms');
+
+    h.addEventListener('click', function () {
+        var table = document.createElement("tbl");
+        var tblBody = document.createElement("tbody");
+        for (var roomName in allRooms) {
+            if (roomName.charAt(0) == 'B' && roomName.charAt(1).isInteger()) {
+                var row = document.createElement("tr");
+                var cell = document.createElement("td");
+                var cellText = document.createTextNode(roomName);
+                cell.appendChild(cellText);
+                row.appendChild(cell);
+                tblBody.appendChild(row);
+            }
+        }
+        h.appendChild(tblBody);
+    }, true);
+
+    h.addEventListener('mouseout', function () {
+        h.innerHTML = "";
+        var table = document.createElement("tbl");
+        var tblBody = document.createElement("tbody");
+        var row = document.createElement("tr");
+        var cell = document.createElement("th");
+        var cellText = document.createTextNode("B Rooms");
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+        tblBody.appendChild(row);
+        table.appendChild(tblBody);
+        h.appendChild(table);
+    }, true);
+
+    var i = document.getElementById('CRooms');
+
+    i.addEventListener('click', function () {
+        var table = document.createElement("tbl");
+        var tblBody = document.createElement("tbody");
+        for (var roomName in allRooms) {
+            if (roomName.charAt(0) == 'C') {
+                var row = document.createElement("tr");
+                var cell = document.createElement("td");
+                var cellText = document.createTextNode(roomName);
+                cell.appendChild(cellText);
+                row.appendChild(cell);
+                tblBody.appendChild(row);
+            }
+        }
+        i.appendChild(tblBody);
+    }, true);
+
+    i.addEventListener('mouseout', function () {
+        i.innerHTML = "";
+        var table = document.createElement("tbl");
+        var tblBody = document.createElement("tbody");
+        var row = document.createElement("tr");
+        var cell = document.createElement("th");
+        var cellText = document.createTextNode("C Rooms");
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+        tblBody.appendChild(row);
+        table.appendChild(tblBody);
+        i.appendChild(table);
+    }, true);
+
 }
-*/
