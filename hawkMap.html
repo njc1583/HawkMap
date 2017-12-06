@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <title>MSHS Interactive Map</title>
+</head>
+
+<body>
+    
+    <div class="topHeader">
+        <h6>Maine South High School</h6> 
+        <img src="mshsLogo.png" alt="logo"/>
+    </div>
+    
+    <link href='https://fonts.googleapis.com/css?family=Advent Pro' rel='stylesheet'>
+
+
+    <div class="popup" id="popup">
+        <!-- Puts the popup that will be available for each room in the html -->
+        <span class="popuptext" id="myPopup"> </span>
+        <!-- Text of the popup -->
+    </div>
+
+    <input type="text" id="searchbar" onkeyup="filterSearch()" placeholder="Search for a room..." title="Type in a room.">
+
+    <table id="tableOfRooms">
+        <tr class="header">
+            <th style="width:40%;">Room Type</th>
+            <th style="width:60%;">Room Name</th>
+        </tr>
+    </table>
+
+    <link rel="stylesheet" type="text/css" href="hawkMap.css">
+    <!-- Links to other files of the map -->
+    <script type='text/javascript' src='raphael.js'></script>
+    <!-- Enables use of Raphael -->
+    <script type='text/javascript' src='raphael.min.js'></script>
+    <script type='text/javascript' src='hawkMap.js'></script>
+
+</body>
+
+</html>
