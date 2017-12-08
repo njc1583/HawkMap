@@ -792,13 +792,12 @@ window.onload = function () {
     }
 
     var table = document.getElementById("tableOfRooms");
-
     //Populates search table with all rooms based on room type
     for (var i = 0; i < allRoomTypes.length; i++) {
         var roomType = allRoomTypes[i];
 
         for (var roomName in roomType) {
-            var roomNode = document.createElement("TR");
+            roomNode = document.createElement("TR");
             var roomNameNode = document.createElement("TD");
             var nameTextNode = document.createTextNode(roomName);
             var typeTextNode;
@@ -844,14 +843,27 @@ window.onload = function () {
             }
 
             typeTextNode = document.createTextNode(typeString);
-
             roomNode.append(typeTextNode);
             roomNameNode.append(nameTextNode);
             roomNode.append(roomNameNode);
-
+            roomNode.style.cursor = "pointer";
             table.append(roomNode);
         }
     }
+    var i = 0;
+    for(var roomName in allRooms) {
+        (function(name) {
+            var row = document.getElementById("tableOfRooms").getElementsByTagName("tr")[i + 1];
+            i = i + 1;
+            row.addEventListener("click", function() {
+            var popup = document.getElementById("myPopup");
+            popup.innerHTML = name;
+            togglePopup();
+        }, true);
+        })(roomName);
+        
+    }
+    
 }
 
 //Enables table to filter while entry being typed
