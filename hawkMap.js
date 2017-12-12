@@ -1,7 +1,7 @@
 window.onload = function () {
     var MAP_WIDTH = 770;
     var MAP_HEIGHT = 653;
-
+    //Sets width of the "paper" Raphael will work on
     var paper = Raphael(0, 75, MAP_WIDTH, MAP_HEIGHT);
 
     //Creation of all styles for rooms
@@ -802,7 +802,7 @@ window.onload = function () {
             var nameTextNode = document.createTextNode(roomName);
             var typeTextNode;
             var typeString;
-
+            //Sets the type of room in the table
             switch (roomType) {
                 case mathRooms:
                     typeString = "Math";
@@ -841,7 +841,7 @@ window.onload = function () {
                     typeString = "PLACEHOLDER";
                     break;
             }
-
+            //Adds the roomnames and roomtypes to the table
             typeTextNode = document.createTextNode(typeString);
             roomNode.append(typeTextNode);
             roomNameNode.append(nameTextNode);
@@ -850,25 +850,25 @@ window.onload = function () {
             table.append(roomNode);
         }
     }
+    //Function for user hovering over a roomname in the table; highlights the room and toggles the popup
     var i = 0;
     for (var roomName in allRooms) {
         (function (room, name) {
-            var row = document.getElementById("tableOfRooms").getElementsByTagName("tr")[i + 1];
+            var row = document.getElementById("tableOfRooms").getElementsByTagName("tr")[i + 1]; //Adds an eventlistener to each element of the table
             i = i + 1;
-            row.addEventListener("mouseover", function () {
+            row.addEventListener("mouseover", function () { 
                 var popup = document.getElementById("myPopup");
                 popup.innerHTML = name;
                 togglePopup();
                 room.animate(hoverStyle, animationSpeed);
-                var p = document.getElementById("popup");
-                //var position = room.getBoundingClientRect();
+                var p = document.getElementById("popup"); //Sets position of popup
                 p.style.top = "430px";
                 p.style.left = "550px";
             }, true);
         })(allRooms[roomName], roomName);
 
     }
-
+    //Function for user hovering out of a roomname in the table; stops highlight of room and hides the popup
     var j = 0;
     for (var roomName in allRooms) {
         var roomStyle = allRooms[roomName].styleID;
@@ -879,14 +879,9 @@ window.onload = function () {
                 var popup = document.getElementById("myPopup");
                 togglePopup();
                 room.animate(style, animationSpeed);
-                var p = document.getElementById("popup");
-                p.style.top = "430px";
-                p.style.left = "550px";
             }, true);
         })(allRooms[roomName], roomName, roomStyle);
-
     }
-
 }
 
 //Enables table to filter while entry being typed
@@ -915,7 +910,7 @@ function togglePopup() {
     var popup = document.getElementById("myPopup");
     popup.classList.toggle("show");
 }
-
+//Gets the position of the mouse when hovering over rooms to place the popup there
 function getClickPosition(e) {
     var popup = document.getElementById("popup");
     popup.style.left = e.clientX;
