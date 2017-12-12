@@ -5,48 +5,26 @@ body {
 .topHeader {
     width: 100%;
     height: 60px;
+    background-color: #EC2B30;
 }
 
 .topHeader img {
-    position: absolute;
-    top: 12.5px;
-    left: 500px;
+    position: relative;
+    float: right;
+    top: 5px;
     z-index: 1;
 }
 
 .topHeader h6 {
     position: absolute;
-    background-color: #EC2B30;
     color: white;
     font-family: "Advent Pro";
     font-size: 50;
     float: left;
     top: -110px;
-    left: 0px;
+    left: 10px;
     z-index: 1;
-    width: 600px;
-}
-
-/*.topHeader {
-    position: relative;
-
-    background-color: #Ec2B30;
-    color: white;
-    height: 60px;
-    width: 600px;
-}*/
-
-#siteHeader {
-    font-family: "Advent Pro";
-    position: relative;
-    padding: 0px;
-    font-size: 50;
-
-
-    background-color: #EC2B30;
-    color: white;
     width: 100%;
-    height: 60px;
 }
 
 .popup {
