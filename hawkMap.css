@@ -8,17 +8,23 @@ body {
 }
 
 .topHeader img {
-    float: right;
-    align-content: right;
+    position: absolute;
+    top: 12.5px;
+    left: 500px;
+    z-index: 1;
 }
 
 .topHeader h6 {
-    position: relative;
+    position: absolute;
     background-color: #EC2B30;
     color: white;
     font-family: "Advent Pro";
     font-size: 50;
     float: left;
+    top: -110px;
+    left: 0px;
+    z-index: 1;
+    width: 600px;
 }
 
 /*.topHeader {
@@ -127,7 +133,6 @@ div.noSelect {
     color: white;
     text-decoration-color: white;
 }
-
 #tableOfRooms {
     border-collapse: collapse;
     width: 350px;

@@ -851,19 +851,42 @@ window.onload = function () {
         }
     }
     var i = 0;
-    for(var roomName in allRooms) {
-        (function(name) {
+    for (var roomName in allRooms) {
+        (function (room, name) {
             var row = document.getElementById("tableOfRooms").getElementsByTagName("tr")[i + 1];
             i = i + 1;
-            row.addEventListener("click", function() {
-            var popup = document.getElementById("myPopup");
-            popup.innerHTML = name;
-            togglePopup();
-        }, true);
-        })(roomName);
-        
+            row.addEventListener("mouseover", function () {
+                var popup = document.getElementById("myPopup");
+                popup.innerHTML = name;
+                togglePopup();
+                room.animate(hoverStyle, animationSpeed);
+                var p = document.getElementById("popup");
+                //var position = room.getBoundingClientRect();
+                p.style.top = "430px";
+                p.style.left = "550px";
+            }, true);
+        })(allRooms[roomName], roomName);
+
     }
-    
+
+    var j = 0;
+    for (var roomName in allRooms) {
+        var roomStyle = allRooms[roomName].styleID;
+        (function (room, name, style) {
+            var row = document.getElementById("tableOfRooms").getElementsByTagName("tr")[j + 1];
+            j = j + 1;
+            row.addEventListener("mouseout", function () {
+                var popup = document.getElementById("myPopup");
+                togglePopup();
+                room.animate(style, animationSpeed);
+                var p = document.getElementById("popup");
+                p.style.top = "430px";
+                p.style.left = "550px";
+            }, true);
+        })(allRooms[roomName], roomName, roomStyle);
+
+    }
+
 }
 
 //Enables table to filter while entry being typed
