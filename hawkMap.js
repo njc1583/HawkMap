@@ -6,8 +6,6 @@ window.onload = function () {
 
     //Creation of all styles for rooms
     //Bathrooms: Grey
-    //Creation of all styles for rooms
-    //Bathrooms: Grey
     var bathStyle = {
         fill: "#cec4c4",
         stroke: "#696969",
